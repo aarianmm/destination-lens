@@ -9,6 +9,9 @@ export default tseslint.config(
       '**/dist/**',
       '**/dist-types/**',
       '**/node_modules/**',
+      // Parallel agents keep full repo copies here; linting them is meaningless
+      // and fails on plugins their worktree has not installed.
+      '.claude/**',
       'data/**',
       'app/public/**',
       'pipeline/artifacts/**',

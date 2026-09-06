@@ -36,7 +36,11 @@ async function load<T>(path: string, schema: ZodType<T>): Promise<T> {
   const promise = (async () => {
     let res: Response;
     try {
-      res = await fetch(path);
+      // Explicit Accept header matters in dev: Vite's SPA history fallback
+      // serves index.html (200, text/html) for an unmatched GET by default,
+      // which would otherwise masquerade a genuinely missing snapshot as a
+      // successful, unparseable response instead of a real 404.
+      res = await fetch(path, { headers: { Accept: 'application/json' } });
     } catch (cause) {
       throw new SnapshotError(
         `Could not reach ${path}: ${cause instanceof Error ? cause.message : 'network error'}`,
@@ -50,7 +54,21 @@ async function load<T>(path: string, schema: ZodType<T>): Promise<T> {
     if (!res.ok) {
       throw new SnapshotError(`${res.status} loading ${path}`, path, 'network');
     }
-    const parsed = schema.safeParse(await res.json());
+    // A 200 is not proof the file exists. Both the Vite dev server and Cloudflare's
+    // `not_found_handling: single-page-application` answer an unmatched path with
+    // index.html and a 200, so an absent snapshot arrives here looking like success.
+    // Treat a non-JSON body as missing rather than letting JSON.parse throw something
+    // unrecognisable — the uncovered-country UI depends on this being `missing`.
+    if (!(res.headers.get('content-type') ?? '').includes('json')) {
+      throw new SnapshotError(`No snapshot at ${path}`, path, 'missing');
+    }
+    let body: unknown;
+    try {
+      body = await res.json();
+    } catch {
+      throw new SnapshotError(`No snapshot at ${path}`, path, 'missing');
+    }
+    const parsed = schema.safeParse(body);
     if (!parsed.success) {
       throw new SnapshotError(
         `Snapshot at ${path} does not match the schema: ${parsed.error.issues[0]?.message ?? 'unknown'}`,
