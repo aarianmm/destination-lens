@@ -1,0 +1,60 @@
+name: Data pipeline
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      countries:
+        description: 'Comma-separated iso2 codes (blank = all covered countries)'
+        required: false
+        default: ''
+      dryRun:
+        description: 'Run without writing snapshots or calling paid APIs'
+        type: boolean
+        default: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      # Raw upstream pulls are cached between runs so re-runs are cheap and kind
+      # to the Bluesky API. Raw data is never committed to the repo.
+      - name: Restore pipeline cache
+        uses: actions/cache@v4
+        with:
+          path: pipeline/cache
+          key: pipeline-cache-${{ github.run_id }}
+          restore-keys: pipeline-cache-
+
+      - name: Run pipeline
+        run: npm run pipeline
+        env:
+          COUNTRIES: ${{ inputs.countries }}
+          DRY_RUN: ${{ inputs.dryRun }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          BSKY_IDENTIFIER: ${{ secrets.BSKY_IDENTIFIER }}
+          BSKY_APP_PASSWORD: ${{ secrets.BSKY_APP_PASSWORD }}
+
+      - name: Commit snapshots
+        if: ${{ inputs.dryRun != true }}
+        run: |
+          git config user.name  "destination-lens-bot"
+          git config user.email "actions@github.com"
+          git add data
+          if git diff --staged --quiet; then
+            echo "No snapshot changes."
+          else
+            git commit -m "data: refresh snapshots $(date -u +%Y-%m-%d)"
+            git push
+          fi

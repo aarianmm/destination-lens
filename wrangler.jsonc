@@ -1,0 +1,14 @@
+{
+  // Static-asset Worker: no server code, the SPA is served directly from ./app/dist.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "destination-lens",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./app/dist",
+    // Client-side routing: unknown paths fall through to index.html.
+    "not_found_handling": "single-page-application"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@dl/pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/run.ts",
+    "flights": "tsx src/flights/run.ts"
+  },
+  "dependencies": {
+    "@dl/shared": "*",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0"
+  }
+}

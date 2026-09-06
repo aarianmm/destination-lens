@@ -1,0 +1,17 @@
+node_modules/
+dist/
+dist-types/
+*.tsbuildinfo
+.wrangler/
+.env
+.env.*
+!.env.example
+pipeline/cache/
+pipeline/artifacts/
+*.log
+.DS_Store
+coverage/
+ai-logs/
+export-*.txt
+*.local.*
+app/public/data/
