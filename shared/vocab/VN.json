@@ -1,0 +1,149 @@
+{
+  "iso2": "VN",
+  "name": "Vietnam",
+  "aliases": ["Viet Nam"],
+  "centroid": { "lat": 14.0583, "lng": 108.2772 },
+  "bounds": { "north": 23.393, "south": 8.559, "east": 109.464, "west": 102.144 },
+  "destinations": [
+    {
+      "slug": "hanoi",
+      "name": "Hanoi",
+      "aliases": [],
+      "lat": 21.0,
+      "lng": 105.85,
+      "wikipediaTitle": "Hanoi",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "ho-chi-minh-city",
+      "name": "Ho Chi Minh City",
+      "aliases": ["Saigon", "HCMC"],
+      "lat": 10.7756,
+      "lng": 106.7019,
+      "wikipediaTitle": "Ho Chi Minh City",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "ha-long-bay",
+      "name": "Ha Long Bay",
+      "aliases": ["Halong Bay", "Hạ Long Bay"],
+      "lat": 20.9,
+      "lng": 107.2,
+      "wikipediaTitle": "Hạ Long Bay",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "hoi-an",
+      "name": "Hoi An",
+      "aliases": ["Hội An", "Hoi An Ancient Town"],
+      "lat": 15.8797,
+      "lng": 108.3319,
+      "wikipediaTitle": "Hội An (city)",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "da-nang",
+      "name": "Da Nang",
+      "aliases": ["Danang"],
+      "lat": 16.0694,
+      "lng": 108.2097,
+      "wikipediaTitle": "Da Nang",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "sapa",
+      "name": "Sapa",
+      "aliases": ["Sa Pa"],
+      "lat": 22.3406,
+      "lng": 103.8308,
+      "wikipediaTitle": "Sa Pa",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "hue",
+      "name": "Hue",
+      "aliases": ["Huế"],
+      "lat": 16.4639,
+      "lng": 107.5867,
+      "wikipediaTitle": "Huế",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "ninh-binh",
+      "name": "Ninh Binh",
+      "aliases": ["Ninh Bình"],
+      "lat": 20.25,
+      "lng": 105.8333,
+      "wikipediaTitle": "Ninh Bình province",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "trang-an",
+      "name": "Trang An",
+      "aliases": ["Tràng An"],
+      "lat": 20.2567,
+      "lng": 105.8964,
+      "wikipediaTitle": "Tràng An Scenic Landscape Complex",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "phu-quoc",
+      "name": "Phu Quoc",
+      "aliases": ["Phú Quốc", "Phu Quoc Island"],
+      "lat": 10.2333,
+      "lng": 103.95,
+      "wikipediaTitle": "Phú Quốc",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "da-lat",
+      "name": "Da Lat",
+      "aliases": ["Dalat"],
+      "lat": 11.9417,
+      "lng": 108.4383,
+      "wikipediaTitle": "Da Lat",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "can-tho",
+      "name": "Can Tho",
+      "aliases": ["Cần Thơ", "Mekong Delta"],
+      "lat": 10.0333,
+      "lng": 105.7833,
+      "wikipediaTitle": "Cần Thơ",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "con-dao",
+      "name": "Con Dao",
+      "aliases": ["Côn Đảo", "Con Dao Islands"],
+      "lat": 8.6931,
+      "lng": 106.5767,
+      "wikipediaTitle": "Côn Đảo",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "ba-be",
+      "name": "Ba Be",
+      "aliases": ["Ba Bể", "Ba Be Lake", "Ba Be National Park"],
+      "lat": 22.4053,
+      "lng": 105.6153,
+      "wikipediaTitle": "Ba Bể National Park",
+      "requireContext": false,
+      "negativeKeywords": []
+    }
+  ]
+}

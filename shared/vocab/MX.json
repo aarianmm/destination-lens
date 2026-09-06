@@ -1,0 +1,139 @@
+{
+  "iso2": "MX",
+  "name": "Mexico",
+  "aliases": ["México"],
+  "centroid": { "lat": 23.6345, "lng": -102.5528 },
+  "bounds": { "north": 32.7186, "south": 14.5321, "east": -86.7104, "west": -118.4034 },
+  "destinations": [
+    {
+      "slug": "mexico-city",
+      "name": "Mexico City",
+      "aliases": ["CDMX", "Ciudad de Mexico"],
+      "lat": 19.4333,
+      "lng": -99.1333,
+      "wikipediaTitle": "Mexico City",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "cancun",
+      "name": "Cancun",
+      "aliases": ["Cancún"],
+      "lat": 21.1606,
+      "lng": -86.8475,
+      "wikipediaTitle": "Cancún",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "tulum",
+      "name": "Tulum",
+      "aliases": [],
+      "lat": 20.2147,
+      "lng": -87.4289,
+      "wikipediaTitle": "Tulum",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "oaxaca",
+      "name": "Oaxaca",
+      "aliases": [],
+      "lat": 17.055,
+      "lng": -96.655,
+      "wikipediaTitle": "Oaxaca",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "puerto-vallarta",
+      "name": "Puerto Vallarta",
+      "aliases": [],
+      "lat": 20.6458,
+      "lng": -105.2222,
+      "wikipediaTitle": "Puerto Vallarta",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "playa-del-carmen",
+      "name": "Playa del Carmen",
+      "aliases": [],
+      "lat": 20.6281,
+      "lng": -87.0755,
+      "wikipediaTitle": "Playa del Carmen",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "san-miguel-de-allende",
+      "name": "San Miguel de Allende",
+      "aliases": [],
+      "lat": 20.9142,
+      "lng": -100.7436,
+      "wikipediaTitle": "San Miguel de Allende",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "guadalajara",
+      "name": "Guadalajara",
+      "aliases": [],
+      "lat": 20.6767,
+      "lng": -103.3475,
+      "wikipediaTitle": "Guadalajara",
+      "requireContext": true,
+      "negativeKeywords": ["guadalajara spain"]
+    },
+    {
+      "slug": "merida",
+      "name": "Merida",
+      "aliases": ["Mérida"],
+      "lat": 20.9672,
+      "lng": -89.6236,
+      "wikipediaTitle": "Mérida, Yucatán",
+      "requireContext": true,
+      "negativeKeywords": ["merida spain", "merida venezuela"]
+    },
+    {
+      "slug": "chichen-itza",
+      "name": "Chichen Itza",
+      "aliases": ["Chichén Itzá"],
+      "lat": 20.6831,
+      "lng": -88.5686,
+      "wikipediaTitle": "Chichen Itza",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "guanajuato",
+      "name": "Guanajuato",
+      "aliases": [],
+      "lat": 21.0178,
+      "lng": -101.2567,
+      "wikipediaTitle": "Guanajuato (city)",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "bacalar",
+      "name": "Bacalar",
+      "aliases": [],
+      "lat": 18.6769,
+      "lng": -88.3953,
+      "wikipediaTitle": "Bacalar",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "sayulita",
+      "name": "Sayulita",
+      "aliases": [],
+      "lat": 20.8694,
+      "lng": -105.4408,
+      "wikipediaTitle": "Sayulita",
+      "requireContext": false,
+      "negativeKeywords": []
+    }
+  ]
+}

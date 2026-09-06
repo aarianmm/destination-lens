@@ -1,0 +1,139 @@
+{
+  "iso2": "ID",
+  "name": "Indonesia",
+  "aliases": [],
+  "centroid": { "lat": -0.7893, "lng": 113.9213 },
+  "bounds": { "north": 5.904, "south": -11.007, "east": 141.021, "west": 95.011 },
+  "destinations": [
+    {
+      "slug": "bali",
+      "name": "Bali",
+      "aliases": [],
+      "lat": -8.335,
+      "lng": 115.0881,
+      "wikipediaTitle": "Bali",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "jakarta",
+      "name": "Jakarta",
+      "aliases": [],
+      "lat": -6.18,
+      "lng": 106.83,
+      "wikipediaTitle": "Jakarta",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "yogyakarta",
+      "name": "Yogyakarta",
+      "aliases": ["Jogja", "Jogjakarta"],
+      "lat": -7.8014,
+      "lng": 110.3644,
+      "wikipediaTitle": "Yogyakarta",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "bandung",
+      "name": "Bandung",
+      "aliases": [],
+      "lat": -6.9218,
+      "lng": 107.6071,
+      "wikipediaTitle": "Bandung",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "lombok",
+      "name": "Lombok",
+      "aliases": [],
+      "lat": -8.565,
+      "lng": 116.351,
+      "wikipediaTitle": "Lombok",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "labuan-bajo",
+      "name": "Labuan Bajo",
+      "aliases": ["Labuan Bajo Komodo"],
+      "lat": -8.5,
+      "lng": 119.8833,
+      "wikipediaTitle": "Labuan Bajo",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "raja-ampat",
+      "name": "Raja Ampat",
+      "aliases": ["Raja Ampat Islands"],
+      "lat": -0.2333,
+      "lng": 130.5079,
+      "wikipediaTitle": "Raja Ampat Islands",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "mount-bromo",
+      "name": "Mount Bromo",
+      "aliases": ["Bromo"],
+      "lat": -7.9417,
+      "lng": 112.95,
+      "wikipediaTitle": "Mount Bromo",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "lake-toba",
+      "name": "Lake Toba",
+      "aliases": ["Danau Toba"],
+      "lat": 2.68,
+      "lng": 98.88,
+      "wikipediaTitle": "Lake Toba",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "gili-islands",
+      "name": "Gili Islands",
+      "aliases": ["Gili Trawangan", "Gili T"],
+      "lat": -8.35,
+      "lng": 116.06,
+      "wikipediaTitle": "Gili Islands",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "borobudur",
+      "name": "Borobudur",
+      "aliases": [],
+      "lat": -7.608,
+      "lng": 110.204,
+      "wikipediaTitle": "Borobudur",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "flores",
+      "name": "Flores",
+      "aliases": ["Flores Island"],
+      "lat": -8.6747,
+      "lng": 121.3844,
+      "wikipediaTitle": "Flores",
+      "requireContext": true,
+      "negativeKeywords": ["flores guatemala", "azores", "flores flowers"]
+    },
+    {
+      "slug": "bukittinggi",
+      "name": "Bukittinggi",
+      "aliases": [],
+      "lat": -0.3056,
+      "lng": 100.3692,
+      "wikipediaTitle": "Bukittinggi",
+      "requireContext": false,
+      "negativeKeywords": []
+    }
+  ]
+}
