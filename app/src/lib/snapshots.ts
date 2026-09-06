@@ -36,7 +36,11 @@ async function load<T>(path: string, schema: ZodType<T>): Promise<T> {
   const promise = (async () => {
     let res: Response;
     try {
-      res = await fetch(path);
+      // Explicit Accept header matters in dev: Vite's SPA history fallback
+      // serves index.html (200, text/html) for an unmatched GET by default,
+      // which would otherwise masquerade a genuinely missing snapshot as a
+      // successful, unparseable response instead of a real 404.
+      res = await fetch(path, { headers: { Accept: 'application/json' } });
     } catch (cause) {
       throw new SnapshotError(
         `Could not reach ${path}: ${cause instanceof Error ? cause.message : 'network error'}`,
