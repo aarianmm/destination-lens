@@ -206,3 +206,33 @@ describe('prefilter — genuine travel posts survive', () => {
     ).toBe(false);
   });
 });
+
+describe('travel context is required for every destination', () => {
+  // Live sampling showed ordinary city names are dominated by residents talking
+  // about football, politics and daily life. Requiring travel context only for
+  // flagged homonyms let all of that through as "traveller interest".
+  const barcelona = {
+    slug: 'barcelona',
+    name: 'Barcelona',
+    aliases: [],
+    lat: 41.3874,
+    lng: 2.1686,
+    wikipediaTitle: 'Barcelona',
+    requireContext: false,
+    negativeKeywords: [],
+  };
+
+  it('drops a bare mention with no travel context, even when unflagged', () => {
+    expect(prefilter({ text: 'Barcelona 5-0, what a result' }, barcelona, 'Spain')).toBe(false);
+  });
+
+  it('keeps a genuine travel post about the same unflagged destination', () => {
+    expect(
+      prefilter(
+        { text: 'Five days in Barcelona next month, any restaurant tips?' },
+        barcelona,
+        'Spain',
+      ),
+    ).toBe(true);
+  });
+});

@@ -2,8 +2,16 @@
   "iso2": "TH",
   "name": "Thailand",
   "aliases": ["Siam", "Kingdom of Thailand"],
-  "centroid": { "lat": 15.87, "lng": 100.9925 },
-  "bounds": { "north": 20.4649, "south": 5.61, "east": 105.6396, "west": 97.3438 },
+  "centroid": {
+    "lat": 15.87,
+    "lng": 100.9925
+  },
+  "bounds": {
+    "north": 20.4649,
+    "south": 5.61,
+    "east": 105.6396,
+    "west": 97.3438
+  },
   "destinations": [
     {
       "slug": "bangkok",
@@ -72,8 +80,27 @@
       "lat": 7.6167,
       "lng": 99.05,
       "wikipediaTitle": "Ko Lanta",
-      "requireContext": false,
-      "negativeKeywords": []
+      "requireContext": true,
+      "negativeKeywords": [
+        "koh-lanta all stars",
+        "all stars",
+        "tf1",
+        "\u00e9pisode",
+        "episode",
+        "candidat",
+        "candidate",
+        "\u00e9limin\u00e9",
+        "elimine",
+        "aventurier",
+        "la prod",
+        "production",
+        "denis brogniart",
+        "t\u00e9l\u00e9",
+        "tele",
+        "reality",
+        "contestant",
+        "tribal council"
+      ]
     },
     {
       "slug": "koh-phi-phi",

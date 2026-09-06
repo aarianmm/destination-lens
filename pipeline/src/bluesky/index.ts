@@ -57,6 +57,22 @@ import { log } from '../lib/log.js';
 /** See the live-API notes above for why this isn't `public.api.bsky.app`. */
 const DEFAULT_BASE_URL = 'https://api.bsky.app';
 const SEARCH_PATH = '/xrpc/app.bsky.feed.searchPosts';
+
+/**
+ * Restrict every search to English-language posts.
+ *
+ * Measured against the live API across the curated vocabulary: unrestricted
+ * searches for European city names return almost no travel conversation.
+ * Sampling 25 recent posts each, the share plausibly about travel was 0% for
+ * Madrid (Spanish politics), 0% for Valencia and 4% for Barcelona (football),
+ * 4% for Granada (local news) — all on 10k+ hits. A weekly mention series built
+ * from that measures La Liga fixtures, not travel interest.
+ *
+ * Filtering to English removes most local-language chatter about places where
+ * people simply live. It narrows what the product can honestly claim to
+ * "English-language travel conversation", which the UI methodology note says.
+ */
+const SEARCH_LANG = 'en';
 /** Only used to mint an app-password session; the AppView call still goes to baseUrl. */
 const DEFAULT_PDS = 'https://bsky.social';
 const CREATE_SESSION_PATH = '/xrpc/com.atproto.server.createSession';
@@ -279,6 +295,7 @@ async function countWeek(
       q: queryFor(term),
       since: sinceIso,
       until: untilIso,
+      lang: SEARCH_LANG,
       limit: '1',
     };
     // Closed weeks cache forever under a stable key. An open (current) week's
@@ -308,6 +325,7 @@ async function fetchRecentRawPosts(
       const params: Record<string, string> = {
         q: queryFor(term),
         sort: 'latest',
+        lang: SEARCH_LANG,
         limit: String(MAX_PAGE_LIMIT),
       };
       if (cursor) params.cursor = cursor;
@@ -347,9 +365,17 @@ function toRawPost(post: BskyPost): RawPost {
 // Task 2 — keyword prefilter
 // ---------------------------------------------------------------------------
 
-/** Generic travel-context vocabulary for the `requireContext` co-occurrence
- * check. Deliberately not destination-specific — that's what the vocab's own
- * `negativeKeywords` and `requireContext` flag are for. */
+/**
+ * Generic travel-context vocabulary. Every candidate post must match at least one
+ * of these (or the country name) to count as travel conversation.
+ *
+ * Breadth matters more than precision here. This gate exists to cut LLM cost, not
+ * to be the final arbiter — the Gemini pass makes the real relevance call — so a
+ * false negative silently discards a genuine post forever, while a false positive
+ * merely costs a fraction of a classification call. Erring narrow was measurably
+ * wrong: "Five days in Barcelona next month, any restaurant tips?" is
+ * unmistakably a travel post and matched none of the original keywords.
+ */
 const TRAVEL_KEYWORDS = [
   'travel',
   'traveling',
@@ -381,6 +407,53 @@ const TRAVEL_KEYWORDS = [
   'sightseeing',
   'honeymoon',
   'getaway',
+  // How people actually describe being somewhere, which rarely uses the word "travel"
+  'stay',
+  'stays',
+  'stayed',
+  'staying',
+  'nights',
+  'days in',
+  'day in',
+  'week in',
+  'weeks in',
+  'month in',
+  'weekend',
+  'been to',
+  'going to',
+  'went to',
+  'arrived',
+  'landed',
+  'booked',
+  'booking',
+  'abroad',
+  'expat',
+  'nomad',
+  'road trip',
+  'ferry',
+  'train',
+  'explore',
+  'exploring',
+  // What they talk about once there
+  'restaurant',
+  'restaurants',
+  'cafe',
+  'café',
+  'coffee',
+  'food',
+  'eat',
+  'ate',
+  'museum',
+  'temple',
+  'hike',
+  'hiking',
+  'diving',
+  'snorkel',
+  'sunset',
+  'old town',
+  'recommend',
+  'recommendations',
+  'tips',
 ];
 
 /**
@@ -461,7 +534,12 @@ export function prefilter(
   const lower = text.toLowerCase();
   if (destination.negativeKeywords.some((kw) => lower.includes(kw.toLowerCase()))) return false;
 
-  if (destination.requireContext && !hasTravelContext(text, countryName)) return false;
+  // Travel context is required for EVERY destination, not just `requireContext`
+  // ones. That flag was meant for obvious homonyms ("Nice", "Split"), but live
+  // sampling showed the problem is general: ordinary city names are dominated by
+  // residents discussing daily life, sport and politics. `requireContext` now
+  // only escalates the strictness rather than switching the check on.
+  if (!hasTravelContext(text, countryName)) return false;
 
   return true;
 }
