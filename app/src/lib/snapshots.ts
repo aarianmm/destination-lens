@@ -50,7 +50,21 @@ async function load<T>(path: string, schema: ZodType<T>): Promise<T> {
     if (!res.ok) {
       throw new SnapshotError(`${res.status} loading ${path}`, path, 'network');
     }
-    const parsed = schema.safeParse(await res.json());
+    // A 200 is not proof the file exists. Both the Vite dev server and Cloudflare's
+    // `not_found_handling: single-page-application` answer an unmatched path with
+    // index.html and a 200, so an absent snapshot arrives here looking like success.
+    // Treat a non-JSON body as missing rather than letting JSON.parse throw something
+    // unrecognisable — the uncovered-country UI depends on this being `missing`.
+    if (!(res.headers.get('content-type') ?? '').includes('json')) {
+      throw new SnapshotError(`No snapshot at ${path}`, path, 'missing');
+    }
+    let body: unknown;
+    try {
+      body = await res.json();
+    } catch {
+      throw new SnapshotError(`No snapshot at ${path}`, path, 'missing');
+    }
+    const parsed = schema.safeParse(body);
     if (!parsed.success) {
       throw new SnapshotError(
         `Snapshot at ${path} does not match the schema: ${parsed.error.issues[0]?.message ?? 'unknown'}`,

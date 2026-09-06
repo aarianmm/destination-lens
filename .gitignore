@@ -12,6 +12,7 @@ pipeline/artifacts/
 .DS_Store
 coverage/
 ai-logs/
+.claude/
 export-*.txt
 *.local.*
 app/public/data/
