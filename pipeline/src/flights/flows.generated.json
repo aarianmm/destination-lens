@@ -1,0 +1,2236 @@
+{
+  "generatedAt": "2026-09-06T23:18:20.288Z",
+  "source": "OpenFlights route network (jpatokal/openflights, data as of ~2014) — counts of scheduled routes between airports, aggregated to country level. This reflects route network breadth, NOT passenger volume or real-time traffic.",
+  "countries": [
+    {
+      "iso2": "AE",
+      "name": "United Arab Emirates",
+      "lat": 24.96770612886609,
+      "lng": 55.132440533733146
+    },
+    {
+      "iso2": "AL",
+      "name": "Albania",
+      "lat": 41.4146995544,
+      "lng": 19.7206001282
+    },
+    {
+      "iso2": "AT",
+      "name": "Austria",
+      "lat": 47.98693951515402,
+      "lng": 15.97871283024539
+    },
+    {
+      "iso2": "AU",
+      "name": "Australia",
+      "lat": -29.072618389310136,
+      "lng": 142.81959884072896
+    },
+    {
+      "iso2": "BE",
+      "name": "Belgium",
+      "lat": 50.807690410432095,
+      "lng": 4.493945994494814
+    },
+    {
+      "iso2": "BN",
+      "name": "Brunei",
+      "lat": 4.944200038909912,
+      "lng": 114.9280014038086
+    },
+    {
+      "iso2": "BR",
+      "name": "Brazil",
+      "lat": -17.601411717302845,
+      "lng": -46.661844657797374
+    },
+    {
+      "iso2": "BS",
+      "name": "Bahamas",
+      "lat": 25.072692869057335,
+      "lng": -76.98709176276138
+    },
+    {
+      "iso2": "BZ",
+      "name": "Belize",
+      "lat": 22.011170445706544,
+      "lng": -94.35223086950195
+    },
+    {
+      "iso2": "CA",
+      "name": "Canada",
+      "lat": 50.417623218477516,
+      "lng": -90.72634830334678
+    },
+    {
+      "iso2": "CH",
+      "name": "Switzerland",
+      "lat": 46.97051603529308,
+      "lng": 7.587077863111675
+    },
+    {
+      "iso2": "CL",
+      "name": "Chile",
+      "lat": -32.69092869299858,
+      "lng": -71.48847931960385
+    },
+    {
+      "iso2": "CN",
+      "name": "China",
+      "lat": 32.038360046477344,
+      "lng": 113.54178168430941
+    },
+    {
+      "iso2": "CO",
+      "name": "Colombia",
+      "lat": 5.326919400560223,
+      "lng": -74.7321975070028
+    },
+    {
+      "iso2": "CR",
+      "name": "Costa Rica",
+      "lat": 9.96197144837365,
+      "lng": -84.442203507671
+    },
+    {
+      "iso2": "CU",
+      "name": "Cuba",
+      "lat": 22.376226853559206,
+      "lng": -80.45585456888843
+    },
+    {
+      "iso2": "CV",
+      "name": "Cape Verde",
+      "lat": 16.013998330141035,
+      "lng": -23.38535905417356
+    },
+    {
+      "iso2": "CY",
+      "name": "Cyprus",
+      "lat": 34.856865848251694,
+      "lng": 33.2934204076383
+    },
+    {
+      "iso2": "DE",
+      "name": "Germany",
+      "lat": 50.67122497268676,
+      "lng": 9.658752507267852
+    },
+    {
+      "iso2": "DK",
+      "name": "Denmark",
+      "lat": 55.749718336565635,
+      "lng": 11.843605001125448
+    },
+    {
+      "iso2": "DO",
+      "name": "Dominican Republic",
+      "lat": 18.70974365232836,
+      "lng": -69.20018829345024
+    },
+    {
+      "iso2": "DZ",
+      "name": "Algeria",
+      "lat": 35.011316916849616,
+      "lng": 3.3159616873737066
+    },
+    {
+      "iso2": "EG",
+      "name": "Egypt",
+      "lat": 29.06520892752917,
+      "lng": 31.99069686862906
+    },
+    {
+      "iso2": "EH",
+      "name": "Western Sahara",
+      "lat": 25.680242285714286,
+      "lng": -14.38182857142857
+    },
+    {
+      "iso2": "ES",
+      "name": "Spain",
+      "lat": 37.247473817781575,
+      "lng": -4.113633538866683
+    },
+    {
+      "iso2": "FR",
+      "name": "France",
+      "lat": 46.55690113321771,
+      "lng": 3.0361372038152266
+    },
+    {
+      "iso2": "GB",
+      "name": "United Kingdom",
+      "lat": 52.72115116727868,
+      "lng": -1.525411676888415
+    },
+    {
+      "iso2": "GR",
+      "name": "Greece",
+      "lat": 37.563817829879966,
+      "lng": 24.481219837042822
+    },
+    {
+      "iso2": "GT",
+      "name": "Guatemala",
+      "lat": 14.751769827896386,
+      "lng": -90.47970604860723
+    },
+    {
+      "iso2": "GU",
+      "name": "Guam",
+      "lat": 13.4834003448,
+      "lng": 144.796005249
+    },
+    {
+      "iso2": "HK",
+      "name": "Hong Kong",
+      "lat": 22.308901,
+      "lng": 113.915001
+    },
+    {
+      "iso2": "HR",
+      "name": "Croatia",
+      "lat": 43.97333857267388,
+      "lng": 16.529891999380755
+    },
+    {
+      "iso2": "ID",
+      "name": "Indonesia",
+      "lat": -4.925313921464682,
+      "lng": 113.94268647737148
+    },
+    {
+      "iso2": "IE",
+      "name": "Ireland",
+      "lat": 53.17075880145822,
+      "lng": -7.002365943583859
+    },
+    {
+      "iso2": "IN",
+      "name": "India",
+      "lat": 20.629737456402957,
+      "lng": 78.40534764830396
+    },
+    {
+      "iso2": "IT",
+      "name": "Italy",
+      "lat": 42.637412424360065,
+      "lng": 11.68653260978903
+    },
+    {
+      "iso2": "JM",
+      "name": "Jamaica",
+      "lat": 18.279591099745563,
+      "lng": -77.46916598365421
+    },
+    {
+      "iso2": "JP",
+      "name": "Japan",
+      "lat": 35.25266001718105,
+      "lng": 136.7915495634687
+    },
+    {
+      "iso2": "KG",
+      "name": "Kyrgyzstan",
+      "lat": 42.08037948612,
+      "lng": 73.80387878421999
+    },
+    {
+      "iso2": "KH",
+      "name": "Cambodia",
+      "lat": 12.581727147125067,
+      "lng": 104.2473013665777
+    },
+    {
+      "iso2": "KR",
+      "name": "South Korea",
+      "lat": 36.651936017669776,
+      "lng": 126.90667601099362
+    },
+    {
+      "iso2": "KZ",
+      "name": "Kazakhstan",
+      "lat": 46.92319747773956,
+      "lng": 69.77863752722581
+    },
+    {
+      "iso2": "LA",
+      "name": "Laos",
+      "lat": 18.266960803515598,
+      "lng": 102.90296094335002
+    },
+    {
+      "iso2": "LK",
+      "name": "Sri Lanka",
+      "lat": 7.133941380310391,
+      "lng": 79.98958112219759
+    },
+    {
+      "iso2": "LU",
+      "name": "Luxembourg",
+      "lat": 49.6233333,
+      "lng": 6.2044444
+    },
+    {
+      "iso2": "LY",
+      "name": "Libya",
+      "lat": 32.01882037581053,
+      "lng": 16.416716596911332
+    },
+    {
+      "iso2": "MA",
+      "name": "Morocco",
+      "lat": 32.98406267932589,
+      "lng": -7.134627621674201
+    },
+    {
+      "iso2": "MM",
+      "name": "Myanmar",
+      "lat": 18.847197141732842,
+      "lng": 96.29935828687866
+    },
+    {
+      "iso2": "MO",
+      "name": "Macau",
+      "lat": 22.149599,
+      "lng": 113.592003
+    },
+    {
+      "iso2": "MX",
+      "name": "Mexico",
+      "lat": 21.96836722235692,
+      "lng": -99.86421424010119
+    },
+    {
+      "iso2": "MY",
+      "name": "Malaysia",
+      "lat": 3.65982706235794,
+      "lng": 105.37180071698961
+    },
+    {
+      "iso2": "NL",
+      "name": "Netherlands",
+      "lat": 52.17206352517605,
+      "lng": 4.85508459482838
+    },
+    {
+      "iso2": "NO",
+      "name": "Norway",
+      "lat": 62.37270372437924,
+      "lng": 11.467584072431574
+    },
+    {
+      "iso2": "NZ",
+      "name": "New Zealand",
+      "lat": -39.59357278541599,
+      "lng": 174.10519284589662
+    },
+    {
+      "iso2": "PA",
+      "name": "Panama",
+      "lat": 9.046027685620176,
+      "lng": -79.50377703822123
+    },
+    {
+      "iso2": "PE",
+      "name": "Peru",
+      "lat": -11.668314535791252,
+      "lng": -75.80249572096929
+    },
+    {
+      "iso2": "PH",
+      "name": "Philippines",
+      "lat": 12.514649251902242,
+      "lng": 122.13361270550737
+    },
+    {
+      "iso2": "PK",
+      "name": "Pakistan",
+      "lat": 30.346208631634493,
+      "lng": 70.94185434351724
+    },
+    {
+      "iso2": "PL",
+      "name": "Poland",
+      "lat": 51.910774752299936,
+      "lng": 19.571967824886162
+    },
+    {
+      "iso2": "PR",
+      "name": "Puerto Rico",
+      "lat": 18.414472113988264,
+      "lng": -66.02427833525527
+    },
+    {
+      "iso2": "PT",
+      "name": "Portugal",
+      "lat": 38.223449589953546,
+      "lng": -11.50367232194352
+    },
+    {
+      "iso2": "RO",
+      "name": "Romania",
+      "lat": 45.270997845728026,
+      "lng": 25.32279479851521
+    },
+    {
+      "iso2": "RU",
+      "name": "Russia",
+      "lat": 55.5138906999766,
+      "lng": 57.62243552937628
+    },
+    {
+      "iso2": "SA",
+      "name": "Saudi Arabia",
+      "lat": 23.76848074289728,
+      "lng": 43.057170646222964
+    },
+    {
+      "iso2": "SE",
+      "name": "Sweden",
+      "lat": 59.54577933213091,
+      "lng": 16.64766075956892
+    },
+    {
+      "iso2": "SG",
+      "name": "Singapore",
+      "lat": 1.35019,
+      "lng": 103.994003
+    },
+    {
+      "iso2": "SV",
+      "name": "El Salvador",
+      "lat": 13.4409,
+      "lng": -89.055702
+    },
+    {
+      "iso2": "TH",
+      "name": "Thailand",
+      "lat": 13.311716620031712,
+      "lng": 100.26691948821625
+    },
+    {
+      "iso2": "TJ",
+      "name": "Tajikistan",
+      "lat": 39.10081939699437,
+      "lng": 69.20413525553168
+    },
+    {
+      "iso2": "TN",
+      "name": "Tunisia",
+      "lat": 35.86040675608647,
+      "lng": 10.393592737236498
+    },
+    {
+      "iso2": "TR",
+      "name": "Turkey",
+      "lat": 39.46104008180498,
+      "lng": 30.466339005665873
+    },
+    {
+      "iso2": "TW",
+      "name": "Taiwan",
+      "lat": 24.58215515826505,
+      "lng": 121.02972167241472
+    },
+    {
+      "iso2": "UA",
+      "name": "Ukraine",
+      "lat": 49.376930012835565,
+      "lng": 31.335772026277002
+    },
+    {
+      "iso2": "US",
+      "name": "United States",
+      "lat": 37.61673138871104,
+      "lng": -95.408486834816
+    },
+    {
+      "iso2": "UZ",
+      "name": "Uzbekistan",
+      "lat": 40.88764143157414,
+      "lng": 68.25872865179853
+    },
+    {
+      "iso2": "VN",
+      "name": "Vietnam",
+      "lat": 15.212917118855882,
+      "lng": 106.68605788172687
+    }
+  ],
+  "flows": [
+    {
+      "fromIso2": "GB",
+      "toIso2": "ES",
+      "weight": 1
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "GB",
+      "weight": 0.9884169884169884
+    },
+    {
+      "fromIso2": "MX",
+      "toIso2": "US",
+      "weight": 0.7200772200772201
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "MX",
+      "weight": 0.7123552123552124
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "CA",
+      "weight": 0.7027027027027027
+    },
+    {
+      "fromIso2": "CA",
+      "toIso2": "US",
+      "weight": 0.7007722007722008
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "ES",
+      "weight": 0.6833976833976834
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "DE",
+      "weight": 0.6814671814671814
+    },
+    {
+      "fromIso2": "IT",
+      "toIso2": "DE",
+      "weight": 0.4266409266409266
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "IT",
+      "weight": 0.4266409266409266
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "GB",
+      "weight": 0.3996138996138996
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "US",
+      "weight": 0.3918918918918919
+    },
+    {
+      "fromIso2": "CN",
+      "toIso2": "TW",
+      "weight": 0.3687258687258687
+    },
+    {
+      "fromIso2": "TW",
+      "toIso2": "CN",
+      "weight": 0.3687258687258687
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "GR",
+      "weight": 0.33976833976833976
+    },
+    {
+      "fromIso2": "GR",
+      "toIso2": "DE",
+      "weight": 0.3204633204633205
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "FR",
+      "weight": 0.305019305019305
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "GB",
+      "weight": 0.3030888030888031
+    },
+    {
+      "fromIso2": "CN",
+      "toIso2": "KR",
+      "weight": 0.29343629343629346
+    },
+    {
+      "fromIso2": "KR",
+      "toIso2": "CN",
+      "weight": 0.2915057915057915
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "FR",
+      "weight": 0.2915057915057915
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "IT",
+      "weight": 0.2876447876447876
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "ES",
+      "weight": 0.2876447876447876
+    },
+    {
+      "fromIso2": "IT",
+      "toIso2": "FR",
+      "weight": 0.2857142857142857
+    },
+    {
+      "fromIso2": "IT",
+      "toIso2": "GB",
+      "weight": 0.2722007722007722
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "IT",
+      "weight": 0.2722007722007722
+    },
+    {
+      "fromIso2": "JP",
+      "toIso2": "CN",
+      "weight": 0.2702702702702703
+    },
+    {
+      "fromIso2": "CN",
+      "toIso2": "JP",
+      "weight": 0.2702702702702703
+    },
+    {
+      "fromIso2": "TR",
+      "toIso2": "DE",
+      "weight": 0.2471042471042471
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "TR",
+      "weight": 0.2471042471042471
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "IT",
+      "weight": 0.23166023166023167
+    },
+    {
+      "fromIso2": "IT",
+      "toIso2": "ES",
+      "weight": 0.23166023166023167
+    },
+    {
+      "fromIso2": "CN",
+      "toIso2": "HK",
+      "weight": 0.2277992277992278
+    },
+    {
+      "fromIso2": "HK",
+      "toIso2": "CN",
+      "weight": 0.22586872586872586
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "US",
+      "weight": 0.222007722007722
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "DE",
+      "weight": 0.22007722007722008
+    },
+    {
+      "fromIso2": "KR",
+      "toIso2": "JP",
+      "weight": 0.20270270270270271
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "GR",
+      "weight": 0.20270270270270271
+    },
+    {
+      "fromIso2": "JP",
+      "toIso2": "KR",
+      "weight": 0.20077220077220076
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "DE",
+      "weight": 0.19884169884169883
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "GB",
+      "weight": 0.19884169884169883
+    },
+    {
+      "fromIso2": "GR",
+      "toIso2": "GB",
+      "weight": 0.1833976833976834
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "US",
+      "weight": 0.17567567567567569
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "TR",
+      "weight": 0.17567567567567569
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "FR",
+      "weight": 0.1718146718146718
+    },
+    {
+      "fromIso2": "TR",
+      "toIso2": "GB",
+      "weight": 0.1718146718146718
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "DE",
+      "weight": 0.16216216216216217
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "FR",
+      "weight": 0.16216216216216217
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "PT",
+      "weight": 0.16216216216216217
+    },
+    {
+      "fromIso2": "UZ",
+      "toIso2": "RU",
+      "weight": 0.1583011583011583
+    },
+    {
+      "fromIso2": "PT",
+      "toIso2": "GB",
+      "weight": 0.1583011583011583
+    },
+    {
+      "fromIso2": "RU",
+      "toIso2": "UZ",
+      "weight": 0.15637065637065636
+    },
+    {
+      "fromIso2": "IN",
+      "toIso2": "AE",
+      "weight": 0.15637065637065636
+    },
+    {
+      "fromIso2": "AE",
+      "toIso2": "IN",
+      "weight": 0.15637065637065636
+    },
+    {
+      "fromIso2": "MA",
+      "toIso2": "FR",
+      "weight": 0.15444015444015444
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "JP",
+      "weight": 0.15444015444015444
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "MA",
+      "weight": 0.1525096525096525
+    },
+    {
+      "fromIso2": "JP",
+      "toIso2": "US",
+      "weight": 0.15057915057915058
+    },
+    {
+      "fromIso2": "AU",
+      "toIso2": "NZ",
+      "weight": 0.14864864864864866
+    },
+    {
+      "fromIso2": "CN",
+      "toIso2": "TH",
+      "weight": 0.14092664092664092
+    },
+    {
+      "fromIso2": "BS",
+      "toIso2": "US",
+      "weight": 0.138996138996139
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "BS",
+      "weight": 0.138996138996139
+    },
+    {
+      "fromIso2": "TH",
+      "toIso2": "CN",
+      "weight": 0.138996138996139
+    },
+    {
+      "fromIso2": "RU",
+      "toIso2": "TJ",
+      "weight": 0.138996138996139
+    },
+    {
+      "fromIso2": "TJ",
+      "toIso2": "RU",
+      "weight": 0.13706563706563707
+    },
+    {
+      "fromIso2": "TW",
+      "toIso2": "JP",
+      "weight": 0.13127413127413126
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "NL",
+      "weight": 0.13127413127413126
+    },
+    {
+      "fromIso2": "NL",
+      "toIso2": "ES",
+      "weight": 0.13127413127413126
+    },
+    {
+      "fromIso2": "JP",
+      "toIso2": "TW",
+      "weight": 0.12934362934362933
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "AT",
+      "weight": 0.12934362934362933
+    },
+    {
+      "fromIso2": "AT",
+      "toIso2": "DE",
+      "weight": 0.12934362934362933
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "PL",
+      "weight": 0.12934362934362933
+    },
+    {
+      "fromIso2": "PL",
+      "toIso2": "GB",
+      "weight": 0.12934362934362933
+    },
+    {
+      "fromIso2": "DZ",
+      "toIso2": "FR",
+      "weight": 0.12934362934362933
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "DZ",
+      "weight": 0.12934362934362933
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "PT",
+      "weight": 0.12355212355212356
+    },
+    {
+      "fromIso2": "NZ",
+      "toIso2": "AU",
+      "weight": 0.12355212355212356
+    },
+    {
+      "fromIso2": "IE",
+      "toIso2": "GB",
+      "weight": 0.12162162162162163
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "IE",
+      "weight": 0.12162162162162163
+    },
+    {
+      "fromIso2": "ID",
+      "toIso2": "SG",
+      "weight": 0.12162162162162163
+    },
+    {
+      "fromIso2": "PT",
+      "toIso2": "DE",
+      "weight": 0.11969111969111969
+    },
+    {
+      "fromIso2": "SG",
+      "toIso2": "ID",
+      "weight": 0.11969111969111969
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "DO",
+      "weight": 0.11776061776061776
+    },
+    {
+      "fromIso2": "DO",
+      "toIso2": "US",
+      "weight": 0.11776061776061776
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "BE",
+      "weight": 0.11583011583011583
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "CN",
+      "weight": 0.1138996138996139
+    },
+    {
+      "fromIso2": "BR",
+      "toIso2": "US",
+      "weight": 0.11196911196911197
+    },
+    {
+      "fromIso2": "CN",
+      "toIso2": "US",
+      "weight": 0.11196911196911197
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "HR",
+      "weight": 0.11003861003861004
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "US",
+      "weight": 0.11003861003861004
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "ES",
+      "weight": 0.11003861003861004
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "BR",
+      "weight": 0.11003861003861004
+    },
+    {
+      "fromIso2": "BE",
+      "toIso2": "ES",
+      "weight": 0.11003861003861004
+    },
+    {
+      "fromIso2": "EG",
+      "toIso2": "SA",
+      "weight": 0.11003861003861004
+    },
+    {
+      "fromIso2": "HR",
+      "toIso2": "DE",
+      "weight": 0.10617760617760617
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "CY",
+      "weight": 0.10617760617760617
+    },
+    {
+      "fromIso2": "NL",
+      "toIso2": "GB",
+      "weight": 0.10424710424710425
+    },
+    {
+      "fromIso2": "SA",
+      "toIso2": "EG",
+      "weight": 0.10424710424710425
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "IT",
+      "weight": 0.10231660231660232
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "PR",
+      "weight": 0.10231660231660232
+    },
+    {
+      "fromIso2": "IT",
+      "toIso2": "US",
+      "weight": 0.10231660231660232
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "NL",
+      "weight": 0.10231660231660232
+    },
+    {
+      "fromIso2": "PR",
+      "toIso2": "US",
+      "weight": 0.10231660231660232
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "PT",
+      "weight": 0.10231660231660232
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "IE",
+      "weight": 0.10231660231660232
+    },
+    {
+      "fromIso2": "IE",
+      "toIso2": "ES",
+      "weight": 0.10231660231660232
+    },
+    {
+      "fromIso2": "NO",
+      "toIso2": "ES",
+      "weight": 0.10038610038610038
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "NO",
+      "weight": 0.10038610038610038
+    },
+    {
+      "fromIso2": "AE",
+      "toIso2": "PK",
+      "weight": 0.09845559845559845
+    },
+    {
+      "fromIso2": "PK",
+      "toIso2": "AE",
+      "weight": 0.09845559845559845
+    },
+    {
+      "fromIso2": "PT",
+      "toIso2": "FR",
+      "weight": 0.09845559845559845
+    },
+    {
+      "fromIso2": "KG",
+      "toIso2": "RU",
+      "weight": 0.09845559845559845
+    },
+    {
+      "fromIso2": "CY",
+      "toIso2": "GB",
+      "weight": 0.09652509652509653
+    },
+    {
+      "fromIso2": "CO",
+      "toIso2": "US",
+      "weight": 0.0945945945945946
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "CO",
+      "weight": 0.0945945945945946
+    },
+    {
+      "fromIso2": "RU",
+      "toIso2": "KG",
+      "weight": 0.0945945945945946
+    },
+    {
+      "fromIso2": "RU",
+      "toIso2": "CN",
+      "weight": 0.09266409266409266
+    },
+    {
+      "fromIso2": "AE",
+      "toIso2": "SA",
+      "weight": 0.09073359073359073
+    },
+    {
+      "fromIso2": "RU",
+      "toIso2": "DE",
+      "weight": 0.09073359073359073
+    },
+    {
+      "fromIso2": "MO",
+      "toIso2": "CN",
+      "weight": 0.0888030888030888
+    },
+    {
+      "fromIso2": "CN",
+      "toIso2": "MO",
+      "weight": 0.0888030888030888
+    },
+    {
+      "fromIso2": "SA",
+      "toIso2": "AE",
+      "weight": 0.0888030888030888
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "RU",
+      "weight": 0.0888030888030888
+    },
+    {
+      "fromIso2": "ID",
+      "toIso2": "MY",
+      "weight": 0.0888030888030888
+    },
+    {
+      "fromIso2": "MY",
+      "toIso2": "ID",
+      "weight": 0.0888030888030888
+    },
+    {
+      "fromIso2": "CN",
+      "toIso2": "RU",
+      "weight": 0.0888030888030888
+    },
+    {
+      "fromIso2": "CN",
+      "toIso2": "SG",
+      "weight": 0.08687258687258688
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "TN",
+      "weight": 0.08687258687258688
+    },
+    {
+      "fromIso2": "IT",
+      "toIso2": "BE",
+      "weight": 0.08687258687258688
+    },
+    {
+      "fromIso2": "SG",
+      "toIso2": "CN",
+      "weight": 0.08494208494208494
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "PL",
+      "weight": 0.08494208494208494
+    },
+    {
+      "fromIso2": "PL",
+      "toIso2": "DE",
+      "weight": 0.08494208494208494
+    },
+    {
+      "fromIso2": "TN",
+      "toIso2": "FR",
+      "weight": 0.08494208494208494
+    },
+    {
+      "fromIso2": "BE",
+      "toIso2": "IT",
+      "weight": 0.08494208494208494
+    },
+    {
+      "fromIso2": "PT",
+      "toIso2": "ES",
+      "weight": 0.08301158301158301
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "PT",
+      "weight": 0.08301158301158301
+    },
+    {
+      "fromIso2": "CH",
+      "toIso2": "ES",
+      "weight": 0.08108108108108109
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "CH",
+      "weight": 0.08108108108108109
+    },
+    {
+      "fromIso2": "AU",
+      "toIso2": "SG",
+      "weight": 0.08108108108108109
+    },
+    {
+      "fromIso2": "SG",
+      "toIso2": "AU",
+      "weight": 0.08108108108108109
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "CH",
+      "weight": 0.08108108108108109
+    },
+    {
+      "fromIso2": "CH",
+      "toIso2": "DE",
+      "weight": 0.08108108108108109
+    },
+    {
+      "fromIso2": "NO",
+      "toIso2": "GB",
+      "weight": 0.08108108108108109
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "NO",
+      "weight": 0.08108108108108109
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "CA",
+      "weight": 0.08108108108108109
+    },
+    {
+      "fromIso2": "NL",
+      "toIso2": "IT",
+      "weight": 0.08108108108108109
+    },
+    {
+      "fromIso2": "JM",
+      "toIso2": "US",
+      "weight": 0.07915057915057915
+    },
+    {
+      "fromIso2": "CA",
+      "toIso2": "GB",
+      "weight": 0.07915057915057915
+    },
+    {
+      "fromIso2": "IT",
+      "toIso2": "NL",
+      "weight": 0.07915057915057915
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "JM",
+      "weight": 0.07722007722007722
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "AT",
+      "weight": 0.07722007722007722
+    },
+    {
+      "fromIso2": "AT",
+      "toIso2": "ES",
+      "weight": 0.07722007722007722
+    },
+    {
+      "fromIso2": "SA",
+      "toIso2": "PK",
+      "weight": 0.07722007722007722
+    },
+    {
+      "fromIso2": "MY",
+      "toIso2": "SG",
+      "weight": 0.07528957528957529
+    },
+    {
+      "fromIso2": "SG",
+      "toIso2": "MY",
+      "weight": 0.07528957528957529
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "MA",
+      "weight": 0.07528957528957529
+    },
+    {
+      "fromIso2": "MA",
+      "toIso2": "ES",
+      "weight": 0.07528957528957529
+    },
+    {
+      "fromIso2": "NL",
+      "toIso2": "US",
+      "weight": 0.07528957528957529
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "KR",
+      "weight": 0.07528957528957529
+    },
+    {
+      "fromIso2": "KR",
+      "toIso2": "US",
+      "weight": 0.07528957528957529
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "NL",
+      "weight": 0.07528957528957529
+    },
+    {
+      "fromIso2": "AE",
+      "toIso2": "RU",
+      "weight": 0.07528957528957529
+    },
+    {
+      "fromIso2": "UA",
+      "toIso2": "RU",
+      "weight": 0.07528957528957529
+    },
+    {
+      "fromIso2": "PK",
+      "toIso2": "SA",
+      "weight": 0.07528957528957529
+    },
+    {
+      "fromIso2": "IT",
+      "toIso2": "CH",
+      "weight": 0.07335907335907337
+    },
+    {
+      "fromIso2": "CH",
+      "toIso2": "IT",
+      "weight": 0.07335907335907337
+    },
+    {
+      "fromIso2": "KZ",
+      "toIso2": "RU",
+      "weight": 0.07335907335907337
+    },
+    {
+      "fromIso2": "RU",
+      "toIso2": "UA",
+      "weight": 0.07335907335907337
+    },
+    {
+      "fromIso2": "BE",
+      "toIso2": "FR",
+      "weight": 0.07142857142857142
+    },
+    {
+      "fromIso2": "GR",
+      "toIso2": "AT",
+      "weight": 0.0694980694980695
+    },
+    {
+      "fromIso2": "AT",
+      "toIso2": "GR",
+      "weight": 0.0694980694980695
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "BE",
+      "weight": 0.0694980694980695
+    },
+    {
+      "fromIso2": "CR",
+      "toIso2": "US",
+      "weight": 0.0694980694980695
+    },
+    {
+      "fromIso2": "RU",
+      "toIso2": "KZ",
+      "weight": 0.06756756756756757
+    },
+    {
+      "fromIso2": "IN",
+      "toIso2": "SA",
+      "weight": 0.06756756756756757
+    },
+    {
+      "fromIso2": "SA",
+      "toIso2": "IN",
+      "weight": 0.06756756756756757
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "IE",
+      "weight": 0.06756756756756757
+    },
+    {
+      "fromIso2": "IE",
+      "toIso2": "US",
+      "weight": 0.06756756756756757
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "HR",
+      "weight": 0.06756756756756757
+    },
+    {
+      "fromIso2": "HR",
+      "toIso2": "GB",
+      "weight": 0.06756756756756757
+    },
+    {
+      "fromIso2": "RU",
+      "toIso2": "AE",
+      "weight": 0.06756756756756757
+    },
+    {
+      "fromIso2": "IN",
+      "toIso2": "SG",
+      "weight": 0.06563706563706563
+    },
+    {
+      "fromIso2": "SG",
+      "toIso2": "IN",
+      "weight": 0.06563706563706563
+    },
+    {
+      "fromIso2": "NL",
+      "toIso2": "FR",
+      "weight": 0.06563706563706563
+    },
+    {
+      "fromIso2": "US",
+      "toIso2": "CR",
+      "weight": 0.06563706563706563
+    },
+    {
+      "fromIso2": "IT",
+      "toIso2": "RU",
+      "weight": 0.06563706563706563
+    },
+    {
+      "fromIso2": "RU",
+      "toIso2": "IT",
+      "weight": 0.06563706563706563
+    },
+    {
+      "fromIso2": "IT",
+      "toIso2": "RO",
+      "weight": 0.06563706563706563
+    },
+    {
+      "fromIso2": "RO",
+      "toIso2": "IT",
+      "weight": 0.06563706563706563
+    },
+    {
+      "fromIso2": "EG",
+      "toIso2": "GB",
+      "weight": 0.06563706563706563
+    },
+    {
+      "fromIso2": "ES",
+      "toIso2": "SE",
+      "weight": 0.06563706563706563
+    },
+    {
+      "fromIso2": "SE",
+      "toIso2": "ES",
+      "weight": 0.06563706563706563
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "NL",
+      "weight": 0.0637065637065637
+    },
+    {
+      "fromIso2": "TH",
+      "toIso2": "MY",
+      "weight": 0.0637065637065637
+    },
+    {
+      "fromIso2": "MY",
+      "toIso2": "TH",
+      "weight": 0.0637065637065637
+    },
+    {
+      "fromIso2": "GB",
+      "toIso2": "EG",
+      "weight": 0.0637065637065637
+    },
+    {
+      "fromIso2": "DE",
+      "toIso2": "TN",
+      "weight": 0.06177606177606178
+    },
+    {
+      "fromIso2": "TN",
+      "toIso2": "DE",
+      "weight": 0.06177606177606178
+    },
+    {
+      "fromIso2": "RU",
+      "toIso2": "TR",
+      "weight": 0.06177606177606178
+    },
+    {
+      "fromIso2": "FR",
+      "toIso2": "GR",
+      "weight": 0.06177606177606178
+    }
+  ],
+  "inboundByCountry": {
+    "TH": [
+      {
+        "fromIso2": "CN",
+        "fromName": "China",
+        "weight": 1
+      },
+      {
+        "fromIso2": "MY",
+        "fromName": "Malaysia",
+        "weight": 0.4520547945205479
+      },
+      {
+        "fromIso2": "SG",
+        "fromName": "Singapore",
+        "weight": 0.3698630136986301
+      },
+      {
+        "fromIso2": "HK",
+        "fromName": "Hong Kong",
+        "weight": 0.3287671232876712
+      },
+      {
+        "fromIso2": "JP",
+        "fromName": "Japan",
+        "weight": 0.3013698630136986
+      },
+      {
+        "fromIso2": "KR",
+        "fromName": "South Korea",
+        "weight": 0.2876712328767123
+      },
+      {
+        "fromIso2": "IN",
+        "fromName": "India",
+        "weight": 0.2328767123287671
+      },
+      {
+        "fromIso2": "AU",
+        "fromName": "Australia",
+        "weight": 0.1917808219178082
+      },
+      {
+        "fromIso2": "MM",
+        "fromName": "Myanmar",
+        "weight": 0.1643835616438356
+      },
+      {
+        "fromIso2": "RU",
+        "fromName": "Russia",
+        "weight": 0.1506849315068493
+      },
+      {
+        "fromIso2": "LA",
+        "fromName": "Laos",
+        "weight": 0.136986301369863
+      },
+      {
+        "fromIso2": "VN",
+        "fromName": "Vietnam",
+        "weight": 0.136986301369863
+      },
+      {
+        "fromIso2": "AE",
+        "fromName": "United Arab Emirates",
+        "weight": 0.1232876712328767
+      },
+      {
+        "fromIso2": "TW",
+        "fromName": "Taiwan",
+        "weight": 0.1095890410958904
+      },
+      {
+        "fromIso2": "ID",
+        "fromName": "Indonesia",
+        "weight": 0.1095890410958904
+      }
+    ],
+    "JP": [
+      {
+        "fromIso2": "CN",
+        "fromName": "China",
+        "weight": 1
+      },
+      {
+        "fromIso2": "KR",
+        "fromName": "South Korea",
+        "weight": 0.75
+      },
+      {
+        "fromIso2": "US",
+        "fromName": "United States",
+        "weight": 0.5714285714285714
+      },
+      {
+        "fromIso2": "TW",
+        "fromName": "Taiwan",
+        "weight": 0.4857142857142857
+      },
+      {
+        "fromIso2": "HK",
+        "fromName": "Hong Kong",
+        "weight": 0.19285714285714287
+      },
+      {
+        "fromIso2": "TH",
+        "fromName": "Thailand",
+        "weight": 0.15
+      },
+      {
+        "fromIso2": "VN",
+        "fromName": "Vietnam",
+        "weight": 0.14285714285714285
+      },
+      {
+        "fromIso2": "GU",
+        "fromName": "Guam",
+        "weight": 0.1357142857142857
+      },
+      {
+        "fromIso2": "SG",
+        "fromName": "Singapore",
+        "weight": 0.12857142857142856
+      },
+      {
+        "fromIso2": "PH",
+        "fromName": "Philippines",
+        "weight": 0.10714285714285714
+      },
+      {
+        "fromIso2": "AU",
+        "fromName": "Australia",
+        "weight": 0.10714285714285714
+      },
+      {
+        "fromIso2": "ID",
+        "fromName": "Indonesia",
+        "weight": 0.09285714285714286
+      },
+      {
+        "fromIso2": "DE",
+        "fromName": "Germany",
+        "weight": 0.07857142857142857
+      },
+      {
+        "fromIso2": "MY",
+        "fromName": "Malaysia",
+        "weight": 0.07142857142857142
+      },
+      {
+        "fromIso2": "CA",
+        "fromName": "Canada",
+        "weight": 0.07142857142857142
+      }
+    ],
+    "VN": [
+      {
+        "fromIso2": "CN",
+        "fromName": "China",
+        "weight": 1
+      },
+      {
+        "fromIso2": "JP",
+        "fromName": "Japan",
+        "weight": 0.8695652173913043
+      },
+      {
+        "fromIso2": "KH",
+        "fromName": "Cambodia",
+        "weight": 0.6086956521739131
+      },
+      {
+        "fromIso2": "TW",
+        "fromName": "Taiwan",
+        "weight": 0.5652173913043478
+      },
+      {
+        "fromIso2": "KR",
+        "fromName": "South Korea",
+        "weight": 0.5652173913043478
+      },
+      {
+        "fromIso2": "SG",
+        "fromName": "Singapore",
+        "weight": 0.5217391304347826
+      },
+      {
+        "fromIso2": "HK",
+        "fromName": "Hong Kong",
+        "weight": 0.43478260869565216
+      },
+      {
+        "fromIso2": "TH",
+        "fromName": "Thailand",
+        "weight": 0.43478260869565216
+      },
+      {
+        "fromIso2": "FR",
+        "fromName": "France",
+        "weight": 0.2608695652173913
+      },
+      {
+        "fromIso2": "MY",
+        "fromName": "Malaysia",
+        "weight": 0.2608695652173913
+      },
+      {
+        "fromIso2": "LA",
+        "fromName": "Laos",
+        "weight": 0.2608695652173913
+      },
+      {
+        "fromIso2": "RU",
+        "fromName": "Russia",
+        "weight": 0.2608695652173913
+      },
+      {
+        "fromIso2": "PH",
+        "fromName": "Philippines",
+        "weight": 0.17391304347826086
+      },
+      {
+        "fromIso2": "DE",
+        "fromName": "Germany",
+        "weight": 0.17391304347826086
+      },
+      {
+        "fromIso2": "AU",
+        "fromName": "Australia",
+        "weight": 0.17391304347826086
+      }
+    ],
+    "ID": [
+      {
+        "fromIso2": "SG",
+        "fromName": "Singapore",
+        "weight": 1
+      },
+      {
+        "fromIso2": "MY",
+        "fromName": "Malaysia",
+        "weight": 0.7419354838709677
+      },
+      {
+        "fromIso2": "AU",
+        "fromName": "Australia",
+        "weight": 0.41935483870967744
+      },
+      {
+        "fromIso2": "CN",
+        "fromName": "China",
+        "weight": 0.20967741935483872
+      },
+      {
+        "fromIso2": "JP",
+        "fromName": "Japan",
+        "weight": 0.20967741935483872
+      },
+      {
+        "fromIso2": "HK",
+        "fromName": "Hong Kong",
+        "weight": 0.16129032258064516
+      },
+      {
+        "fromIso2": "TH",
+        "fromName": "Thailand",
+        "weight": 0.12903225806451613
+      },
+      {
+        "fromIso2": "TW",
+        "fromName": "Taiwan",
+        "weight": 0.11290322580645161
+      },
+      {
+        "fromIso2": "KR",
+        "fromName": "South Korea",
+        "weight": 0.0967741935483871
+      },
+      {
+        "fromIso2": "SA",
+        "fromName": "Saudi Arabia",
+        "weight": 0.0967741935483871
+      },
+      {
+        "fromIso2": "PH",
+        "fromName": "Philippines",
+        "weight": 0.08064516129032258
+      },
+      {
+        "fromIso2": "AE",
+        "fromName": "United Arab Emirates",
+        "weight": 0.08064516129032258
+      },
+      {
+        "fromIso2": "BN",
+        "fromName": "Brunei",
+        "weight": 0.06451612903225806
+      },
+      {
+        "fromIso2": "LK",
+        "fromName": "Sri Lanka",
+        "weight": 0.03225806451612903
+      },
+      {
+        "fromIso2": "EG",
+        "fromName": "Egypt",
+        "weight": 0.016129032258064516
+      }
+    ],
+    "ES": [
+      {
+        "fromIso2": "GB",
+        "fromName": "United Kingdom",
+        "weight": 1
+      },
+      {
+        "fromIso2": "DE",
+        "fromName": "Germany",
+        "weight": 0.6833976833976834
+      },
+      {
+        "fromIso2": "FR",
+        "fromName": "France",
+        "weight": 0.2876447876447876
+      },
+      {
+        "fromIso2": "IT",
+        "fromName": "Italy",
+        "weight": 0.23166023166023167
+      },
+      {
+        "fromIso2": "NL",
+        "fromName": "Netherlands",
+        "weight": 0.13127413127413126
+      },
+      {
+        "fromIso2": "US",
+        "fromName": "United States",
+        "weight": 0.11003861003861004
+      },
+      {
+        "fromIso2": "BE",
+        "fromName": "Belgium",
+        "weight": 0.11003861003861004
+      },
+      {
+        "fromIso2": "IE",
+        "fromName": "Ireland",
+        "weight": 0.10231660231660232
+      },
+      {
+        "fromIso2": "NO",
+        "fromName": "Norway",
+        "weight": 0.10038610038610038
+      },
+      {
+        "fromIso2": "PT",
+        "fromName": "Portugal",
+        "weight": 0.08301158301158301
+      },
+      {
+        "fromIso2": "CH",
+        "fromName": "Switzerland",
+        "weight": 0.08108108108108109
+      },
+      {
+        "fromIso2": "AT",
+        "fromName": "Austria",
+        "weight": 0.07722007722007722
+      },
+      {
+        "fromIso2": "MA",
+        "fromName": "Morocco",
+        "weight": 0.07528957528957529
+      },
+      {
+        "fromIso2": "SE",
+        "fromName": "Sweden",
+        "weight": 0.06563706563706563
+      },
+      {
+        "fromIso2": "DK",
+        "fromName": "Denmark",
+        "weight": 0.059845559845559844
+      }
+    ],
+    "PT": [
+      {
+        "fromIso2": "GB",
+        "fromName": "United Kingdom",
+        "weight": 1
+      },
+      {
+        "fromIso2": "DE",
+        "fromName": "Germany",
+        "weight": 0.7619047619047619
+      },
+      {
+        "fromIso2": "FR",
+        "fromName": "France",
+        "weight": 0.6309523809523809
+      },
+      {
+        "fromIso2": "ES",
+        "fromName": "Spain",
+        "weight": 0.5119047619047619
+      },
+      {
+        "fromIso2": "NL",
+        "fromName": "Netherlands",
+        "weight": 0.27380952380952384
+      },
+      {
+        "fromIso2": "CH",
+        "fromName": "Switzerland",
+        "weight": 0.25
+      },
+      {
+        "fromIso2": "IT",
+        "fromName": "Italy",
+        "weight": 0.23809523809523808
+      },
+      {
+        "fromIso2": "BE",
+        "fromName": "Belgium",
+        "weight": 0.21428571428571427
+      },
+      {
+        "fromIso2": "US",
+        "fromName": "United States",
+        "weight": 0.16666666666666666
+      },
+      {
+        "fromIso2": "IE",
+        "fromName": "Ireland",
+        "weight": 0.14285714285714285
+      },
+      {
+        "fromIso2": "BR",
+        "fromName": "Brazil",
+        "weight": 0.14285714285714285
+      },
+      {
+        "fromIso2": "CA",
+        "fromName": "Canada",
+        "weight": 0.10714285714285714
+      },
+      {
+        "fromIso2": "CV",
+        "fromName": "Cape Verde",
+        "weight": 0.09523809523809523
+      },
+      {
+        "fromIso2": "LU",
+        "fromName": "Luxembourg",
+        "weight": 0.08333333333333333
+      },
+      {
+        "fromIso2": "AT",
+        "fromName": "Austria",
+        "weight": 0.07142857142857142
+      }
+    ],
+    "GR": [
+      {
+        "fromIso2": "DE",
+        "fromName": "Germany",
+        "weight": 1
+      },
+      {
+        "fromIso2": "GB",
+        "fromName": "United Kingdom",
+        "weight": 0.5965909090909091
+      },
+      {
+        "fromIso2": "AT",
+        "fromName": "Austria",
+        "weight": 0.20454545454545456
+      },
+      {
+        "fromIso2": "FR",
+        "fromName": "France",
+        "weight": 0.18181818181818182
+      },
+      {
+        "fromIso2": "RU",
+        "fromName": "Russia",
+        "weight": 0.1590909090909091
+      },
+      {
+        "fromIso2": "IT",
+        "fromName": "Italy",
+        "weight": 0.14204545454545456
+      },
+      {
+        "fromIso2": "NL",
+        "fromName": "Netherlands",
+        "weight": 0.11931818181818182
+      },
+      {
+        "fromIso2": "BE",
+        "fromName": "Belgium",
+        "weight": 0.11363636363636363
+      },
+      {
+        "fromIso2": "CY",
+        "fromName": "Cyprus",
+        "weight": 0.06818181818181818
+      },
+      {
+        "fromIso2": "NO",
+        "fromName": "Norway",
+        "weight": 0.0625
+      },
+      {
+        "fromIso2": "SE",
+        "fromName": "Sweden",
+        "weight": 0.056818181818181816
+      },
+      {
+        "fromIso2": "CH",
+        "fromName": "Switzerland",
+        "weight": 0.05113636363636364
+      },
+      {
+        "fromIso2": "ES",
+        "fromName": "Spain",
+        "weight": 0.03977272727272727
+      },
+      {
+        "fromIso2": "DK",
+        "fromName": "Denmark",
+        "weight": 0.03977272727272727
+      },
+      {
+        "fromIso2": "PL",
+        "fromName": "Poland",
+        "weight": 0.03977272727272727
+      }
+    ],
+    "IT": [
+      {
+        "fromIso2": "DE",
+        "fromName": "Germany",
+        "weight": 1
+      },
+      {
+        "fromIso2": "FR",
+        "fromName": "France",
+        "weight": 0.6742081447963801
+      },
+      {
+        "fromIso2": "GB",
+        "fromName": "United Kingdom",
+        "weight": 0.6380090497737556
+      },
+      {
+        "fromIso2": "ES",
+        "fromName": "Spain",
+        "weight": 0.5429864253393665
+      },
+      {
+        "fromIso2": "US",
+        "fromName": "United States",
+        "weight": 0.2398190045248869
+      },
+      {
+        "fromIso2": "BE",
+        "fromName": "Belgium",
+        "weight": 0.19909502262443438
+      },
+      {
+        "fromIso2": "NL",
+        "fromName": "Netherlands",
+        "weight": 0.19004524886877827
+      },
+      {
+        "fromIso2": "CH",
+        "fromName": "Switzerland",
+        "weight": 0.17194570135746606
+      },
+      {
+        "fromIso2": "RU",
+        "fromName": "Russia",
+        "weight": 0.15384615384615385
+      },
+      {
+        "fromIso2": "RO",
+        "fromName": "Romania",
+        "weight": 0.15384615384615385
+      },
+      {
+        "fromIso2": "PL",
+        "fromName": "Poland",
+        "weight": 0.13122171945701358
+      },
+      {
+        "fromIso2": "AT",
+        "fromName": "Austria",
+        "weight": 0.12669683257918551
+      },
+      {
+        "fromIso2": "AL",
+        "fromName": "Albania",
+        "weight": 0.12217194570135746
+      },
+      {
+        "fromIso2": "GR",
+        "fromName": "Greece",
+        "weight": 0.1085972850678733
+      },
+      {
+        "fromIso2": "DK",
+        "fromName": "Denmark",
+        "weight": 0.09502262443438914
+      }
+    ],
+    "MX": [
+      {
+        "fromIso2": "US",
+        "fromName": "United States",
+        "weight": 1
+      },
+      {
+        "fromIso2": "CA",
+        "fromName": "Canada",
+        "weight": 0.07317073170731707
+      },
+      {
+        "fromIso2": "GB",
+        "fromName": "United Kingdom",
+        "weight": 0.037940379403794036
+      },
+      {
+        "fromIso2": "CU",
+        "fromName": "Cuba",
+        "weight": 0.02168021680216802
+      },
+      {
+        "fromIso2": "ES",
+        "fromName": "Spain",
+        "weight": 0.02168021680216802
+      },
+      {
+        "fromIso2": "PA",
+        "fromName": "Panama",
+        "weight": 0.02168021680216802
+      },
+      {
+        "fromIso2": "CO",
+        "fromName": "Colombia",
+        "weight": 0.016260162601626018
+      },
+      {
+        "fromIso2": "DE",
+        "fromName": "Germany",
+        "weight": 0.01084010840108401
+      },
+      {
+        "fromIso2": "FR",
+        "fromName": "France",
+        "weight": 0.01084010840108401
+      },
+      {
+        "fromIso2": "PE",
+        "fromName": "Peru",
+        "weight": 0.01084010840108401
+      },
+      {
+        "fromIso2": "GT",
+        "fromName": "Guatemala",
+        "weight": 0.008130081300813009
+      },
+      {
+        "fromIso2": "CR",
+        "fromName": "Costa Rica",
+        "weight": 0.008130081300813009
+      },
+      {
+        "fromIso2": "SV",
+        "fromName": "El Salvador",
+        "weight": 0.008130081300813009
+      },
+      {
+        "fromIso2": "CL",
+        "fromName": "Chile",
+        "weight": 0.008130081300813009
+      },
+      {
+        "fromIso2": "BZ",
+        "fromName": "Belize",
+        "weight": 0.005420054200542005
+      }
+    ],
+    "MA": [
+      {
+        "fromIso2": "FR",
+        "fromName": "France",
+        "weight": 1
+      },
+      {
+        "fromIso2": "ES",
+        "fromName": "Spain",
+        "weight": 0.4936708860759494
+      },
+      {
+        "fromIso2": "GB",
+        "fromName": "United Kingdom",
+        "weight": 0.3291139240506329
+      },
+      {
+        "fromIso2": "BE",
+        "fromName": "Belgium",
+        "weight": 0.27848101265822783
+      },
+      {
+        "fromIso2": "DE",
+        "fromName": "Germany",
+        "weight": 0.25316455696202533
+      },
+      {
+        "fromIso2": "IT",
+        "fromName": "Italy",
+        "weight": 0.21518987341772153
+      },
+      {
+        "fromIso2": "NL",
+        "fromName": "Netherlands",
+        "weight": 0.12658227848101267
+      },
+      {
+        "fromIso2": "LY",
+        "fromName": "Libya",
+        "weight": 0.06329113924050633
+      },
+      {
+        "fromIso2": "CH",
+        "fromName": "Switzerland",
+        "weight": 0.06329113924050633
+      },
+      {
+        "fromIso2": "AE",
+        "fromName": "United Arab Emirates",
+        "weight": 0.05063291139240506
+      },
+      {
+        "fromIso2": "EH",
+        "fromName": "Western Sahara",
+        "weight": 0.05063291139240506
+      },
+      {
+        "fromIso2": "SA",
+        "fromName": "Saudi Arabia",
+        "weight": 0.05063291139240506
+      },
+      {
+        "fromIso2": "PT",
+        "fromName": "Portugal",
+        "weight": 0.05063291139240506
+      },
+      {
+        "fromIso2": "TR",
+        "fromName": "Turkey",
+        "weight": 0.0379746835443038
+      },
+      {
+        "fromIso2": "DZ",
+        "fromName": "Algeria",
+        "weight": 0.0379746835443038
+      }
+    ]
+  }
+}
