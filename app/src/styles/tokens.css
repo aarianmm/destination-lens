@@ -32,4 +32,9 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   --radius-panel: 16px;
+
+  /* Elevation — panels float over the globe, so shadows do the work borders
+     alone can't: separating "glass surface" from "void behind it". */
+  --shadow-panel: 0 1px 1px rgba(0, 0, 0, 0.4), 0 16px 40px -16px rgba(0, 0, 0, 0.65);
+  --shadow-panel-hover: 0 2px 4px rgba(0, 0, 0, 0.45), 0 24px 56px -18px rgba(0, 0, 0, 0.7);
 }
