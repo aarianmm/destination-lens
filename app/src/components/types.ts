@@ -12,6 +12,8 @@ export type PanelProps = {
   className?: string;
   /** Panels float over the globe, so they are translucent by default. */
   solid?: boolean;
+  /** Adds hover/focus affordance for panels that act as clickable rows/cards. */
+  interactive?: boolean;
 };
 
 export type StatusBadgeProps = {
