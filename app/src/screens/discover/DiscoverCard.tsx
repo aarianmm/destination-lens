@@ -86,7 +86,12 @@ export function IndexCard({ entry, index, onOpen, reduceMotion }: CardProps) {
       </ImageCard>
       <div className="flex flex-1 flex-col gap-1.5 p-4">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-display text-xl leading-tight text-[var(--color-ink)]">{entry.name}</h3>
+          <h3
+            className="min-w-0 flex-1 truncate font-display text-xl leading-tight text-[var(--color-ink)]"
+            title={entry.name}
+          >
+            {entry.name}
+          </h3>
           <StatDelta growthPct={entry.growthPct} status={entry.status} size="sm" />
         </div>
         <FlagChip iso2={entry.countryIso2} name={entry.countryName} />

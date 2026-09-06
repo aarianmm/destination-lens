@@ -21,7 +21,7 @@ export function StatDelta({ growthPct, status, size = 'md' }: StatDeltaProps) {
 
   return (
     <span
-      className={`inline-flex items-center font-medium tabular-nums ${SIZE_CLASS[size]}`}
+      className={`inline-flex shrink-0 items-center whitespace-nowrap font-medium tabular-nums ${SIZE_CLASS[size]}`}
       style={{ color }}
     >
       {direction && (
