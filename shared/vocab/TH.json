@@ -1,0 +1,159 @@
+{
+  "iso2": "TH",
+  "name": "Thailand",
+  "aliases": ["Siam", "Kingdom of Thailand"],
+  "centroid": { "lat": 15.87, "lng": 100.9925 },
+  "bounds": { "north": 20.4649, "south": 5.61, "east": 105.6396, "west": 97.3438 },
+  "destinations": [
+    {
+      "slug": "bangkok",
+      "name": "Bangkok",
+      "aliases": ["Krung Thep", "Bangkok Metropolis"],
+      "lat": 13.7525,
+      "lng": 100.4942,
+      "wikipediaTitle": "Bangkok",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "phuket",
+      "name": "Phuket",
+      "aliases": ["Phuket Island", "Phuket Town"],
+      "lat": 7.89,
+      "lng": 98.3983,
+      "wikipediaTitle": "Phuket province",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "chiang-mai",
+      "name": "Chiang Mai",
+      "aliases": ["Chiangmai"],
+      "lat": 18.7953,
+      "lng": 98.9986,
+      "wikipediaTitle": "Chiang Mai",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "krabi",
+      "name": "Krabi",
+      "aliases": ["Krabi Town", "Krabi Province"],
+      "lat": 8.0578,
+      "lng": 98.9169,
+      "wikipediaTitle": "Krabi province",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "koh-samui",
+      "name": "Koh Samui",
+      "aliases": ["Ko Samui", "Samui"],
+      "lat": 9.5,
+      "lng": 100.0,
+      "wikipediaTitle": "Ko Samui",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "koh-phangan",
+      "name": "Koh Phangan",
+      "aliases": ["Ko Pha-ngan", "Ko Phangan", "Koh Pha Ngan", "Phangan"],
+      "lat": 9.74,
+      "lng": 100.03,
+      "wikipediaTitle": "Ko Pha-ngan",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "koh-lanta",
+      "name": "Koh Lanta",
+      "aliases": ["Ko Lanta", "Ko Lanta Yai"],
+      "lat": 7.6167,
+      "lng": 99.05,
+      "wikipediaTitle": "Ko Lanta",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "koh-phi-phi",
+      "name": "Koh Phi Phi",
+      "aliases": ["Ko Phi Phi", "Phi Phi Islands", "Phi Phi"],
+      "lat": 7.7333,
+      "lng": 98.7667,
+      "wikipediaTitle": "Phi Phi Islands",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "pai",
+      "name": "Pai",
+      "aliases": ["Pai Thailand"],
+      "lat": 19.3589,
+      "lng": 98.4367,
+      "wikipediaTitle": "Pai, Thailand",
+      "requireContext": true,
+      "negativeKeywords": ["pai gow", "pai mei", "amai pai", "kung fu panda"]
+    },
+    {
+      "slug": "ayutthaya",
+      "name": "Ayutthaya",
+      "aliases": ["Phra Nakhon Si Ayutthaya", "Ayutthaya Historical Park"],
+      "lat": 14.35,
+      "lng": 100.5833,
+      "wikipediaTitle": "Ayutthaya Historical Park",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "sukhothai",
+      "name": "Sukhothai",
+      "aliases": ["Sukhothai Historical Park", "Old Sukhothai"],
+      "lat": 17.0211,
+      "lng": 99.7036,
+      "wikipediaTitle": "Sukhothai Historical Park",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "khao-sok",
+      "name": "Khao Sok National Park",
+      "aliases": ["Khao Sok"],
+      "lat": 8.9367,
+      "lng": 98.5303,
+      "wikipediaTitle": "Khao Sok National Park",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "koh-tao",
+      "name": "Koh Tao",
+      "aliases": ["Ko Tao"],
+      "lat": 10.09,
+      "lng": 99.8381,
+      "wikipediaTitle": "Ko Tao",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "kanchanaburi",
+      "name": "Kanchanaburi",
+      "aliases": ["River Kwai", "Bridge on the River Kwai"],
+      "lat": 14.0194,
+      "lng": 99.5311,
+      "wikipediaTitle": "Kanchanaburi",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "nan",
+      "name": "Nan",
+      "aliases": ["Nan Province", "Nan Town"],
+      "lat": 18.7833,
+      "lng": 100.7833,
+      "wikipediaTitle": "Nan, Thailand",
+      "requireContext": true,
+      "negativeKeywords": ["naan bread", "nan bread", "my nan", "grandma nan", "nan's house"]
+    }
+  ]
+}

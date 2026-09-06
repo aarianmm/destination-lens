@@ -1,0 +1,149 @@
+{
+  "iso2": "JP",
+  "name": "Japan",
+  "aliases": ["Nippon", "Nihon"],
+  "centroid": { "lat": 36.2048, "lng": 138.2529 },
+  "bounds": { "north": 45.5514, "south": 20.2145, "east": 154.0031, "west": 122.7141 },
+  "destinations": [
+    {
+      "slug": "tokyo",
+      "name": "Tokyo",
+      "aliases": [],
+      "lat": 35.6897,
+      "lng": 139.6922,
+      "wikipediaTitle": "Tokyo",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "kyoto",
+      "name": "Kyoto",
+      "aliases": [],
+      "lat": 35.0116,
+      "lng": 135.7681,
+      "wikipediaTitle": "Kyoto",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "osaka",
+      "name": "Osaka",
+      "aliases": [],
+      "lat": 34.6939,
+      "lng": 135.5022,
+      "wikipediaTitle": "Osaka",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "hokkaido",
+      "name": "Hokkaido",
+      "aliases": [],
+      "lat": 43.0,
+      "lng": 142.0,
+      "wikipediaTitle": "Hokkaido",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "okinawa",
+      "name": "Okinawa",
+      "aliases": ["Okinawa Island"],
+      "lat": 26.4794,
+      "lng": 127.9278,
+      "wikipediaTitle": "Okinawa Island",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "hiroshima",
+      "name": "Hiroshima",
+      "aliases": [],
+      "lat": 34.3914,
+      "lng": 132.4519,
+      "wikipediaTitle": "Hiroshima",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "nara",
+      "name": "Nara",
+      "aliases": ["Nara City"],
+      "lat": 34.6844,
+      "lng": 135.805,
+      "wikipediaTitle": "Nara (city)",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "kanazawa",
+      "name": "Kanazawa",
+      "aliases": [],
+      "lat": 36.5611,
+      "lng": 136.6564,
+      "wikipediaTitle": "Kanazawa",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "nikko",
+      "name": "Nikko",
+      "aliases": ["Nikkō"],
+      "lat": 36.7198,
+      "lng": 139.6982,
+      "wikipediaTitle": "Nikkō",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "takayama",
+      "name": "Takayama",
+      "aliases": [],
+      "lat": 36.146,
+      "lng": 137.2522,
+      "wikipediaTitle": "Takayama, Gifu",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "naoshima",
+      "name": "Naoshima",
+      "aliases": ["Naoshima Art Island"],
+      "lat": 34.4583,
+      "lng": 133.9833,
+      "wikipediaTitle": "Naoshima",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "yakushima",
+      "name": "Yakushima",
+      "aliases": [],
+      "lat": 30.3439,
+      "lng": 130.5239,
+      "wikipediaTitle": "Yakushima",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "shirakawa-go",
+      "name": "Shirakawa-go",
+      "aliases": ["Shirakawa-gō", "Gokayama"],
+      "lat": 36.4,
+      "lng": 136.8833,
+      "wikipediaTitle": "Historic Villages of Shirakawa-gō and Gokayama",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "ise",
+      "name": "Ise",
+      "aliases": ["Ise City", "Ise-Shima"],
+      "lat": 34.4833,
+      "lng": 136.7167,
+      "wikipediaTitle": "Ise, Mie",
+      "requireContext": true,
+      "negativeKeywords": ["cisco ise", "identity services engine", "irish stock exchange"]
+    }
+  ]
+}

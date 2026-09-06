@@ -1,0 +1,129 @@
+{
+  "iso2": "PT",
+  "name": "Portugal",
+  "aliases": [],
+  "centroid": { "lat": 39.3999, "lng": -8.2245 },
+  "bounds": { "north": 42.1543, "south": 30.0275, "east": -6.1897, "west": -31.2685 },
+  "destinations": [
+    {
+      "slug": "lisbon",
+      "name": "Lisbon",
+      "aliases": ["Lisboa"],
+      "lat": 38.7253,
+      "lng": -9.15,
+      "wikipediaTitle": "Lisbon",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "porto",
+      "name": "Porto",
+      "aliases": ["Oporto"],
+      "lat": 41.15,
+      "lng": -8.6108,
+      "wikipediaTitle": "Porto",
+      "requireContext": false,
+      "negativeKeywords": ["fc porto", "porto vs", "porto match"]
+    },
+    {
+      "slug": "sintra",
+      "name": "Sintra",
+      "aliases": [],
+      "lat": 38.7992,
+      "lng": -9.3883,
+      "wikipediaTitle": "Sintra",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "algarve",
+      "name": "Algarve",
+      "aliases": [],
+      "lat": 37.242,
+      "lng": -8.17,
+      "wikipediaTitle": "Algarve",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "madeira",
+      "name": "Madeira",
+      "aliases": ["Madeira Island"],
+      "lat": 32.75,
+      "lng": -17.0,
+      "wikipediaTitle": "Madeira",
+      "requireContext": true,
+      "negativeKeywords": ["madeira wine", "madeira cake", "madeira nut", "madeira ohio"]
+    },
+    {
+      "slug": "azores",
+      "name": "Azores",
+      "aliases": ["Açores"],
+      "lat": 38.66,
+      "lng": -28.07,
+      "wikipediaTitle": "Azores",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "obidos",
+      "name": "Obidos",
+      "aliases": ["Óbidos"],
+      "lat": 39.3608,
+      "lng": -9.1571,
+      "wikipediaTitle": "Óbidos",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "evora",
+      "name": "Evora",
+      "aliases": ["Évora"],
+      "lat": 38.5667,
+      "lng": -7.9,
+      "wikipediaTitle": "Évora",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "coimbra",
+      "name": "Coimbra",
+      "aliases": [],
+      "lat": 40.2028,
+      "lng": -8.4139,
+      "wikipediaTitle": "Coimbra",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "nazare",
+      "name": "Nazare",
+      "aliases": ["Nazaré"],
+      "lat": 39.6011,
+      "lng": -9.0706,
+      "wikipediaTitle": "Nazaré, Portugal",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "peneda-geres",
+      "name": "Peneda-Geres National Park",
+      "aliases": ["Peneda-Gerês", "Geres"],
+      "lat": 41.7303,
+      "lng": -8.1617,
+      "wikipediaTitle": "Peneda-Gerês National Park",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "cascais",
+      "name": "Cascais",
+      "aliases": [],
+      "lat": 38.7,
+      "lng": -9.4167,
+      "wikipediaTitle": "Cascais",
+      "requireContext": false,
+      "negativeKeywords": []
+    }
+  ]
+}

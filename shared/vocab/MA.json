@@ -1,0 +1,139 @@
+{
+  "iso2": "MA",
+  "name": "Morocco",
+  "aliases": ["Maroc", "Al-Maghrib"],
+  "centroid": { "lat": 31.7917, "lng": -7.0926 },
+  "bounds": { "north": 35.92, "south": 27.66, "east": -1.0, "west": -13.17 },
+  "destinations": [
+    {
+      "slug": "marrakesh",
+      "name": "Marrakesh",
+      "aliases": ["Marrakech"],
+      "lat": 31.63,
+      "lng": -8.0089,
+      "wikipediaTitle": "Marrakesh",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "fes",
+      "name": "Fes",
+      "aliases": ["Fez"],
+      "lat": 34.0433,
+      "lng": -5.0033,
+      "wikipediaTitle": "Fez, Morocco",
+      "requireContext": true,
+      "negativeKeywords": ["fez hat", "red fez", "fez cap"]
+    },
+    {
+      "slug": "casablanca",
+      "name": "Casablanca",
+      "aliases": [],
+      "lat": 33.5333,
+      "lng": -7.5833,
+      "wikipediaTitle": "Casablanca",
+      "requireContext": true,
+      "negativeKeywords": ["casablanca movie", "casablanca film", "humphrey bogart", "ingrid bergman"]
+    },
+    {
+      "slug": "chefchaouen",
+      "name": "Chefchaouen",
+      "aliases": ["The Blue City"],
+      "lat": 35.1714,
+      "lng": -5.2697,
+      "wikipediaTitle": "Chefchaouen",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "essaouira",
+      "name": "Essaouira",
+      "aliases": [],
+      "lat": 31.5131,
+      "lng": -9.7697,
+      "wikipediaTitle": "Essaouira",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "rabat",
+      "name": "Rabat",
+      "aliases": [],
+      "lat": 34.0211,
+      "lng": -6.8414,
+      "wikipediaTitle": "Rabat",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "tangier",
+      "name": "Tangier",
+      "aliases": ["Tanger"],
+      "lat": 35.7767,
+      "lng": -5.8039,
+      "wikipediaTitle": "Tangier",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "merzouga",
+      "name": "Merzouga",
+      "aliases": ["Erg Chebbi"],
+      "lat": 31.0992,
+      "lng": -4.0117,
+      "wikipediaTitle": "Merzouga",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "agadir",
+      "name": "Agadir",
+      "aliases": [],
+      "lat": 30.4214,
+      "lng": -9.5831,
+      "wikipediaTitle": "Agadir",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "ouarzazate",
+      "name": "Ouarzazate",
+      "aliases": [],
+      "lat": 30.9167,
+      "lng": -6.9167,
+      "wikipediaTitle": "Ouarzazate",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "asilah",
+      "name": "Asilah",
+      "aliases": [],
+      "lat": 35.4667,
+      "lng": -6.0333,
+      "wikipediaTitle": "Asilah",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "meknes",
+      "name": "Meknes",
+      "aliases": ["Meknès"],
+      "lat": 33.895,
+      "lng": -5.5547,
+      "wikipediaTitle": "Meknes",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "volubilis",
+      "name": "Volubilis",
+      "aliases": [],
+      "lat": 34.0711,
+      "lng": -5.5536,
+      "wikipediaTitle": "Volubilis",
+      "requireContext": false,
+      "negativeKeywords": []
+    }
+  ]
+}
