@@ -87,6 +87,10 @@ export const GlobeScene = forwardRef<GlobeSceneHandle, GlobeSceneProps>(function
     };
   }, []);
 
+  // A genuine drag/zoom is a one-way switch: the ambient rotation stops and
+  // stays stopped (per orchestrator direction — no resume-after-idle). Bound
+  // to pointerdown/wheel on the globe's own container, so an incidental
+  // pointer move or a page-level scroll elsewhere never triggers it.
   const stopRotating = useCallback(() => setRotating(false), []);
 
   useEffect(() => {
