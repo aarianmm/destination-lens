@@ -367,7 +367,16 @@ function mergeWorld(existing: World | undefined, next: World, touchedIso2s: Set<
   if (!existing) return next;
 
   const countryMap = new Map(existing.countries.map((c) => [c.iso2, c]));
-  for (const c of next.countries) countryMap.set(c.iso2, c);
+  for (const c of next.countries) {
+    // A partial run computes `covered` from the countries IT processed, so left
+    // alone it demotes every country it skipped. That is how Morocco, Brazil and
+    // six others went grey on the globe after a Thailand+Japan run, despite
+    // their snapshots still being on disk. Only a country this run actually
+    // touched may change its own coverage.
+    const previous = countryMap.get(c.iso2);
+    const covered = touchedIso2s.has(c.iso2) ? c.covered : (previous?.covered ?? c.covered);
+    countryMap.set(c.iso2, { ...c, covered });
+  }
 
   const keptExisting = existing.emerging.filter((e) => !touchedIso2s.has(e.countryIso2));
   const emerging = [...keptExisting, ...next.emerging]
