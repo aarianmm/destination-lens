@@ -53,14 +53,19 @@ function round(n: number, dp = 1): number {
   return Math.round(n * f) / f;
 }
 
-/** Mondays for the trailing 26 weeks, oldest first, relative to `now`. */
+/**
+ * Mondays for the trailing 26 COMPLETE weeks, oldest first, relative to `now`.
+ * Must stay identical to `pipeline/src/lib/weeks.ts` — the in-progress week is
+ * excluded so no partial week is ever averaged into "recent".
+ */
 export function weekStartsFor(now: Date): string[] {
   const day = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
   const dow = (day.getUTCDay() + 6) % 7; // 0 = Monday
-  const lastMonday = day.getTime() - dow * 86400000;
+  const thisMonday = day.getTime() - dow * 86400000;
+  const lastCompleteMonday = thisMonday - 7 * 86400000;
   const out: string[] = [];
   for (let i = WEEKS_OF_HISTORY - 1; i >= 0; i--) {
-    out.push(new Date(lastMonday - i * 7 * 86400000).toISOString().slice(0, 10));
+    out.push(new Date(lastCompleteMonday - i * 7 * 86400000).toISOString().slice(0, 10));
   }
   return out;
 }
