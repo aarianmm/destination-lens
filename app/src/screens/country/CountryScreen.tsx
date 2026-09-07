@@ -184,8 +184,11 @@ export function CountryScreen() {
         onReady={() => setGlobeReady(true)}
       />
 
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 flex w-full max-w-md items-stretch p-4 pt-24 sm:p-6 sm:pt-24">
-        <Panel solid className="pointer-events-auto flex max-h-full w-full flex-col overflow-hidden p-5">
+      {/* Mobile portrait: a floating sheet anchored to the bottom third of the
+          screen, globe visible above it — "globe-behind-sheet" per PLAN.md §5.
+          `sm:` and up restores the full-height right-hand panel. */}
+      <div className="pointer-events-none absolute inset-x-4 bottom-4 top-24 z-10 flex items-end justify-center sm:inset-x-auto sm:inset-y-0 sm:right-0 sm:top-auto sm:w-full sm:max-w-md sm:items-stretch sm:justify-end sm:p-6 sm:pt-24">
+        <Panel solid className="pointer-events-auto flex max-h-[65vh] w-full flex-col overflow-hidden p-5 sm:max-h-full">
           {world.status === 'error' && country.status !== 'ready' && !isMissing && (
             <ErrorState
               message="Could not load world travel-flow data."

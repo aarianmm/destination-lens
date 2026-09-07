@@ -129,7 +129,9 @@ export function ExploreScreen() {
       )}
 
       {hoveredCountry && (
-        <div className="pointer-events-none absolute bottom-6 left-6 z-10">
+        // Lifted clear of the mobile "Emerging now" strip, which owns the
+        // bottom edge on narrow screens; back to its usual corner from `sm:` up.
+        <div className="pointer-events-none absolute bottom-32 left-4 z-10 sm:bottom-6 sm:left-6">
           <Panel className="px-3 py-1.5">
             <p className="text-sm text-[var(--color-ink)]">
               {hoveredCountry.name}
@@ -147,14 +149,17 @@ export function ExploreScreen() {
       )}
 
       {world.status === 'ready' && (
-        <aside className="absolute right-6 top-20 z-10 w-72">
+        // Mobile portrait: a bottom-anchored strip the user scrolls sideways,
+        // short enough to leave most of the globe visible above it. `sm:` and
+        // up restores the tall right-hand rail.
+        <aside className="absolute inset-x-4 bottom-4 z-10 sm:inset-x-auto sm:bottom-auto sm:right-6 sm:top-20 sm:w-72">
           <Panel className="p-4">
             <h2 className="mb-3 text-xs uppercase tracking-[0.16em] text-[var(--color-ink-faint)]">
               🔥 Emerging now
             </h2>
-            <ul className="space-y-3">
+            <ul className="-mx-1 flex gap-3 overflow-x-auto px-1 pb-1 sm:mx-0 sm:block sm:space-y-3 sm:overflow-visible sm:px-0 sm:pb-0">
               {world.data.emerging.slice(0, 5).map((e) => (
-                <li key={e.slug}>
+                <li key={e.slug} className="w-36 shrink-0 sm:w-auto">
                   <button
                     onClick={() => handlePointClick(e.slug)}
                     className="group flex w-full flex-col gap-1 text-left"
