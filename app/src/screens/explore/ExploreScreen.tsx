@@ -10,13 +10,7 @@ import { ErrorState, Loading, Panel, StatDelta, StatusBadge } from '../../compon
 import { loadWorld } from '../../lib/snapshots.js';
 import { useAppStore } from '../../lib/store.js';
 import { useSnapshot } from '../../lib/useSnapshot.js';
-import {
-  GlobeScene,
-  type ArcDatum,
-  type CameraTarget,
-  type GlobeSceneHandle,
-  type PointDatum,
-} from '../../scene/index.js';
+import { GlobeScene, type ArcDatum, type CameraTarget, type GlobeSceneHandle } from '../../scene/index.js';
 
 /** Flying the camera in before navigating sells the "zoom into a country" feel. */
 const COUNTRY_FLY_MS = 1100;
@@ -30,10 +24,14 @@ export function ExploreScreen() {
   const [hoveredIso2, setHoveredIso2] = useState<string | null>(null);
   const [pending, setPending] = useState<string | null>(null);
 
-  const { arcs, points } = useMemo(() => {
-    if (world.status !== 'ready') return { arcs: [] as ArcDatum[], points: [] as PointDatum[] };
+  // World view shows flows only — destination/emerging dots are reserved for
+  // the country-focused view (per orchestrator direction: dots are a status
+  // readout, not a navigation target, and the world view has no single
+  // country context for a dot to belong to).
+  const arcs: ArcDatum[] = useMemo(() => {
+    if (world.status !== 'ready') return [];
     const byIso2 = new Map(world.data.countries.map((c) => [c.iso2, c]));
-    const arcs: ArcDatum[] = world.data.flows.slice(0, 150).flatMap((f) => {
+    return world.data.flows.slice(0, 150).flatMap((f) => {
       const from = byIso2.get(f.fromIso2);
       const to = byIso2.get(f.toIso2);
       if (!from || !to) return [];
@@ -48,15 +46,6 @@ export function ExploreScreen() {
         },
       ];
     });
-    const points: PointDatum[] = world.data.emerging.map((e) => ({
-      id: e.slug,
-      lat: e.lat,
-      lng: e.lng,
-      label: e.name,
-      status: e.status,
-      size: 0.5 + Math.min(1, e.growthPct / 200) * 0.5,
-    }));
-    return { arcs, points };
   }, [world.status, world.data]);
 
   const coveredIso2 = useMemo(
@@ -105,12 +94,11 @@ export function ExploreScreen() {
         ref={globe}
         mode="world"
         arcs={arcs}
-        points={points}
+        points={[]}
         coveredIso2={coveredIso2}
         highlightedCountryIso2={hoveredIso2}
         onCountryClick={handleCountryClick}
         onCountryHover={handleCountryHover}
-        onPointClick={handlePointClick}
         autoRotate
       />
 
