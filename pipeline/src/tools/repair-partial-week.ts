@@ -56,7 +56,7 @@ function reclassify(weekly: number[]) {
   else if (growthRatio < t.decliningGrowth && baseline >= t.minBaselineForDecline)
     status = 'declining';
 
-  return { status, growthPct, zScore, recent };
+  return { status: status as DestinationStatus, growthPct, zScore, recent };
 }
 
 const read = (p: string) => JSON.parse(readFileSync(p, 'utf8'));
@@ -65,7 +65,10 @@ const write = (p: string, v: unknown) => writeFileSync(p, JSON.stringify(v), 'ut
 const countryDir = join(DATA_DIR, 'country');
 const destDir = join(DATA_DIR, 'destination');
 
-const recomputed = new Map<string, ReturnType<typeof reclassify> & { interestScore: number }>();
+const recomputed = new Map<
+  string,
+  Omit<ReturnType<typeof reclassify>, 'status'> & { status: DestinationStatus; interestScore: number }
+>();
 
 for (const file of readdirSync(countryDir)) {
   const country = countrySchema.parse(read(join(countryDir, file)));
