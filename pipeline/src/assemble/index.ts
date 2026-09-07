@@ -37,7 +37,7 @@ import {
   type Vocab,
   type World,
 } from '@dl/shared';
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { DATA_DIR } from '../lib/paths.js';
 import { readJson, writeJson } from '../lib/json.js';
@@ -431,8 +431,56 @@ export function writeSnapshots(output: AssembleOutput, opts: WriteSnapshotsOptio
     writeJson(join(dataDir, 'destination', `${d.slug}.json`), destinationSchema, d);
   }
 
+  const pruned = pruneOrphanSnapshots(dataDir, mergedMeta);
+
   log.step(
     'assemble',
-    `wrote meta, world, ${parsedCountries.length} countries, ${parsedDestinations.length} destinations`,
+    `wrote meta, world, ${parsedCountries.length} countries, ${parsedDestinations.length} destinations` +
+      (pruned ? `; pruned ${pruned} stale files` : ''),
   );
+}
+
+/**
+ * Deletes snapshots nothing references any more.
+ *
+ * Two ways they accumulate: fixture data for a destination the curated
+ * vocabulary later dropped, and countries removed from coverage. Left in place
+ * they are invisible — no screen links to them — but they are still fetchable by
+ * URL and still fake, so a real run should carry them out rather than leaving
+ * seed data lying around in a launched product.
+ *
+ * Only files under `country/` and `destination/` are considered, and a country
+ * still listed in `meta.countries` is always kept.
+ */
+function pruneOrphanSnapshots(dataDir: string, meta: Meta): number {
+  const countryDir = join(dataDir, 'country');
+  const destDir = join(dataDir, 'destination');
+  if (!existsSync(countryDir) || !existsSync(destDir)) return 0;
+
+  const keepCountries = new Set(meta.countries);
+  let removed = 0;
+
+  for (const file of readdirSync(countryDir)) {
+    if (!file.endsWith('.json')) continue;
+    if (keepCountries.has(file.replace('.json', ''))) continue;
+    rmSync(join(countryDir, file));
+    removed++;
+  }
+
+  // A destination is live only if a surviving country snapshot still lists it.
+  const liveSlugs = new Set<string>();
+  for (const file of readdirSync(countryDir)) {
+    if (!file.endsWith('.json')) continue;
+    for (const d of readJson(join(countryDir, file), countrySchema).destinations) {
+      liveSlugs.add(d.slug);
+    }
+  }
+  for (const file of readdirSync(destDir)) {
+    if (!file.endsWith('.json')) continue;
+    if (liveSlugs.has(file.replace('.json', ''))) continue;
+    rmSync(join(destDir, file));
+    removed++;
+  }
+
+  return removed;
 }

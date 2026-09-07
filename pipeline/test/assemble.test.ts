@@ -3,7 +3,7 @@
  * the two edge cases that matter operationally: size-budget enforcement, and a
  * partial run not destroying other countries' existing snapshots.
  */
-import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
@@ -275,5 +275,25 @@ describe('writeSnapshots', () => {
     const world = worldSchema.parse(JSON.parse(readFileSync(join(dataDir, 'world.json'), 'utf8')));
     expect(world.emerging.some((e) => e.countryIso2 === 'JP')).toBe(true);
     expect(world.emerging.some((e) => e.countryIso2 === 'TH')).toBe(true);
+  });
+
+  it('prunes snapshots nothing references, without touching live ones', () => {
+    // Pruning deletes files, so the risk worth testing is over-deletion: a
+    // partial run must not carry off the countries it simply didn't process.
+    dataDir = mkdtempSync(join(tmpdir(), 'dl-assemble-prune-'));
+    writeSnapshots(assemble(fullInput()), { dataDir });
+
+    // A leftover from an earlier coverage set: no country snapshot lists it.
+    const orphan = join(dataDir, 'destination', 'hua-hin.json');
+    const template = JSON.parse(readFileSync(join(dataDir, 'destination', 'tokyo.json'), 'utf8'));
+    writeFileSync(orphan, JSON.stringify({ ...template, slug: 'hua-hin', name: 'Hua Hin' }), 'utf8');
+    expect(existsSync(orphan)).toBe(true);
+
+    writeSnapshots(assemble(fullInput()), { dataDir });
+
+    expect(existsSync(orphan)).toBe(false);
+    expect(existsSync(join(dataDir, 'destination', 'tokyo.json'))).toBe(true);
+    expect(existsSync(join(dataDir, 'country', 'JP.json'))).toBe(true);
+    expect(existsSync(join(dataDir, 'country', 'TH.json'))).toBe(true);
   });
 });

@@ -201,16 +201,6 @@ const QUOTE_POOL = [
   'Not the easiest place to reach, which is probably why it is still calm.',
 ];
 
-/** Tiny inline gradient, so fixtures need no network and never render a broken image. */
-function fixtureImage(slug: string): { url: string; attribution: string; sourceUrl: string } {
-  const h = hashString(slug) % 360;
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="8" height="5"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(${h},55%,32%)"/><stop offset="1" stop-color="hsl(${(h + 48) % 360},60%,14%)"/></linearGradient></defs><rect width="8" height="5" fill="url(#g)"/></svg>`;
-  return {
-    url: `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`,
-    attribution: 'Fixture image — not real photography',
-    sourceUrl: 'https://example.com/fixture',
-  };
-}
 
 function blurbFor(name: string, status: DestinationStatus, growthPct: number): string {
   switch (status) {
@@ -307,7 +297,6 @@ export function generateFixtures(now = new Date('2026-09-06T03:00:00.000Z')): Fi
             ...m,
             trend: (idx === 0 ? 'up' : idx === 1 ? 'flat' : 'down') as 'up' | 'flat' | 'down',
           })),
-          image: fixtureImage(row.dest.slug),
         }),
       );
 
