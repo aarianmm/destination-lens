@@ -6,7 +6,7 @@
  * badly on a phone. The panel is `solid` because unlike the readouts floating
  * over the globe, this one is a modal surface and should occlude the scene.
  */
-import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ErrorState, Loading, Panel, StatDelta, StatusBadge } from '../components/index.js';
@@ -26,6 +26,7 @@ export function SearchOverlay({ onClose }: { onClose: () => void }) {
   const reduceMotion = useReducedMotion();
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const [query, setQuery] = useState('');
   const [active, setActive] = useState(0);
@@ -82,27 +83,35 @@ export function SearchOverlay({ onClose }: { onClose: () => void }) {
     [navigate, onClose],
   );
 
-  const onKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      event.preventDefault();
-      onClose();
-      return;
-    }
-    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      event.preventDefault();
-      if (rows.length === 0) return;
-      const step = event.key === 'ArrowDown' ? 1 : -1;
-      setActive((i) => (i + step + rows.length) % rows.length);
-      return;
-    }
-    if (event.key === 'Enter') {
-      const row = rows[active];
-      if (row) {
+  // Bound to the window rather than the dialog subtree. Clicking the overlay's
+  // own padding moves focus off the input, and a modal that can only be
+  // dismissed while its field happens to hold focus is a trap -- Escape has to
+  // work whatever the click before it did.
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
         event.preventDefault();
-        go(row);
+        onClose();
+        return;
       }
-    }
-  };
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        if (rows.length === 0) return;
+        const step = event.key === 'ArrowDown' ? 1 : -1;
+        setActive((i) => (i + step + rows.length) % rows.length);
+        return;
+      }
+      if (event.key === 'Enter') {
+        const row = rows[active];
+        if (row) {
+          event.preventDefault();
+          go(row);
+        }
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [rows, active, go, onClose]);
 
   // Keep the highlighted row in view when the arrows walk past the fold.
   useEffect(() => {
@@ -116,11 +125,18 @@ export function SearchOverlay({ onClose }: { onClose: () => void }) {
     <div
       className="fixed inset-0 z-40 flex items-start justify-center px-4 pt-[12vh]"
       role="presentation"
-      onMouseDown={(e) => e.target === e.currentTarget && onClose()}
+      // The scrim below is a sibling covering this element's whole area, so an
+      // outside click lands on it, never on this div -- comparing event targets
+      // would mean the overlay could not be dismissed by clicking away at all.
+      // Test containment against the panel instead.
+      onMouseDown={(e) => {
+        if (!dialogRef.current?.contains(e.target as Node)) onClose();
+      }}
     >
       <div aria-hidden className="absolute inset-0 bg-[var(--color-void)]/70 backdrop-blur-sm" />
 
       <motion.div
+        ref={dialogRef}
         initial={reduceMotion ? false : { opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.16, ease: 'easeOut' }}
@@ -128,7 +144,6 @@ export function SearchOverlay({ onClose }: { onClose: () => void }) {
         role="dialog"
         aria-modal="true"
         aria-label="Search countries and destinations"
-        onKeyDown={onKeyDown}
       >
         <Panel solid className="overflow-hidden">
           <div className="flex items-center gap-3 border-b border-[var(--color-hairline)] px-4 py-3">
