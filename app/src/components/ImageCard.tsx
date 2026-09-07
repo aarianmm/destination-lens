@@ -14,9 +14,31 @@ function hashSeed(seed: string): number {
  * seed-derived gradient, a faint compass watermark and a hairline texture, so
  * it reads as an editorial choice rather than a broken `<img>`.
  */
-export function ImageCard({ image, seed, alt, className = '', children }: ImageCardProps) {
+/**
+ * Fixture snapshots carry a tiny inline SVG gradient as their "image". It is not
+ * a photograph — it renders as an empty wash — so it counts as no image at all,
+ * and the flag-and-name placeholder is drawn instead.
+ */
+const isRealPhoto = (url: string | undefined): boolean => !!url && !url.startsWith('data:');
+
+/** iso2 -> regional-indicator flag emoji. Same derivation as FlagChip. */
+const flagFor = (iso2: string) =>
+  iso2
+    .toUpperCase()
+    .replace(/[^A-Z]/g, '')
+    .replace(/./g, (c) => String.fromCodePoint(127397 + c.charCodeAt(0)));
+
+export function ImageCard({
+  image,
+  seed,
+  alt,
+  className = '',
+  children,
+  countryIso2,
+  showPlaceholderLabel = true,
+}: ImageCardProps) {
   const [broken, setBroken] = useState(false);
-  const showImage = Boolean(image) && !broken;
+  const showImage = isRealPhoto(image?.url) && !broken;
   const hash = hashSeed(seed);
   const hueA = hash % 360;
   const hueB = (hueA + 46 + (hash % 25)) % 360;
@@ -59,15 +81,29 @@ export function ImageCard({ image, seed, alt, className = '', children }: ImageC
             <rect width="100%" height="100%" fill={`url(#ic-${uid}-lines)`} />
             <rect width="100%" height="100%" fill={`url(#ic-${uid}-vig)`} />
           </svg>
-          <svg
-            viewBox="0 0 48 48"
-            className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 text-white/20"
-            fill="none"
+          {/* Sized in container units so the same component reads well as a
+              small card and as a wide hero without callers tuning type scales. */}
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center gap-[3cqi] p-4"
+            style={{ containerType: 'inline-size' }}
           >
-            <circle cx="24" cy="24" r="19" stroke="currentColor" strokeWidth="1" />
-            <path d="M24 8 L28 22 L24 40 L20 22 Z" fill="currentColor" opacity="0.7" />
-            <circle cx="24" cy="24" r="2" fill="currentColor" />
-          </svg>
+            {countryIso2 && (
+              <span
+                className="leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]"
+                style={{ fontSize: 'clamp(1.75rem, 22cqi, 5.5rem)' }}
+              >
+                {flagFor(countryIso2)}
+              </span>
+            )}
+            {showPlaceholderLabel && (
+              <span
+                className="text-center font-display leading-none text-white/75"
+                style={{ fontSize: 'clamp(1.15rem, 11cqi, 3rem)' }}
+              >
+                {alt}
+              </span>
+            )}
+          </div>
         </div>
       )}
       {children}

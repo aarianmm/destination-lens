@@ -58,6 +58,13 @@ export type QuoteCardProps = {
 export type ImageCardProps = {
   /** Undefined is expected and normal: many destinations have no lead image. */
   image?: { url: string; attribution: string; sourceUrl: string };
+  /** Drawn as a flag banner on the placeholder when there is no photograph. */
+  countryIso2?: string;
+  /**
+   * The placeholder shows the place name in large type. Set false where the
+   * caller already prints the name over the image.
+   */
+  showPlaceholderLabel?: boolean;
   /** Used to derive a deterministic gradient when there is no image. */
   seed: string;
   alt: string;

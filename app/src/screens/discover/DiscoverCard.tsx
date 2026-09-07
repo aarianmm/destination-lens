@@ -35,7 +35,7 @@ export function FeaturedCard({ entry, index, onOpen, reduceMotion }: CardProps) 
       onClick={onOpen}
       className="group relative block w-full overflow-hidden rounded-[var(--radius-panel)] border border-[var(--color-hairline)] text-left shadow-[var(--shadow-panel)] transition-transform duration-300 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
     >
-      <ImageCard image={entry.image} seed={entry.slug} alt={entry.name} className="aspect-[3/4] w-full">
+      <ImageCard image={entry.image} seed={entry.slug} alt={entry.name} countryIso2={entry.countryIso2} showPlaceholderLabel={false} className="aspect-[3/4] w-full">
         <div
           aria-hidden
           className="absolute inset-0 bg-gradient-to-t from-[var(--color-void)] via-[var(--color-void)]/15 to-transparent transition-opacity duration-300 group-hover:from-[var(--color-void)]/95"
@@ -73,7 +73,7 @@ export function IndexCard({ entry, index, onOpen, reduceMotion }: CardProps) {
       onClick={onOpen}
       className="group flex flex-col overflow-hidden rounded-[var(--radius-panel)] border border-[var(--color-hairline)] bg-[var(--color-surface)]/50 text-left shadow-[var(--shadow-panel)] transition-colors duration-300 hover:border-[var(--color-ink-faint)]"
     >
-      <ImageCard image={entry.image} seed={entry.slug} alt={entry.name} className="aspect-[4/3] w-full">
+      <ImageCard image={entry.image} seed={entry.slug} alt={entry.name} countryIso2={entry.countryIso2} showPlaceholderLabel={false} className="aspect-[4/3] w-full">
         <div className="absolute right-2 top-2">
           <StatusBadge status={entry.status} size="sm" />
         </div>

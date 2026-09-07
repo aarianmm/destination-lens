@@ -153,6 +153,7 @@ export function DestinationScreen() {
                   image={destination.data.image}
                   seed={destination.data.slug}
                   alt={destination.data.name}
+                  countryIso2={destination.data.countryIso2}
                   className="h-52 w-full"
                 >
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3">
