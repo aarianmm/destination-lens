@@ -39,8 +39,15 @@ import { classify, scoreCountry, type ClassifiedTrend } from './trends/index.js'
 const here = dirname(fileURLToPath(import.meta.url));
 const FLOWS_PATH = join(here, 'flights', 'flows.generated.json');
 
-/** Tried once if the primary model request fails outright (PLAN.md §4.5). */
-const GEMINI_FALLBACK_MODEL = 'gemini-2.5-flash-lite';
+/**
+ * Tried once if the primary model request fails outright (PLAN.md §4.5).
+ * PLAN.md's original suggestion, `gemini-2.5-flash-lite`, is dead — verified
+ * live on the first real run: every call to it 404s with "This model
+ * models/gemini-2.5-flash-lite is no longer available to new users. Please
+ * update your code to use models/gemini-3.5-flash-lite." Using Google's own
+ * replacement recommendation from that error.
+ */
+const GEMINI_FALLBACK_MODEL = 'gemini-3.5-flash-lite';
 
 /** Prefix of the error `enrich/index.ts`'s `callJsonWithRetry` throws when the
  * shared call budget is exhausted — matched here to tell "abort the whole run"
