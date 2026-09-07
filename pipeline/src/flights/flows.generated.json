@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T23:18:20.288Z",
+  "generatedAt": "2026-09-06T23:58:09.399Z",
   "source": "OpenFlights route network (jpatokal/openflights, data as of ~2014) — counts of scheduled routes between airports, aggregated to country level. This reflects route network breadth, NOT passenger volume or real-time traffic.",
   "countries": [
     {
@@ -9,10 +9,10 @@
       "lng": 55.132440533733146
     },
     {
-      "iso2": "AL",
-      "name": "Albania",
-      "lat": 41.4146995544,
-      "lng": 19.7206001282
+      "iso2": "AR",
+      "name": "Argentina",
+      "lat": -35.815101459927796,
+      "lng": -61.789004150131696
     },
     {
       "iso2": "AT",
@@ -33,10 +33,22 @@
       "lng": 4.493945994494814
     },
     {
+      "iso2": "BI",
+      "name": "Burundi",
+      "lat": -3.3240199089050293,
+      "lng": 29.318500518798828
+    },
+    {
       "iso2": "BN",
       "name": "Brunei",
       "lat": 4.944200038909912,
       "lng": 114.9280014038086
+    },
+    {
+      "iso2": "BO",
+      "name": "Bolivia",
+      "lat": -17.384700468369225,
+      "lng": -65.50661866826208
     },
     {
       "iso2": "BR",
@@ -51,6 +63,12 @@
       "lng": -76.98709176276138
     },
     {
+      "iso2": "BW",
+      "name": "Botswana",
+      "lat": -21.56617320641535,
+      "lng": 25.13091383625377
+    },
+    {
       "iso2": "BZ",
       "name": "Belize",
       "lat": 22.011170445706544,
@@ -61,6 +79,12 @@
       "name": "Canada",
       "lat": 50.417623218477516,
       "lng": -90.72634830334678
+    },
+    {
+      "iso2": "CD",
+      "name": "DR Congo",
+      "lat": -4.4803338656957585,
+      "lng": 21.425040366326552
     },
     {
       "iso2": "CH",
@@ -99,12 +123,6 @@
       "lng": -80.45585456888843
     },
     {
-      "iso2": "CV",
-      "name": "Cape Verde",
-      "lat": 16.013998330141035,
-      "lng": -23.38535905417356
-    },
-    {
       "iso2": "CY",
       "name": "Cyprus",
       "lat": 34.856865848251694,
@@ -117,12 +135,6 @@
       "lng": 9.658752507267852
     },
     {
-      "iso2": "DK",
-      "name": "Denmark",
-      "lat": 55.749718336565635,
-      "lng": 11.843605001125448
-    },
-    {
       "iso2": "DO",
       "name": "Dominican Republic",
       "lat": 18.70974365232836,
@@ -133,6 +145,12 @@
       "name": "Algeria",
       "lat": 35.011316916849616,
       "lng": 3.3159616873737066
+    },
+    {
+      "iso2": "EC",
+      "name": "Ecuador",
+      "lat": -1.126973542155918,
+      "lng": -79.68177947228172
     },
     {
       "iso2": "EG",
@@ -151,6 +169,12 @@
       "name": "Spain",
       "lat": 37.247473817781575,
       "lng": -4.113633538866683
+    },
+    {
+      "iso2": "ET",
+      "name": "Ethiopia",
+      "lat": 9.264584199087134,
+      "lng": 38.8492317091882
     },
     {
       "iso2": "FR",
@@ -231,6 +255,12 @@
       "lng": 136.7915495634687
     },
     {
+      "iso2": "KE",
+      "name": "Kenya",
+      "lat": -1.3513493620404968,
+      "lng": 37.275451943498865
+    },
+    {
       "iso2": "KG",
       "name": "Kyrgyzstan",
       "lat": 42.08037948612,
@@ -241,6 +271,12 @@
       "name": "Cambodia",
       "lat": 12.581727147125067,
       "lng": 104.2473013665777
+    },
+    {
+      "iso2": "KM",
+      "name": "Comoros",
+      "lat": -11.5337,
+      "lng": 43.2719
     },
     {
       "iso2": "KR",
@@ -267,12 +303,6 @@
       "lng": 79.98958112219759
     },
     {
-      "iso2": "LU",
-      "name": "Luxembourg",
-      "lat": 49.6233333,
-      "lng": 6.2044444
-    },
-    {
       "iso2": "LY",
       "name": "Libya",
       "lat": 32.01882037581053,
@@ -297,6 +327,18 @@
       "lng": 113.592003
     },
     {
+      "iso2": "MU",
+      "name": "Mauritius",
+      "lat": -20.41418907142857,
+      "lng": 57.81877716666666
+    },
+    {
+      "iso2": "MW",
+      "name": "Malawi",
+      "lat": -14.329314368106026,
+      "lng": 34.12185559955358
+    },
+    {
       "iso2": "MX",
       "name": "Mexico",
       "lat": 21.96836722235692,
@@ -307,6 +349,18 @@
       "name": "Malaysia",
       "lat": 3.65982706235794,
       "lng": 105.37180071698961
+    },
+    {
+      "iso2": "MZ",
+      "name": "Mozambique",
+      "lat": -19.521558653656506,
+      "lng": 35.628602229612255
+    },
+    {
+      "iso2": "NA",
+      "name": "Namibia",
+      "lat": -22.132078042728395,
+      "lng": 17.579956347101227
     },
     {
       "iso2": "NL",
@@ -369,6 +423,12 @@
       "lng": -11.50367232194352
     },
     {
+      "iso2": "PY",
+      "name": "Paraguay",
+      "lat": -25.279002721823954,
+      "lng": -57.03321528362483
+    },
+    {
       "iso2": "RO",
       "name": "Romania",
       "lat": 45.270997845728026,
@@ -379,6 +439,12 @@
       "name": "Russia",
       "lat": 55.5138906999766,
       "lng": 57.62243552937628
+    },
+    {
+      "iso2": "RW",
+      "name": "Rwanda",
+      "lat": -1.980970249517441,
+      "lng": 30.108709996414188
     },
     {
       "iso2": "SA",
@@ -397,6 +463,12 @@
       "name": "Singapore",
       "lat": 1.35019,
       "lng": 103.994003
+    },
+    {
+      "iso2": "SO",
+      "name": "Somalia",
+      "lat": 7.020087991441585,
+      "lng": 45.651343754363
     },
     {
       "iso2": "SV",
@@ -435,6 +507,12 @@
       "lng": 121.02972167241472
     },
     {
+      "iso2": "TZ",
+      "name": "Tanzania",
+      "lat": -5.447488200118161,
+      "lng": 37.9435463560444
+    },
+    {
       "iso2": "UA",
       "name": "Ukraine",
       "lat": 49.376930012835565,
@@ -447,16 +525,46 @@
       "lng": -95.408486834816
     },
     {
+      "iso2": "UY",
+      "name": "Uruguay",
+      "lat": -34.84032854511907,
+      "lng": -55.922742228816105
+    },
+    {
       "iso2": "UZ",
       "name": "Uzbekistan",
       "lat": 40.88764143157414,
       "lng": 68.25872865179853
     },
     {
+      "iso2": "VE",
+      "name": "Venezuela",
+      "lat": 10.173472925906664,
+      "lng": -67.04717922737332
+    },
+    {
       "iso2": "VN",
       "name": "Vietnam",
       "lat": 15.212917118855882,
       "lng": 106.68605788172687
+    },
+    {
+      "iso2": "ZA",
+      "name": "South Africa",
+      "lat": -28.290007292098874,
+      "lng": 26.741846007821426
+    },
+    {
+      "iso2": "ZM",
+      "name": "Zambia",
+      "lat": -13.277153277477524,
+      "lng": 22.964483749333635
+    },
+    {
+      "iso2": "ZW",
+      "name": "Zimbabwe",
+      "lat": -18.17208176135099,
+      "lng": 29.91112427628684
     }
   ],
   "flows": [
@@ -1770,314 +1878,6 @@
         "weight": 0.016129032258064516
       }
     ],
-    "ES": [
-      {
-        "fromIso2": "GB",
-        "fromName": "United Kingdom",
-        "weight": 1
-      },
-      {
-        "fromIso2": "DE",
-        "fromName": "Germany",
-        "weight": 0.6833976833976834
-      },
-      {
-        "fromIso2": "FR",
-        "fromName": "France",
-        "weight": 0.2876447876447876
-      },
-      {
-        "fromIso2": "IT",
-        "fromName": "Italy",
-        "weight": 0.23166023166023167
-      },
-      {
-        "fromIso2": "NL",
-        "fromName": "Netherlands",
-        "weight": 0.13127413127413126
-      },
-      {
-        "fromIso2": "US",
-        "fromName": "United States",
-        "weight": 0.11003861003861004
-      },
-      {
-        "fromIso2": "BE",
-        "fromName": "Belgium",
-        "weight": 0.11003861003861004
-      },
-      {
-        "fromIso2": "IE",
-        "fromName": "Ireland",
-        "weight": 0.10231660231660232
-      },
-      {
-        "fromIso2": "NO",
-        "fromName": "Norway",
-        "weight": 0.10038610038610038
-      },
-      {
-        "fromIso2": "PT",
-        "fromName": "Portugal",
-        "weight": 0.08301158301158301
-      },
-      {
-        "fromIso2": "CH",
-        "fromName": "Switzerland",
-        "weight": 0.08108108108108109
-      },
-      {
-        "fromIso2": "AT",
-        "fromName": "Austria",
-        "weight": 0.07722007722007722
-      },
-      {
-        "fromIso2": "MA",
-        "fromName": "Morocco",
-        "weight": 0.07528957528957529
-      },
-      {
-        "fromIso2": "SE",
-        "fromName": "Sweden",
-        "weight": 0.06563706563706563
-      },
-      {
-        "fromIso2": "DK",
-        "fromName": "Denmark",
-        "weight": 0.059845559845559844
-      }
-    ],
-    "PT": [
-      {
-        "fromIso2": "GB",
-        "fromName": "United Kingdom",
-        "weight": 1
-      },
-      {
-        "fromIso2": "DE",
-        "fromName": "Germany",
-        "weight": 0.7619047619047619
-      },
-      {
-        "fromIso2": "FR",
-        "fromName": "France",
-        "weight": 0.6309523809523809
-      },
-      {
-        "fromIso2": "ES",
-        "fromName": "Spain",
-        "weight": 0.5119047619047619
-      },
-      {
-        "fromIso2": "NL",
-        "fromName": "Netherlands",
-        "weight": 0.27380952380952384
-      },
-      {
-        "fromIso2": "CH",
-        "fromName": "Switzerland",
-        "weight": 0.25
-      },
-      {
-        "fromIso2": "IT",
-        "fromName": "Italy",
-        "weight": 0.23809523809523808
-      },
-      {
-        "fromIso2": "BE",
-        "fromName": "Belgium",
-        "weight": 0.21428571428571427
-      },
-      {
-        "fromIso2": "US",
-        "fromName": "United States",
-        "weight": 0.16666666666666666
-      },
-      {
-        "fromIso2": "IE",
-        "fromName": "Ireland",
-        "weight": 0.14285714285714285
-      },
-      {
-        "fromIso2": "BR",
-        "fromName": "Brazil",
-        "weight": 0.14285714285714285
-      },
-      {
-        "fromIso2": "CA",
-        "fromName": "Canada",
-        "weight": 0.10714285714285714
-      },
-      {
-        "fromIso2": "CV",
-        "fromName": "Cape Verde",
-        "weight": 0.09523809523809523
-      },
-      {
-        "fromIso2": "LU",
-        "fromName": "Luxembourg",
-        "weight": 0.08333333333333333
-      },
-      {
-        "fromIso2": "AT",
-        "fromName": "Austria",
-        "weight": 0.07142857142857142
-      }
-    ],
-    "GR": [
-      {
-        "fromIso2": "DE",
-        "fromName": "Germany",
-        "weight": 1
-      },
-      {
-        "fromIso2": "GB",
-        "fromName": "United Kingdom",
-        "weight": 0.5965909090909091
-      },
-      {
-        "fromIso2": "AT",
-        "fromName": "Austria",
-        "weight": 0.20454545454545456
-      },
-      {
-        "fromIso2": "FR",
-        "fromName": "France",
-        "weight": 0.18181818181818182
-      },
-      {
-        "fromIso2": "RU",
-        "fromName": "Russia",
-        "weight": 0.1590909090909091
-      },
-      {
-        "fromIso2": "IT",
-        "fromName": "Italy",
-        "weight": 0.14204545454545456
-      },
-      {
-        "fromIso2": "NL",
-        "fromName": "Netherlands",
-        "weight": 0.11931818181818182
-      },
-      {
-        "fromIso2": "BE",
-        "fromName": "Belgium",
-        "weight": 0.11363636363636363
-      },
-      {
-        "fromIso2": "CY",
-        "fromName": "Cyprus",
-        "weight": 0.06818181818181818
-      },
-      {
-        "fromIso2": "NO",
-        "fromName": "Norway",
-        "weight": 0.0625
-      },
-      {
-        "fromIso2": "SE",
-        "fromName": "Sweden",
-        "weight": 0.056818181818181816
-      },
-      {
-        "fromIso2": "CH",
-        "fromName": "Switzerland",
-        "weight": 0.05113636363636364
-      },
-      {
-        "fromIso2": "ES",
-        "fromName": "Spain",
-        "weight": 0.03977272727272727
-      },
-      {
-        "fromIso2": "DK",
-        "fromName": "Denmark",
-        "weight": 0.03977272727272727
-      },
-      {
-        "fromIso2": "PL",
-        "fromName": "Poland",
-        "weight": 0.03977272727272727
-      }
-    ],
-    "IT": [
-      {
-        "fromIso2": "DE",
-        "fromName": "Germany",
-        "weight": 1
-      },
-      {
-        "fromIso2": "FR",
-        "fromName": "France",
-        "weight": 0.6742081447963801
-      },
-      {
-        "fromIso2": "GB",
-        "fromName": "United Kingdom",
-        "weight": 0.6380090497737556
-      },
-      {
-        "fromIso2": "ES",
-        "fromName": "Spain",
-        "weight": 0.5429864253393665
-      },
-      {
-        "fromIso2": "US",
-        "fromName": "United States",
-        "weight": 0.2398190045248869
-      },
-      {
-        "fromIso2": "BE",
-        "fromName": "Belgium",
-        "weight": 0.19909502262443438
-      },
-      {
-        "fromIso2": "NL",
-        "fromName": "Netherlands",
-        "weight": 0.19004524886877827
-      },
-      {
-        "fromIso2": "CH",
-        "fromName": "Switzerland",
-        "weight": 0.17194570135746606
-      },
-      {
-        "fromIso2": "RU",
-        "fromName": "Russia",
-        "weight": 0.15384615384615385
-      },
-      {
-        "fromIso2": "RO",
-        "fromName": "Romania",
-        "weight": 0.15384615384615385
-      },
-      {
-        "fromIso2": "PL",
-        "fromName": "Poland",
-        "weight": 0.13122171945701358
-      },
-      {
-        "fromIso2": "AT",
-        "fromName": "Austria",
-        "weight": 0.12669683257918551
-      },
-      {
-        "fromIso2": "AL",
-        "fromName": "Albania",
-        "weight": 0.12217194570135746
-      },
-      {
-        "fromIso2": "GR",
-        "fromName": "Greece",
-        "weight": 0.1085972850678733
-      },
-      {
-        "fromIso2": "DK",
-        "fromName": "Denmark",
-        "weight": 0.09502262443438914
-      }
-    ],
     "MX": [
       {
         "fromIso2": "US",
@@ -2230,6 +2030,314 @@
         "fromIso2": "DZ",
         "fromName": "Algeria",
         "weight": 0.0379746835443038
+      }
+    ],
+    "BR": [
+      {
+        "fromIso2": "US",
+        "fromName": "United States",
+        "weight": 1
+      },
+      {
+        "fromIso2": "AR",
+        "fromName": "Argentina",
+        "weight": 0.49122807017543857
+      },
+      {
+        "fromIso2": "PT",
+        "fromName": "Portugal",
+        "weight": 0.21052631578947367
+      },
+      {
+        "fromIso2": "PE",
+        "fromName": "Peru",
+        "weight": 0.17543859649122806
+      },
+      {
+        "fromIso2": "UY",
+        "fromName": "Uruguay",
+        "weight": 0.15789473684210525
+      },
+      {
+        "fromIso2": "ES",
+        "fromName": "Spain",
+        "weight": 0.14035087719298245
+      },
+      {
+        "fromIso2": "DE",
+        "fromName": "Germany",
+        "weight": 0.14035087719298245
+      },
+      {
+        "fromIso2": "PA",
+        "fromName": "Panama",
+        "weight": 0.12280701754385964
+      },
+      {
+        "fromIso2": "CL",
+        "fromName": "Chile",
+        "weight": 0.10526315789473684
+      },
+      {
+        "fromIso2": "PY",
+        "fromName": "Paraguay",
+        "weight": 0.08771929824561403
+      },
+      {
+        "fromIso2": "FR",
+        "fromName": "France",
+        "weight": 0.07017543859649122
+      },
+      {
+        "fromIso2": "CO",
+        "fromName": "Colombia",
+        "weight": 0.07017543859649122
+      },
+      {
+        "fromIso2": "IT",
+        "fromName": "Italy",
+        "weight": 0.07017543859649122
+      },
+      {
+        "fromIso2": "DO",
+        "fromName": "Dominican Republic",
+        "weight": 0.07017543859649122
+      },
+      {
+        "fromIso2": "GB",
+        "fromName": "United Kingdom",
+        "weight": 0.05263157894736842
+      }
+    ],
+    "PE": [
+      {
+        "fromIso2": "US",
+        "fromName": "United States",
+        "weight": 1
+      },
+      {
+        "fromIso2": "BR",
+        "fromName": "Brazil",
+        "weight": 0.47619047619047616
+      },
+      {
+        "fromIso2": "BO",
+        "fromName": "Bolivia",
+        "weight": 0.38095238095238093
+      },
+      {
+        "fromIso2": "CL",
+        "fromName": "Chile",
+        "weight": 0.3333333333333333
+      },
+      {
+        "fromIso2": "EC",
+        "fromName": "Ecuador",
+        "weight": 0.23809523809523808
+      },
+      {
+        "fromIso2": "MX",
+        "fromName": "Mexico",
+        "weight": 0.19047619047619047
+      },
+      {
+        "fromIso2": "AR",
+        "fromName": "Argentina",
+        "weight": 0.19047619047619047
+      },
+      {
+        "fromIso2": "CO",
+        "fromName": "Colombia",
+        "weight": 0.19047619047619047
+      },
+      {
+        "fromIso2": "ES",
+        "fromName": "Spain",
+        "weight": 0.14285714285714285
+      },
+      {
+        "fromIso2": "FR",
+        "fromName": "France",
+        "weight": 0.09523809523809523
+      },
+      {
+        "fromIso2": "VE",
+        "fromName": "Venezuela",
+        "weight": 0.09523809523809523
+      },
+      {
+        "fromIso2": "DO",
+        "fromName": "Dominican Republic",
+        "weight": 0.09523809523809523
+      },
+      {
+        "fromIso2": "NL",
+        "fromName": "Netherlands",
+        "weight": 0.09523809523809523
+      },
+      {
+        "fromIso2": "PA",
+        "fromName": "Panama",
+        "weight": 0.09523809523809523
+      },
+      {
+        "fromIso2": "CU",
+        "fromName": "Cuba",
+        "weight": 0.09523809523809523
+      }
+    ],
+    "ZA": [
+      {
+        "fromIso2": "MZ",
+        "fromName": "Mozambique",
+        "weight": 1
+      },
+      {
+        "fromIso2": "AE",
+        "fromName": "United Arab Emirates",
+        "weight": 0.6666666666666666
+      },
+      {
+        "fromIso2": "ZW",
+        "fromName": "Zimbabwe",
+        "weight": 0.6
+      },
+      {
+        "fromIso2": "NA",
+        "fromName": "Namibia",
+        "weight": 0.6
+      },
+      {
+        "fromIso2": "BW",
+        "fromName": "Botswana",
+        "weight": 0.6
+      },
+      {
+        "fromIso2": "GB",
+        "fromName": "United Kingdom",
+        "weight": 0.5333333333333333
+      },
+      {
+        "fromIso2": "ZM",
+        "fromName": "Zambia",
+        "weight": 0.4666666666666667
+      },
+      {
+        "fromIso2": "DE",
+        "fromName": "Germany",
+        "weight": 0.4
+      },
+      {
+        "fromIso2": "US",
+        "fromName": "United States",
+        "weight": 0.3333333333333333
+      },
+      {
+        "fromIso2": "MU",
+        "fromName": "Mauritius",
+        "weight": 0.3333333333333333
+      },
+      {
+        "fromIso2": "SG",
+        "fromName": "Singapore",
+        "weight": 0.26666666666666666
+      },
+      {
+        "fromIso2": "AU",
+        "fromName": "Australia",
+        "weight": 0.26666666666666666
+      },
+      {
+        "fromIso2": "IN",
+        "fromName": "India",
+        "weight": 0.2
+      },
+      {
+        "fromIso2": "NL",
+        "fromName": "Netherlands",
+        "weight": 0.2
+      },
+      {
+        "fromIso2": "CD",
+        "fromName": "DR Congo",
+        "weight": 0.2
+      }
+    ],
+    "KE": [
+      {
+        "fromIso2": "TZ",
+        "fromName": "Tanzania",
+        "weight": 1
+      },
+      {
+        "fromIso2": "AE",
+        "fromName": "United Arab Emirates",
+        "weight": 0.5625
+      },
+      {
+        "fromIso2": "RW",
+        "fromName": "Rwanda",
+        "weight": 0.5
+      },
+      {
+        "fromIso2": "SO",
+        "fromName": "Somalia",
+        "weight": 0.375
+      },
+      {
+        "fromIso2": "BI",
+        "fromName": "Burundi",
+        "weight": 0.375
+      },
+      {
+        "fromIso2": "ZM",
+        "fromName": "Zambia",
+        "weight": 0.375
+      },
+      {
+        "fromIso2": "ET",
+        "fromName": "Ethiopia",
+        "weight": 0.375
+      },
+      {
+        "fromIso2": "KM",
+        "fromName": "Comoros",
+        "weight": 0.25
+      },
+      {
+        "fromIso2": "MW",
+        "fromName": "Malawi",
+        "weight": 0.25
+      },
+      {
+        "fromIso2": "CD",
+        "fromName": "DR Congo",
+        "weight": 0.25
+      },
+      {
+        "fromIso2": "MZ",
+        "fromName": "Mozambique",
+        "weight": 0.25
+      },
+      {
+        "fromIso2": "IN",
+        "fromName": "India",
+        "weight": 0.1875
+      },
+      {
+        "fromIso2": "GB",
+        "fromName": "United Kingdom",
+        "weight": 0.1875
+      },
+      {
+        "fromIso2": "ZW",
+        "fromName": "Zimbabwe",
+        "weight": 0.1875
+      },
+      {
+        "fromIso2": "NL",
+        "fromName": "Netherlands",
+        "weight": 0.1875
       }
     ]
   }

@@ -15,7 +15,7 @@ export type PipelineConfig = {
   bskyAppPassword: string | undefined;
 };
 
-export const ALL_COUNTRIES = ['TH', 'JP', 'VN', 'ID', 'ES', 'PT', 'GR', 'IT', 'MX', 'MA'] as const;
+export const ALL_COUNTRIES = ['TH', 'JP', 'VN', 'ID', 'MX', 'MA', 'BR', 'PE', 'ZA', 'KE'] as const;
 
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): PipelineConfig {
   const countries = (env.COUNTRIES ?? '')

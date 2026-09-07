@@ -1,0 +1,147 @@
+{
+  "iso2": "ZA",
+  "name": "South Africa",
+  "aliases": ["Republic of South Africa", "RSA"],
+  "centroid": {
+    "lat": -30.5595,
+    "lng": 22.9375
+  },
+  "bounds": {
+    "north": -22.1265,
+    "south": -34.8191,
+    "east": 32.8909,
+    "west": 16.4699
+  },
+  "destinations": [
+    {
+      "slug": "cape-town",
+      "name": "Cape Town",
+      "aliases": ["Kaapstad"],
+      "lat": -33.9253,
+      "lng": 18.4239,
+      "wikipediaTitle": "Cape Town",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "johannesburg",
+      "name": "Johannesburg",
+      "aliases": ["Joburg", "Jozi", "Egoli"],
+      "lat": -26.2044,
+      "lng": 28.0456,
+      "wikipediaTitle": "Johannesburg",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "durban",
+      "name": "Durban",
+      "aliases": ["eThekwini"],
+      "lat": -29.8833,
+      "lng": 31.05,
+      "wikipediaTitle": "Durban",
+      "requireContext": true,
+      "negativeKeywords": ["durban poison"]
+    },
+    {
+      "slug": "kruger",
+      "name": "Kruger National Park",
+      "aliases": ["Kruger Park", "Kruger"],
+      "lat": -24.0,
+      "lng": 31.5,
+      "wikipediaTitle": "Kruger National Park",
+      "requireContext": true,
+      "negativeKeywords": ["freddy krueger", "elm street"]
+    },
+    {
+      "slug": "stellenbosch",
+      "name": "Stellenbosch",
+      "aliases": [],
+      "lat": -33.9367,
+      "lng": 18.8614,
+      "wikipediaTitle": "Stellenbosch",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "garden-route",
+      "name": "Garden Route",
+      "aliases": [],
+      "lat": -34.0363,
+      "lng": 23.0471,
+      "wikipediaTitle": "Garden Route",
+      "requireContext": true,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "hermanus",
+      "name": "Hermanus",
+      "aliases": [],
+      "lat": -34.4167,
+      "lng": 19.25,
+      "wikipediaTitle": "Hermanus",
+      "requireContext": true,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "drakensberg",
+      "name": "Drakensberg",
+      "aliases": ["Drakensberg Mountains", "uKhahlamba"],
+      "lat": -29.3833,
+      "lng": 29.45,
+      "wikipediaTitle": "Drakensberg",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "franschhoek",
+      "name": "Franschhoek",
+      "aliases": [],
+      "lat": -33.9167,
+      "lng": 19.1333,
+      "wikipediaTitle": "Franschhoek",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "robben-island",
+      "name": "Robben Island",
+      "aliases": [],
+      "lat": -33.805,
+      "lng": 18.37,
+      "wikipediaTitle": "Robben Island",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "addo-elephant-park",
+      "name": "Addo Elephant National Park",
+      "aliases": ["Addo Elephant Park", "Addo"],
+      "lat": -33.4461,
+      "lng": 25.7458,
+      "wikipediaTitle": "Addo Elephant National Park",
+      "requireContext": true,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "coffee-bay",
+      "name": "Coffee Bay",
+      "aliases": [],
+      "lat": -31.9861,
+      "lng": 29.1472,
+      "wikipediaTitle": "Coffee Bay",
+      "requireContext": true,
+      "negativeKeywords": ["coffee bay menu", "coffee bay hours"]
+    },
+    {
+      "slug": "cederberg",
+      "name": "Cederberg",
+      "aliases": [],
+      "lat": -32.3333,
+      "lng": 19.0833,
+      "wikipediaTitle": "Cederberg",
+      "requireContext": false,
+      "negativeKeywords": []
+    }
+  ]
+}

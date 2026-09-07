@@ -1,0 +1,137 @@
+{
+  "iso2": "KE",
+  "name": "Kenya",
+  "aliases": ["Republic of Kenya"],
+  "centroid": {
+    "lat": -0.0236,
+    "lng": 37.9062
+  },
+  "bounds": {
+    "north": 5.019,
+    "south": -4.678,
+    "east": 41.899,
+    "west": 33.909
+  },
+  "destinations": [
+    {
+      "slug": "nairobi",
+      "name": "Nairobi",
+      "aliases": [],
+      "lat": -1.2864,
+      "lng": 36.8172,
+      "wikipediaTitle": "Nairobi",
+      "requireContext": true,
+      "negativeKeywords": ["money heist", "la casa de papel", "netflix heist"]
+    },
+    {
+      "slug": "mombasa",
+      "name": "Mombasa",
+      "aliases": [],
+      "lat": -4.05,
+      "lng": 39.6667,
+      "wikipediaTitle": "Mombasa",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "diani-beach",
+      "name": "Diani Beach",
+      "aliases": ["Diani"],
+      "lat": -4.3222,
+      "lng": 39.575,
+      "wikipediaTitle": "Diani Beach",
+      "requireContext": true,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "maasai-mara",
+      "name": "Maasai Mara",
+      "aliases": ["Masai Mara"],
+      "lat": -1.49,
+      "lng": 35.14,
+      "wikipediaTitle": "Maasai Mara",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "lamu",
+      "name": "Lamu",
+      "aliases": ["Lamu Island", "Lamu Town"],
+      "lat": -2.2694,
+      "lng": 40.9022,
+      "wikipediaTitle": "Lamu",
+      "requireContext": true,
+      "negativeKeywords": ["$lamu", "lamu coin", "lamu token"]
+    },
+    {
+      "slug": "watamu",
+      "name": "Watamu",
+      "aliases": [],
+      "lat": -3.35,
+      "lng": 40.0167,
+      "wikipediaTitle": "Watamu",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "lake-nakuru",
+      "name": "Lake Nakuru",
+      "aliases": ["Lake Nakuru National Park", "Nakuru"],
+      "lat": -0.3667,
+      "lng": 36.0833,
+      "wikipediaTitle": "Lake Nakuru",
+      "requireContext": true,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "amboseli",
+      "name": "Amboseli National Park",
+      "aliases": ["Amboseli"],
+      "lat": -2.6414,
+      "lng": 37.2481,
+      "wikipediaTitle": "Amboseli National Park",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "kilifi",
+      "name": "Kilifi",
+      "aliases": [],
+      "lat": -3.6333,
+      "lng": 39.85,
+      "wikipediaTitle": "Kilifi",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "nanyuki",
+      "name": "Nanyuki",
+      "aliases": [],
+      "lat": 0.0167,
+      "lng": 37.0667,
+      "wikipediaTitle": "Nanyuki",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "hells-gate",
+      "name": "Hell's Gate National Park",
+      "aliases": ["Hell's Gate"],
+      "lat": -0.9158,
+      "lng": 36.3133,
+      "wikipediaTitle": "Hell's Gate National Park",
+      "requireContext": true,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "malindi",
+      "name": "Malindi",
+      "aliases": [],
+      "lat": -3.2236,
+      "lng": 40.13,
+      "wikipediaTitle": "Malindi",
+      "requireContext": false,
+      "negativeKeywords": []
+    }
+  ]
+}
