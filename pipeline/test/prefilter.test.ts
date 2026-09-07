@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { vocabDestinationSchema, type VocabDestination } from '@dl/shared';
-import { prefilter } from '../src/bluesky/index.js';
+import { countQueryFor, normalizePostedAt, prefilter } from '../src/bluesky/index.js';
 
 function dest(
   overrides: Partial<VocabDestination> & { slug: string; name: string },
@@ -234,5 +234,42 @@ describe('travel context is required for every destination', () => {
         'Spain',
       ),
     ).toBe(true);
+  });
+});
+
+// Task 3 (Agent G, Wave 2): the weekly mention COUNT (hitsTotal) has no local
+// prefilter to run — it's a single number from the API, not a list of posts —
+// so the only lever is the query text itself. This just pins the query shape;
+// the actual filtering effect was verified live against the real API (see the
+// block comment in bluesky/index.ts and the PR description for the transcript:
+// `"Koh Lanta"` alone = 364 hitsTotal, mostly a French reality-TV show;
+// `"Koh Lanta" travel` = 12).
+describe('countQueryFor — travel-context AND for weekly counts', () => {
+  it('ANDs a travel-context term onto a single-word destination name', () => {
+    expect(countQueryFor('Bangkok')).toBe('Bangkok travel');
+  });
+
+  it('ANDs a travel-context term onto a quoted multi-word destination name', () => {
+    expect(countQueryFor('Koh Lanta')).toBe('"Koh Lanta" travel');
+  });
+});
+
+// A real production bug (found on the first live CI run): `rawPostSchema.postedAt`
+// is `z.string().datetime()`, which by default requires a `Z`-suffixed UTC string
+// and rejects a numeric offset — but Bluesky's client-supplied `createdAt` is not
+// guaranteed to be `Z`-normalised (Japanese-client posts especially carried
+// `+09:00`-style offsets), so every single post failed schema validation and every
+// JP destination silently collected zero mentions despite a green exit code.
+describe('normalizePostedAt', () => {
+  it('passes through an already-Z-normalised UTC datetime', () => {
+    expect(normalizePostedAt('2026-09-06T10:00:00.000Z')).toBe('2026-09-06T10:00:00.000Z');
+  });
+
+  it('normalises a numeric-offset datetime to Z-suffixed UTC', () => {
+    expect(normalizePostedAt('2026-09-06T19:00:00+09:00')).toBe('2026-09-06T10:00:00.000Z');
+  });
+
+  it('returns undefined for a genuinely unparseable value, rather than throwing', () => {
+    expect(normalizePostedAt('not a date')).toBeUndefined();
   });
 });
