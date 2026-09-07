@@ -12,6 +12,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import type { World } from '@dl/shared';
 import {
+  DEFAULT_WORLD_CAMERA,
   GlobeScene,
   type ArcDatum,
   type GlobeSceneHandle,
@@ -45,6 +46,10 @@ function altitudeForBounds(bounds: { north: number; south: number; east: number;
 
 /** Default framing when we only know a country's centroid, not its bounds. */
 const UNCOVERED_ALTITUDE = 0.9;
+
+/** Flying the camera back out before navigating sells "zoom out to the world"
+ * rather than a hard cut — the mirror image of Explore's zoom-in. */
+const WORLD_FLY_MS = 1100;
 
 export function CountryScreen() {
   const params = useParams<{ iso2: string }>();
@@ -162,7 +167,16 @@ export function CountryScreen() {
     );
   }, [country.status, country.data]);
 
-  const coveredIso2 = world.status === 'ready' ? world.data.countries.filter((c) => c.covered).map((c) => c.iso2) : undefined;
+  // Default to an empty list (not undefined) while world.json is loading, so
+  // the globe treats every country as non-interactive until coverage is known
+  // rather than briefly allowing clicks into countries that turn out uncovered.
+  const coveredIso2 =
+    world.status === 'ready' ? world.data.countries.filter((c) => c.covered).map((c) => c.iso2) : [];
+
+  const handleClose = () => {
+    globeRef.current?.flyTo(DEFAULT_WORLD_CAMERA, WORLD_FLY_MS);
+    window.setTimeout(() => navigate('/'), WORLD_FLY_MS * 0.7);
+  };
 
   return (
     <main className="relative h-full w-full">
@@ -180,8 +194,28 @@ export function CountryScreen() {
         onReady={() => setGlobeReady(true)}
       />
 
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 flex w-full max-w-md items-stretch p-4 pt-24 sm:p-6 sm:pt-24">
-        <Panel solid className="pointer-events-auto flex max-h-full w-full flex-col overflow-hidden p-5">
+      {/* Mobile portrait: a floating sheet anchored to the bottom third of the
+          screen, globe visible above it — "globe-behind-sheet" per PLAN.md §5.
+          `sm:` and up restores the full-height right-hand panel. */}
+      <div className="pointer-events-none absolute inset-x-4 bottom-4 top-24 z-10 flex items-end justify-center sm:inset-x-auto sm:inset-y-0 sm:right-0 sm:w-full sm:max-w-md sm:items-stretch sm:justify-end sm:p-6 sm:pt-24">
+        <Panel solid className="pointer-events-auto flex max-h-[65vh] w-full flex-col overflow-hidden p-5 sm:max-h-full">
+          {/* The only way back to the world view — flies the camera back out
+              (mirroring Explore's zoom-in) rather than cutting hard. */}
+          <button
+            onClick={handleClose}
+            aria-label="Back to world view"
+            className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full text-[var(--color-ink-faint)] transition-colors hover:bg-[var(--color-surface-2)] hover:text-[var(--color-ink)]"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
+              <path
+                d="M1 1L13 13M13 1L1 13"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+
           {world.status === 'error' && country.status !== 'ready' && !isMissing && (
             <ErrorState
               message="Could not load world travel-flow data."
