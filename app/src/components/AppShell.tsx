@@ -71,9 +71,24 @@ export function AppShell({ children }: { children: ReactNode }) {
 
 function DataStatus({ meta }: { meta: SnapshotState<Meta> }) {
   if (meta.status === 'ready') {
+    // Only some countries currently come from a real pipeline run; the rest are
+    // illustrative fixtures. `meta.sources` records which, and saying so here
+    // keeps the caveat where a viewer can actually see it rather than buried in
+    // a JSON file — presenting generated data as measured would undercut the
+    // whole premise of the product.
+    const provenance = meta.data.sources.social;
+    const isPartial = /fixture/i.test(provenance);
     return (
-      <span className="hidden text-xs text-[var(--color-ink-faint)] sm:inline">
+      <span
+        className="hidden text-xs text-[var(--color-ink-faint)] sm:inline"
+        title={provenance}
+      >
         updated {formatDate(meta.data.generatedAt)}
+        {isPartial && (
+          <span className="ml-2 rounded-full border border-[var(--color-hairline)] px-2 py-0.5">
+            partly sample data
+          </span>
+        )}
       </span>
     );
   }
