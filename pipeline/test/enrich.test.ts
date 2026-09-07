@@ -150,4 +150,52 @@ describe('enrichDestination', () => {
 
     expect(result.synthesis.quoteUris).toEqual(['good-uri']);
   });
+
+  it('deterministic denylist overrides a model that confidently calls a promotional post suitable', async () => {
+    const mentions = makeMentions([
+      makePost({ uri: 'good-uri', text: 'Quiet beaches, loved it.' }),
+      makePost({ uri: 'promo-uri', text: 'Use code TRAVEL20 for 20% off, DM me for the discount code!' }),
+    ]);
+    // The model gets both posts wrong: relevant + NOT unsuitable for the promo post.
+    const caller = queueCaller([
+      JSON.stringify({
+        results: [
+          { i: 0, relevant: true, sentiment: 'positive', themes: ['beaches'], unsuitable: false },
+          { i: 1, relevant: true, sentiment: 'positive', themes: ['deals'], unsuitable: false },
+        ],
+      }),
+      validSynthesis(['good-uri', 'promo-uri']),
+    ]);
+    const budget: LlmBudget = { used: 0, max: 10 };
+
+    const result = await enrichDestination({ mentions, trend: makeTrend(), llmCaller: caller, ...baseOptions }, budget);
+
+    // The denylist pass never consults the model's `unsuitable` answer, so the
+    // promo post is dropped from quotes even though the model vouched for it.
+    expect(result.synthesis.quoteUris).toEqual(['good-uri']);
+  });
+
+  it('deterministic denylist overrides a model that confidently calls a personal-misfortune post suitable', async () => {
+    const mentions = makeMentions([
+      makePost({ uri: 'good-uri', text: 'Quiet beaches, loved it.' }),
+      makePost({
+        uri: 'misfortune-uri',
+        text: 'A tourist was killed here last week, so sad, RIP.',
+      }),
+    ]);
+    const caller = queueCaller([
+      JSON.stringify({
+        results: [
+          { i: 0, relevant: true, sentiment: 'positive', themes: ['beaches'], unsuitable: false },
+          { i: 1, relevant: true, sentiment: 'negative', themes: ['safety'], unsuitable: false },
+        ],
+      }),
+      validSynthesis(['good-uri', 'misfortune-uri']),
+    ]);
+    const budget: LlmBudget = { used: 0, max: 10 };
+
+    const result = await enrichDestination({ mentions, trend: makeTrend(), llmCaller: caller, ...baseOptions }, budget);
+
+    expect(result.synthesis.quoteUris).toEqual(['good-uri']);
+  });
 });

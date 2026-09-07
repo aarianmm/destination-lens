@@ -7,8 +7,13 @@
  *  - a hard cap on calls per run: exceeding it aborts the run rather than overspending
  *  - the model never decides what is trending; it only classifies, clusters and phrases
  *  - poster origin comes from explicit profile location strings, never model guesswork
- *  - a post flagged unsuitable (toxic/spam/promotional) is never fed to synthesis, so it
- *    can never end up quoted
+ *  - a post flagged unsuitable (toxic/harassing/sexual/discriminatory/spam/promotional,
+ *    or about a person's misfortune rather than about the place) is never fed to
+ *    synthesis, so it can never end up quoted
+ *  - the model's `unsuitable` call is NOT trusted alone: `screening.ts` applies a
+ *    deterministic denylist pass after classification that can only force a post
+ *    to unsuitable, never the reverse, so a model that returns confident nonsense
+ *    (`unsuitable: false` on plain spam or slurs) cannot get it through anyway
  *  - any quoteUri the model returns that doesn't correspond to a real, eligible input
  *    post is dropped — a fabricated quote attributed to a real person is not an
  *    acceptable failure mode, so this is enforced unconditionally, not just logged
@@ -27,6 +32,7 @@ import {
 } from '@dl/shared';
 import { extractJsonText, type LlmCaller } from './gemini.js';
 import { inferOriginIso2 } from './origins.js';
+import { isDenylisted } from './screening.js';
 import { log } from '../lib/log.js';
 
 export type EnrichOptions = {
@@ -132,10 +138,14 @@ function buildClassificationPrompt(
   return `You are screening social media posts that mention the travel destination "${destinationName}" in ${countryName}.
 
 For each numbered post, decide:
-- "relevant": true only if the post is genuinely about ${destinationName} as a travel destination (not an unrelated place/word that happens to share the name, not spam).
+- "relevant": true only if the post is genuinely about ${destinationName} as a physical travel destination — not spam, and not an unrelated thing that happens to share the name (a TV show, film, book, game, fictional character, band, or person called "${destinationName}"). When the text gives no travel context, mark it false rather than guessing.
 - "sentiment": "positive", "negative", or "neutral" toward ${destinationName} as a place to visit.
 - "themes": up to 4 short lowercase keywords for what the post is actually about (e.g. "beaches", "prices", "crowds", "food").
-- "unsuitable": true if the post is toxic/abusive, spam, or promotional/advertising content. Such posts are never quoted publicly, regardless of "relevant".
+- "unsuitable": true if ANY of the following apply, regardless of "relevant" — such posts are never quoted or summarised publicly, no matter how on-topic:
+  - toxic, harassing, hateful, or discriminatory language aimed at a person or group
+  - sexual content, or spam/promotional/advertising content
+  - the post is really about a specific person (a celebrity sighting, an accident, a personal dispute) rather than about the place itself
+  - the post describes someone's personal misfortune, injury, death, or tragedy
 
 Respond with ONLY JSON, exactly this shape, one entry per numbered post:
 {"results":[{"i":0,"relevant":true,"sentiment":"positive","themes":["beaches"],"unsuitable":false}]}
@@ -154,11 +164,11 @@ function buildSynthesisPrompt(
     .slice(0, SYNTHESIS_POST_SAMPLE)
     .map((p) => `[${p.uri}] (${p.sentiment}) ${clip(p.text, 280)}`)
     .join('\n');
-  return `You are writing a short, factual travel-intelligence summary for "${destinationName}" in ${countryName}, based only on the public posts listed below.
+  return `You are writing a short, factual travel-intelligence summary for "${destinationName}" in ${countryName}, based ONLY on the ${posts.length} public posts listed below — do not use outside knowledge about ${destinationName}, and do not state anything the posts don't actually support. Every claim must be traceable to something in the posts.
 
 Context (already decided by trend statistics, not by you — do not contradict or re-justify it, just reflect it): online conversation about ${destinationName} is currently classified as "${trend.status}", growth ${Math.round(trend.growthPct)}% versus its baseline.
 
-Write factual, specific copy — not travel-brochure gushing ("a must-visit paradise" is bad; "several posts describe quieter beaches than nearby Phuket" is good).
+Write factual, specific copy — never travel-brochure gushing. Banned: "hidden gem", "must-visit", "must-see", "paradise", "breathtaking", "stunning", "bucket list", "off the beaten path", or any sentence that would be equally true of any beach/city/temple destination and isn't actually grounded in what these posts say (bad: "a hidden gem with stunning beaches"; good: "several posts describe quieter beaches than nearby Phuket"). If a sentence could be copy-pasted onto a different destination's page unchanged, rewrite it or cut it.
 
 Respond with ONLY JSON, exactly this shape:
 {
@@ -210,6 +220,23 @@ export async function enrichDestination(
       const post = batch[c.i];
       if (!post) continue; // model returned an out-of-range index — ignore, don't crash
       classified.push({ ...post, ...c });
+    }
+  }
+
+  // Deterministic backstop: force `unsuitable = true` for anything matching the
+  // denylist, regardless of what the model said. This can only tighten the
+  // model's call, never loosen it — a model that returns confident nonsense
+  // (`unsuitable: false` on plain spam, solicitation, or a misfortune post)
+  // cannot get it past this, because the check never consults the model's
+  // answer. Applied before `eligible` is computed so there is exactly one
+  // choke point downstream of it (see comment below).
+  for (const c of classified) {
+    if (!c.unsuitable && isDenylisted(c.text)) {
+      log.warn(
+        'enrich',
+        `${destinationName}: deterministic denylist overriding model's unsuitable=false for ${c.uri}`,
+      );
+      c.unsuitable = true;
     }
   }
 
