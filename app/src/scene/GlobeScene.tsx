@@ -30,7 +30,9 @@ import type {
 const MAX_ARCS = 150;
 const MAX_POINTS = 300;
 
-const DEFAULT_WORLD_CAMERA: CameraTarget = { lat: 12, lng: 15, altitude: 2.4 };
+/** Exported so screens can fly back out to "the world" with the same framing
+ * the globe opens on (the Country screen's close affordance uses this). */
+export const DEFAULT_WORLD_CAMERA: CameraTarget = { lat: 12, lng: 15, altitude: 2.4 };
 
 function usePrefersReducedMotion(): boolean {
   const [reduced, setReduced] = useState(
