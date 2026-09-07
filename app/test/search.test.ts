@@ -144,3 +144,20 @@ describe('search', () => {
     expect(hits.destinations).toHaveLength(1);
   });
 });
+
+describe('scoreName fuzzy anchoring', () => {
+  it('does not let a fuzzy match start in the middle of a name', () => {
+    // "thail" reaches the "thai" inside "Sukhothai" only if the match is
+    // allowed to skip a prefix for free. It must anchor at the start, or
+    // typing a country name dredges up unrelated destinations.
+    expect(scoreName('thail', 'Sukhothai')).toBeNull();
+  });
+
+  it('anchors per word, so a later word is still reachable', () => {
+    expect(scoreName('lantar', 'Koh Lanta')?.tier).toBe('fuzzy');
+  });
+
+  it('still lets the name run past the query', () => {
+    expect(scoreName('bengk', 'Bangkok')?.tier).toBe('fuzzy');
+  });
+});

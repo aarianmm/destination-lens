@@ -59,18 +59,23 @@ function maxEdits(queryLength: number): number {
  * Damerau-Levenshtein distance from `q` to the closest PREFIX of `n`, or null
  * once it is certain to exceed `max`.
  *
- * Prefix-tolerant because the query is usually half-typed: row 0 costs nothing
- * at any column, so `n` may run past `q` for free and "bengk" still reaches
- * "Bangkok". Transpositions cost one edit rather than two -- swapped letters
- * are the typo people actually make.
+ * Prefix-tolerant because the query is usually half-typed: the answer is the
+ * cheapest cell in the final row, so `n` may run past `q` for free and "bengk"
+ * still reaches "Bangkok". Only the tail is free -- row 0 charges for skipped
+ * name characters, so the match still has to start at the beginning, and
+ * "thail" cannot slide past "Sukho" to reach the "thai" inside Sukhothai.
+ *
+ * Transpositions cost one edit rather than two: swapped letters are the typo
+ * people actually make.
  */
 function prefixDistance(q: string, n: string, max: number): number | null {
   const cols = n.length + 1;
   // Three rows: the transposition rule looks two rows back. Every cell is
   // written before anything reads it, so the `!` reads are always in range.
   let beforePrev = new Int32Array(cols);
-  let prev = new Int32Array(cols); // row 0: an empty query matches any prefix free
+  let prev = new Int32Array(cols);
   let curr = new Int32Array(cols);
+  for (let j = 0; j < cols; j++) prev[j] = j; // row 0: skipping name characters costs
 
   for (let i = 1; i <= q.length; i++) {
     curr[0] = i;
