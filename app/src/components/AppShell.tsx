@@ -16,14 +16,18 @@ export function AppShell({ children }: { children: ReactNode }) {
   const meta = useSnapshot(loadMeta, []);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  // Cmd/Ctrl-K as well as the icon: the icon is what makes search discoverable,
-  // the shortcut is what makes it quick once you know it is there.
+  // Space as well as the icon: the icon is what makes search discoverable, the
+  // shortcut is what makes it quick once you know it is there.
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key.toLowerCase() === 'k' && (event.metaKey || event.ctrlKey)) {
-        event.preventDefault();
-        setSearchOpen(true);
-      }
+      if (event.key !== ' ' || event.metaKey || event.ctrlKey || event.altKey) return;
+      // Unlike a chord, Space is an ordinary key: it types a character, it
+      // activates whatever control has focus, and it pages a scrollable region.
+      // Claiming it is only safe while nothing is focused -- which is also what
+      // keeps it typable inside the search field once the overlay is open.
+      if (document.activeElement && document.activeElement !== document.body) return;
+      event.preventDefault();
+      setSearchOpen(true);
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
@@ -61,7 +65,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               onClick={() => setSearchOpen(true)}
               aria-label="Search countries and destinations"
               aria-expanded={searchOpen}
-              title="Search (Ctrl-K)"
+              title="Search (Space)"
               className="p-1 transition-colors hover:text-[var(--color-ink)]"
             >
               <SearchIcon />

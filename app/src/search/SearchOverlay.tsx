@@ -1,5 +1,5 @@
 /**
- * Search overlay — opened from the header's search icon or Cmd/Ctrl-K.
+ * Search overlay — opened from the header's search icon or the Space key.
  *
  * Centred rather than hung below its trigger: the icon sits at the right edge
  * of the header, so an anchored menu would crowd the viewport edge and clip
@@ -45,7 +45,16 @@ export function SearchOverlay({ onClose }: { onClose: () => void }) {
     };
   }, [attempt]);
 
-  useEffect(() => inputRef.current?.focus(), []);
+  // Take focus on open and hand it back on close, so dismissing the overlay
+  // returns the user to the control they opened it from rather than dropping
+  // focus at the top of the document.
+  useEffect(() => {
+    const previous = document.activeElement;
+    inputRef.current?.focus();
+    return () => {
+      if (previous instanceof HTMLElement) previous.focus();
+    };
+  }, []);
 
   const results = useMemo(
     () => (index ? search(index, query) : { countries: [], destinations: [] }),
