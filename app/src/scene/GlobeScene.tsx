@@ -208,14 +208,25 @@ export const GlobeScene = forwardRef<GlobeSceneHandle, GlobeSceneProps>(function
     [],
   );
 
+  // Uncovered countries are deliberately inert: no click, no pointer cursor, and
+  // only a faint hover acknowledgement rather than the bright "you can select
+  // this" highlight — clicking one used to dead-end on an empty country page,
+  // so the globe itself must make "not selectable" obvious before that happens.
+  const isInteractiveIso2 = useCallback(
+    (iso2: string | null) => Boolean(iso2 && coveredSet.has(iso2)),
+    [coveredSet],
+  );
+
   const polygonCapColor = useCallback(
     (feature: object) => {
       const f = feature as CountryFeature;
       const iso2 = f.properties.iso2;
       if (!iso2) return withAlpha(palette.hairline, 0.12);
-      if (iso2 === highlightedCountryIso2) return withAlpha(palette.ink, 0.3);
-      if (coveredSet.has(iso2)) return withAlpha(palette.established, 0.16);
-      return withAlpha(palette.surface2, 0.22);
+      const covered = coveredSet.has(iso2);
+      if (iso2 === highlightedCountryIso2) {
+        return covered ? withAlpha(palette.ink, 0.3) : withAlpha(palette.surface2, 0.34);
+      }
+      return covered ? withAlpha(palette.established, 0.16) : withAlpha(palette.surface2, 0.22);
     },
     [palette, coveredSet, highlightedCountryIso2],
   );
@@ -223,33 +234,55 @@ export const GlobeScene = forwardRef<GlobeSceneHandle, GlobeSceneProps>(function
   const polygonStrokeColor = useCallback(
     (feature: object) => {
       const f = feature as CountryFeature;
-      return f.properties.iso2 === highlightedCountryIso2
+      const iso2 = f.properties.iso2;
+      if (iso2 !== highlightedCountryIso2) return withAlpha(palette.hairline, 0.55);
+      return isInteractiveIso2(iso2)
         ? withAlpha(palette.ink, 0.85)
-        : withAlpha(palette.hairline, 0.55);
+        : withAlpha(palette.hairline, 0.75);
     },
-    [palette, highlightedCountryIso2],
+    [palette, highlightedCountryIso2, isInteractiveIso2],
   );
   const polygonAltitude = useCallback(
-    (feature: object) =>
-      (feature as CountryFeature).properties.iso2 === highlightedCountryIso2 ? 0.014 : 0.006,
-    [highlightedCountryIso2],
+    (feature: object) => {
+      const iso2 = (feature as CountryFeature).properties.iso2;
+      // Only lift the country that is both hovered and actually selectable —
+      // an uncovered country stays flush with the globe even when highlighted.
+      return iso2 === highlightedCountryIso2 && isInteractiveIso2(iso2) ? 0.014 : 0.006;
+    },
+    [highlightedCountryIso2, isInteractiveIso2],
   );
-  const polygonLabel = useCallback((feature: object) => {
-    const f = feature as CountryFeature;
-    return f.properties.iso2 ? f.properties.name : '';
-  }, []);
+  const polygonLabel = useCallback(
+    (feature: object) => {
+      const f = feature as CountryFeature;
+      if (!f.properties.iso2) return '';
+      return isInteractiveIso2(f.properties.iso2)
+        ? f.properties.name
+        : `${f.properties.name} — coverage coming soon`;
+    },
+    [isInteractiveIso2],
+  );
   const handlePolygonClick = useCallback(
     (feature: object) => {
       const iso2 = (feature as CountryFeature).properties.iso2;
-      if (iso2) onCountryClick?.(iso2);
+      if (isInteractiveIso2(iso2)) onCountryClick?.(iso2 as string);
     },
-    [onCountryClick],
+    [onCountryClick, isInteractiveIso2],
   );
   const handlePolygonHover = useCallback(
     (feature: object | null) => {
+      // Hover is still reported for uncovered countries — screens use it to
+      // show an honest "coverage coming soon" note — only click is gated.
       onCountryHover?.(feature ? (feature as CountryFeature).properties.iso2 : null);
     },
     [onCountryHover],
+  );
+  const showPointerCursor = useCallback(
+    (objType: string, objData: unknown) => {
+      if (objType !== 'polygon') return true;
+      const iso2 = (objData as CountryFeature | undefined)?.properties.iso2 ?? null;
+      return isInteractiveIso2(iso2);
+    },
+    [isInteractiveIso2],
   );
 
   return (
@@ -279,6 +312,7 @@ export const GlobeScene = forwardRef<GlobeSceneHandle, GlobeSceneProps>(function
           polygonsTransitionDuration={200}
           onPolygonClick={handlePolygonClick}
           onPolygonHover={handlePolygonHover}
+          showPointerCursor={showPointerCursor}
           pointsData={boundedPoints}
           pointLat="lat"
           pointLng="lng"

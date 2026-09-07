@@ -162,7 +162,11 @@ export function CountryScreen() {
     );
   }, [country.status, country.data]);
 
-  const coveredIso2 = world.status === 'ready' ? world.data.countries.filter((c) => c.covered).map((c) => c.iso2) : undefined;
+  // Default to an empty list (not undefined) while world.json is loading, so
+  // the globe treats every country as non-interactive until coverage is known
+  // rather than briefly allowing clicks into countries that turn out uncovered.
+  const coveredIso2 =
+    world.status === 'ready' ? world.data.countries.filter((c) => c.covered).map((c) => c.iso2) : [];
 
   return (
     <main className="relative h-full w-full">
