@@ -1,18 +1,37 @@
 /**
- * App chrome: wordmark, Discover link, "data updated" status. Deliberately
+ * App chrome: wordmark, search, Discover link, "data updated" status. Deliberately
  * minimal — it floats over the globe and must never compete with it, so it's
  * a thin translucent strip with a soft scrim behind it for legibility, not a
  * bar with a background of its own.
  */
-import type { ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 import type { Meta } from '@dl/shared';
 import { useSnapshot, type SnapshotState } from '../lib/useSnapshot.js';
 import { loadMeta } from '../lib/snapshots.js';
 import { formatDate } from '../lib/format.js';
+import { SearchIcon, SearchOverlay } from '../search/index.js';
 
 export function AppShell({ children }: { children: ReactNode }) {
   const meta = useSnapshot(loadMeta, []);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  // Space as well as the icon: the icon is what makes search discoverable, the
+  // shortcut is what makes it quick once you know it is there.
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== ' ' || event.metaKey || event.ctrlKey || event.altKey) return;
+      // Unlike a chord, Space is an ordinary key: it types a character, it
+      // activates whatever control has focus, and it pages a scrollable region.
+      // Claiming it is only safe while nothing is focused -- which is also what
+      // keeps it typable inside the search field once the overlay is open.
+      if (document.activeElement && document.activeElement !== document.body) return;
+      event.preventDefault();
+      setSearchOpen(true);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   return (
     <div className="relative h-full w-full overflow-hidden bg-[var(--color-void)]">
@@ -40,7 +59,17 @@ export function AppShell({ children }: { children: ReactNode }) {
             Destination Lens
           </NavLink>
 
-          <nav className="pointer-events-auto flex items-center gap-6 text-sm text-[var(--color-ink-muted)]">
+          <nav className="pointer-events-auto flex items-center gap-5 text-sm text-[var(--color-ink-muted)]">
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              aria-label="Search countries and destinations"
+              aria-expanded={searchOpen}
+              title="Search (Space)"
+              className="p-1 transition-colors hover:text-[var(--color-ink)]"
+            >
+              <SearchIcon />
+            </button>
             <NavLink
               to="/discover"
               className={({ isActive }) =>
@@ -65,6 +94,8 @@ export function AppShell({ children }: { children: ReactNode }) {
           </nav>
         </div>
       </header>
+
+      {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
     </div>
   );
 }
