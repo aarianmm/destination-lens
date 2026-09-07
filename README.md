@@ -78,27 +78,44 @@ GitHub Actions (cron + workflow_dispatch)         Cloudflare Workers
 - `data/` — the published snapshots the app actually reads. Committed to the
   repo; overwritten by pipeline runs.
 
-See [`docs/architecture.md`](docs/architecture.md) for the data contract and
-pipeline stage handoffs, and [`docs/runbook.md`](docs/runbook.md) for secrets,
-running the pipeline, deploys, and what to do when something breaks.
+## Running the pipeline for real
+
+The pipeline runs via GitHub Actions (`.github/workflows/pipeline.yml`), on a
+daily cron and on manual `workflow_dispatch`. It needs these repo secrets:
+
+- **`CLOUDFLARE_API_TOKEN`** / **`CLOUDFLARE_ACCOUNT_ID`** — for deploys
+  (`deploy.yml`). Create the token from the Cloudflare dashboard using the
+  **"Edit Cloudflare Workers"** template; the account ID is on any Worker's
+  overview page.
+- **`GEMINI_API_KEY`** — for post classification and destination blurbs/themes
+  (Google AI Studio).
+- **`BSKY_IDENTIFIER`** / **`BSKY_APP_PASSWORD`** — a Bluesky handle and an
+  app password (Settings → App Passwords in the Bluesky app, not your real
+  password). Bluesky's unauthenticated search rate limit is aggressive enough
+  that a real run needs these as a fallback.
+
+To rehearse a run without spending any API budget: trigger `pipeline.yml`
+manually with the `countries` input set to a short list (e.g. `TH,JP`) and
+`dryRun` checked — it does everything (vocabulary, flight flows, Bluesky
+collection, trend maths) except call Gemini or write `data/`. `MAX_LLM_CALLS`
+(default 400) caps real Gemini spend per run; exceeding it aborts the run
+loudly rather than overspending silently.
 
 ## Status
 
 MVP under active build. `data/` currently holds pipeline-generated fixture
 data (see the `sources` field in `data/meta.json` to check which). Full
 end-to-end wiring of the real pipeline is in review — see open PRs before
-assuming a scheduled run has ever produced real snapshots.
+assuming a scheduled run has ever produced real snapshots, and see
+[`docs/data-and-limitations.md`](docs/data-and-limitations.md) for a known
+issue with the first real run's weekly counts.
 
 ## Further reading
 
-- [`PLAN.md`](PLAN.md) — the original implementation plan (mostly followed;
-  see `docs/runbook.md` for where reality diverged, notably the curated
-  country list).
+- [`PLAN.md`](PLAN.md) — the original implementation plan. Mostly followed;
+  the curated country list changed (Spain/Portugal/Greece/Italy swapped for
+  Brazil/Peru/South Africa/Kenya — see the limitations doc for why).
 - [`idea.md`](idea.md) — the original product brief.
 - [`CLAUDE.md`](CLAUDE.md) — the working agreement between contributors.
 - [`docs/data-and-limitations.md`](docs/data-and-limitations.md) — what the
   numbers do and do not mean. Read this one.
-- [`docs/runbook.md`](docs/runbook.md) — secrets, running the pipeline,
-  deploys, adding a country, failure modes.
-- [`docs/architecture.md`](docs/architecture.md) — the data contract and how
-  pipeline stages hand off to each other.

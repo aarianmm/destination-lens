@@ -122,6 +122,47 @@ every trend number as measuring raw search-term volume, not verified
 travel-relevant volume, and treat the guard list as protecting the qualitative
 narrative (blurb, themes, quotes) more than the number itself.
 
+## Known issue, unresolved as of this writing: some weekly counts came back zero on the first real run
+
+This is current and unresolved, not a historical footnote — flag it as such
+until someone closes it out.
+
+The first real (non-fixture) pipeline run surfaced at least two problems in
+the Bluesky collector, tracked on the `agent-g-pipeline` branch:
+
+1. **A schema-validation bug that zeroed out an entire country.**
+   `rawPostSchema.postedAt` requires a `Z`-suffixed UTC timestamp, but
+   Bluesky's client-supplied `createdAt` isn't guaranteed to be Z-normalised
+   — posts from Japanese clients in particular carried `+09:00`-style
+   offsets, so every post failed validation and Japan collected zero
+   mentions across the board despite the run exiting successfully. This was
+   caught only because a country-wide zero is now treated as a fatal error
+   rather than a quiet success (see "Bluesky's rate limiting" above), and has
+   a fix (`normalizePostedAt`) on that branch.
+2. **A second, still-open problem**: `hitsTotal` came back `0` for queries
+   that should self-evidently have real volume — "Tokyo" included — on the
+   authenticated (app-password) request path. A diagnostic script,
+   `pipeline/src/bluesky/probe.ts`, was added specifically to isolate this
+   (auth changing the response shape vs. `lang`+`since`/`until` intersecting
+   to nothing vs. an error silently defaulting to zero) without guessing
+   through repeated full pipeline runs. As of the latest commit on that
+   branch, this was still being actively investigated, not confirmed fixed.
+
+**What this means for any snapshot you're looking at:** a live run's
+`weeklyMentions` array may legitimately contain zeros that are a collection
+bug, not a real absence of conversation — most visibly the most recent
+(current, still-open) week, which came back `0` in the first real run for
+several destinations (Tokyo and Bangkok among them) while others in the same
+run collected normal-looking volume. Until this is confirmed resolved,
+**treat any single trailing zero, or any destination whose numbers look
+implausibly low against its status, as a suspect data point first and a real
+signal second** — check whether the same anomaly appears across unrelated
+destinations in the same run (suggesting a systemic collection bug) or is
+isolated to one place (more likely a real quiet week or a homonym-guard
+effect). Depending on where the fix lands before the next real run, published
+snapshots may carry weak or partial trend data for a period; this document
+will be updated once the root cause is confirmed and closed.
+
 ## Traveller origin is inferred from explicit profile text, never guessed
 
 `pipeline/src/enrich/origins.ts` maps a Bluesky author's own free-text profile
