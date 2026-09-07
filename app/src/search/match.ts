@@ -5,6 +5,7 @@
  * prefix is almost always the intended place, and letting an edit-distance
  * score outrank it is how search boxes end up feeling arbitrary.
  */
+import type { DestinationStatus } from '@dl/shared';
 
 /** Lowercase, strip accents, collapse whitespace — applied to query and name alike. */
 export function normalise(text: string): string {
@@ -104,4 +105,78 @@ function prefixDistance(q: string, n: string, max: number): number | null {
     if (cell < best) best = cell;
   }
   return best <= max ? best : null;
+}
+
+// ---------------------------------------------------------------------------
+// Ranking the index
+// ---------------------------------------------------------------------------
+
+export type CountryItem = { iso2: string; name: string; covered: boolean };
+
+export type DestinationItem = {
+  slug: string;
+  name: string;
+  countryIso2: string;
+  countryName: string;
+  lat: number;
+  lng: number;
+  status: DestinationStatus;
+  growthPct: number;
+};
+
+export type SearchIndex = { countries: CountryItem[]; destinations: DestinationItem[] };
+export type SearchLimits = { countries: number; destinations: number };
+
+/** Enough to be useful, short enough to scan without scrolling far. */
+export const DEFAULT_LIMITS: SearchLimits = { countries: 8, destinations: 12 };
+
+const TIER_RANK: Record<MatchTier, number> = { prefix: 0, word: 1, substring: 2, fuzzy: 3 };
+
+function rankByName<T extends { name: string }>(
+  items: T[],
+  query: string,
+  limit: number,
+  score: (item: T, query: string) => NameScore | null,
+): T[] {
+  const hits: { item: T; tier: number; distance: number }[] = [];
+  for (const item of items) {
+    const s = score(item, query);
+    if (s) hits.push({ item, tier: TIER_RANK[s.tier], distance: s.distance });
+  }
+  hits.sort(
+    (a, b) =>
+      a.tier - b.tier ||
+      a.distance - b.distance ||
+      // A shorter name containing the same match is the more specific answer:
+      // "Koh Tao" before "Koh Lanta" for "koh".
+      a.item.name.length - b.item.name.length ||
+      a.item.name.localeCompare(b.item.name),
+  );
+  return hits.slice(0, limit).map((h) => h.item);
+}
+
+/**
+ * Rank the index against a query, grouped for display.
+ *
+ * Destinations deliberately do NOT match on their country's name: typing
+ * "thailand" should surface Thailand, whose own screen is where its
+ * destinations belong, rather than flooding the list with fifteen of them.
+ */
+export function search(
+  index: SearchIndex,
+  query: string,
+  limits: SearchLimits = DEFAULT_LIMITS,
+): { countries: CountryItem[]; destinations: DestinationItem[] } {
+  const q = normalise(query);
+  if (q === '') return { countries: [], destinations: [] };
+
+  return {
+    countries: rankByName(index.countries, q, limits.countries, (c) =>
+      // "ZA" should find South Africa, which its name alone never would.
+      c.iso2.toLowerCase() === q ? { tier: 'prefix', distance: 0 } : scoreName(q, c.name),
+    ),
+    destinations: rankByName(index.destinations, q, limits.destinations, (d) =>
+      scoreName(q, d.name),
+    ),
+  };
 }
