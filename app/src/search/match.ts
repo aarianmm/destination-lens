@@ -17,7 +17,7 @@ export function normalise(text: string): string {
 }
 
 /** Best (lowest) tier wins; `distance` only varies within the fuzzy tier. */
-export type MatchTier = 'prefix' | 'word' | 'substring';
+export type MatchTier = 'prefix' | 'word' | 'substring' | 'fuzzy';
 
 export type NameScore = { tier: MatchTier; distance: number };
 
@@ -29,5 +29,79 @@ export function scoreName(query: string, name: string): NameScore | null {
   if (n.startsWith(q)) return { tier: 'prefix', distance: 0 };
   if (n.split(' ').some((word) => word.startsWith(q))) return { tier: 'word', distance: 0 };
   if (n.includes(q)) return { tier: 'substring', distance: 0 };
-  return null;
+
+  // Only now, having failed every exact reading, guess at a misspelling --
+  // against the whole name and against each word, since the typo may be in
+  // the second one ("koh lantar").
+  const budget = maxEdits(q.length);
+  if (budget === 0) return null;
+  let best: number | null = prefixDistance(q, n, budget);
+  for (const word of n.split(' ')) {
+    const d = prefixDistance(q, word, best === null ? budget : Math.min(budget, best));
+    if (d !== null && (best === null || d < best)) best = d;
+  }
+  return best === null ? null : { tier: 'fuzzy', distance: best };
+}
+
+/**
+ * Edits tolerated for a query of this length. Short queries get none: at three
+ * characters almost every name in the index is one edit away, and a list of
+ * plausible-looking wrong answers is worse than a short list of right ones.
+ */
+function maxEdits(queryLength: number): number {
+  if (queryLength < 4) return 0;
+  if (queryLength <= 6) return 1;
+  return 2;
+}
+
+/**
+ * Damerau-Levenshtein distance from `q` to the closest PREFIX of `n`, or null
+ * once it is certain to exceed `max`.
+ *
+ * Prefix-tolerant because the query is usually half-typed: row 0 costs nothing
+ * at any column, so `n` may run past `q` for free and "bengk" still reaches
+ * "Bangkok". Transpositions cost one edit rather than two -- swapped letters
+ * are the typo people actually make.
+ */
+function prefixDistance(q: string, n: string, max: number): number | null {
+  const cols = n.length + 1;
+  // Three rows: the transposition rule looks two rows back. Every cell is
+  // written before anything reads it, so the `!` reads are always in range.
+  let beforePrev = new Int32Array(cols);
+  let prev = new Int32Array(cols); // row 0: an empty query matches any prefix free
+  let curr = new Int32Array(cols);
+
+  for (let i = 1; i <= q.length; i++) {
+    curr[0] = i;
+    let rowMin = i;
+    let diag = prev[0]!; // prev[j - 1], carried rather than re-read
+    let left = i; // curr[j - 1]
+    for (let j = 1; j < cols; j++) {
+      const up = prev[j]!;
+      const substitution = q[i - 1] === n[j - 1] ? 0 : 1;
+      let best = Math.min(
+        up + 1, // drop a character of the query
+        left + 1, // skip a character of the name
+        diag + substitution,
+      );
+      if (i > 1 && j > 1 && q[i - 1] === n[j - 2] && q[i - 2] === n[j - 1]) {
+        best = Math.min(best, beforePrev[j - 2]! + 1);
+      }
+      curr[j] = best;
+      if (best < rowMin) rowMin = best;
+      diag = up;
+      left = best;
+    }
+    // Row minima never decrease, so once a whole row is out of budget no later
+    // row can bring it back under.
+    if (rowMin > max) return null;
+    [beforePrev, prev, curr] = [prev, curr, beforePrev];
+  }
+
+  let best = prev[0]!;
+  for (let j = 1; j < cols; j++) {
+    const cell = prev[j]!;
+    if (cell < best) best = cell;
+  }
+  return best <= max ? best : null;
 }

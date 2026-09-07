@@ -39,3 +39,43 @@ describe('scoreName tiers', () => {
     expect(scoreName('MALAGA', 'Málaga')?.tier).toBe('prefix');
   });
 });
+
+describe('scoreName misspelling tolerance', () => {
+  it('accepts a single wrong letter in a full name', () => {
+    const hit = scoreName('bangkock', 'Bangkok');
+    expect(hit?.tier).toBe('fuzzy');
+    expect(hit?.distance).toBe(1);
+  });
+
+  it('accepts a misspelling in a partial name, so "bengk" reaches Bangkok', () => {
+    // Prefix-tolerant: the name may run past the query for free, otherwise a
+    // typo early in a long name is unreachable until the whole word is typed.
+    expect(scoreName('bengk', 'Bangkok')?.tier).toBe('fuzzy');
+  });
+
+  it('tolerates a transposition', () => {
+    expect(scoreName('tokoy', 'Tokyo')?.tier).toBe('fuzzy');
+  });
+
+  it('refuses to guess for queries under four characters', () => {
+    // "san" one edit from "sun"/"sao"/"san…" would flood the list.
+    expect(scoreName('san', 'Sun City')).toBeNull();
+  });
+
+  it('allows only one edit up to six characters', () => {
+    expect(scoreName('lisbin', 'Lisbon')?.distance).toBe(1);
+    expect(scoreName('lasbin', 'Lisbon')).toBeNull();
+  });
+
+  it('allows two edits from seven characters up', () => {
+    expect(scoreName('marrakch', 'Marrakesh')?.distance).toBe(2);
+  });
+
+  it('still rejects a genuinely different name', () => {
+    expect(scoreName('reykjavik', 'Bangkok')).toBeNull();
+  });
+
+  it('matches a misspelled second word', () => {
+    expect(scoreName('lantar', 'Koh Lanta')?.tier).toBe('fuzzy');
+  });
+});
