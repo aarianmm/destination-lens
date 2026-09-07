@@ -48,6 +48,12 @@ dark globe.
 re-measured afterwards. Worth doing once the data layer is settled — the globe
 should be polished around final content, not before it exists.
 
+**Untried lead, from Agent H's investigation before the work was cut:** `three-globe`
+imports `three/webgpu` (~1.8MB raw) and `three/tsl` for a GPU-accelerated heatmap
+path this app never uses. Aliasing those two imports to stub modules in
+`app/vite.config.ts` looked like the highest-leverage single change to the 1.79MB
+globe chunk. Untested.
+
 ---
 
 ## Automatic destination discovery

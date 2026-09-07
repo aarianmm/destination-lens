@@ -123,7 +123,7 @@ export function DestinationScreen() {
 
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 flex w-full max-w-xl items-stretch p-4 pt-24 sm:p-6 sm:pt-24">
         <Panel solid className="pointer-events-auto flex max-h-full w-full flex-col overflow-hidden p-0">
-          <div className="overflow-y-auto p-6">
+          <div className="min-h-0 flex-1 overflow-y-auto p-6">
             <button
               onClick={goBackToCountry}
               className="mb-4 inline-flex items-center gap-1.5 text-sm text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]"

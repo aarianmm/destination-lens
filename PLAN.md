@@ -150,7 +150,9 @@ Runs in GitHub Actions (cron: daily 03:00 UTC + `workflow_dispatch` with a `coun
 7. **Imagery:** Wikipedia REST summary endpoint per `wikipediaTitle` → lead image URL + attribution; omit gracefully if none (app renders a gradient card).
 8. **Assemble:** write all snapshot files, zod-validate, enforce size budgets, write `meta.json`, open a PR (or push to `main` on scheduled runs) → redeploy.
 
-**Curated countries (10):** Thailand, Japan, Vietnam, Indonesia, Spain, Portugal, Greece, Italy, Mexico, Morocco. Pilot pair for Wave 1 validation: **Thailand + Japan**.
+**Curated countries (10):** Thailand, Japan, Vietnam, Indonesia, Mexico, Morocco, Brazil, Peru, South Africa, Kenya. Pilot pair for validation: **Thailand + Japan**.
+
+> Changed during execution. The original list included Spain, Portugal, Greece and Italy. They were dropped for two measured reasons: on the globe, small clustered European countries made poor click targets, and in the data, European city names carried almost no travel signal — sampling live posts gave a travel-related share of 0% for Madrid and Valencia and 4% for Barcelona and Granada, against 10,000+ hits each, because the conversation is residents discussing football and politics. The replacements are larger, further apart, and cleaner in the data.
 
 ---
 
