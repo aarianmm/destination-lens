@@ -93,6 +93,7 @@ async function main() {
   // --- bluesky -----------------------------------------------------------------
   const weekStarts = weekStartsFor(new Date());
   const mentionsBySlug = new Map<string, MentionsArtifact>();
+  const countriesWithZeroMentions: string[] = [];
   for (const vocab of vocabs) {
     try {
       const artifacts = await collectMentions({
@@ -106,6 +107,7 @@ async function main() {
         'bluesky',
         `${vocab.iso2}: collected mentions for ${artifacts.length}/${vocab.destinations.length} destinations`,
       );
+      if (artifacts.length === 0) countriesWithZeroMentions.push(vocab.iso2);
     } catch (err) {
       // collectMentions already degrades per-destination internally; a throw
       // here means something broke for the whole country (e.g. couldn't build
@@ -115,7 +117,20 @@ async function main() {
         'bluesky',
         `${vocab.iso2}: mention collection failed entirely, skipping this country — ${describeError(err)}`,
       );
+      countriesWithZeroMentions.push(vocab.iso2);
     }
+  }
+  // A single bad DESTINATION degrading out is normal and expected (see the
+  // per-destination try/catch inside collectMentions). A whole COUNTRY coming
+  // back with zero is not — that's a broken run wearing a green checkmark
+  // (exactly what happened when `postedAt` validation started rejecting every
+  // post: the run "succeeded" having collected nothing). Fail loudly instead
+  // of publishing/silently skipping a country that produced no signal at all.
+  if (countriesWithZeroMentions.length > 0) {
+    throw new Error(
+      `bluesky collection produced zero destinations for: ${countriesWithZeroMentions.join(', ')} ` +
+        '— treating a country-wide zero as a broken run, not a quiet one',
+    );
   }
 
   // --- trends (pure maths, no LLM) ---------------------------------------------

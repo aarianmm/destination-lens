@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "tsx src/run.ts",
-    "flights": "tsx src/flights/run.ts"
+    "flights": "tsx src/flights/run.ts",
+    "probe:bsky": "tsx src/bluesky/probe.ts"
   },
   "dependencies": {
     "@dl/shared": "*",

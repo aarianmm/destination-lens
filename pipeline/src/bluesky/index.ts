@@ -414,7 +414,25 @@ function buildPostUrl(uri: string, handle: string): string {
   return `https://bsky.app/profile/${handle}/post/${rkey}`;
 }
 
-function toRawPost(post: BskyPost): RawPost {
+/**
+ * `rawPostSchema.postedAt` is `z.string().datetime()`, which (per zod's default)
+ * requires a `Z`-suffixed UTC string and rejects a numeric offset. Bluesky's
+ * `createdAt` is client-supplied and not guaranteed to be `Z`-normalised —
+ * verified live: real posts (Japanese clients especially) carry `+09:00`-style
+ * offsets, which `JS Date` parses fine but zod's `.datetime()` does not accept.
+ * Normalise at this boundary rather than loosen the shared schema — `data/`
+ * stays uniform, and the one place that talks to the outside world is the
+ * right place to defend against its formatting quirks. A genuinely unparseable
+ * value returns `undefined` so the caller can drop just that post.
+ */
+export function normalizePostedAt(raw: string): string | undefined {
+  const ms = Date.parse(raw);
+  return Number.isNaN(ms) ? undefined : new Date(ms).toISOString();
+}
+
+function toRawPost(post: BskyPost): RawPost | undefined {
+  const postedAt = normalizePostedAt(post.record.createdAt);
+  if (!postedAt) return undefined;
   const location = typeof post.author.location === 'string' ? post.author.location : undefined;
   return {
     uri: post.uri,
@@ -423,7 +441,7 @@ function toRawPost(post: BskyPost): RawPost {
     authorHandle: post.author.handle,
     authorDisplayName: post.author.displayName,
     authorLocation: location,
-    postedAt: post.record.createdAt,
+    postedAt,
   };
 }
 
@@ -657,20 +675,30 @@ export async function collectMentions(options: CollectOptions): Promise<Mentions
       const rawPosts = await fetchRecentRawPosts(client, destination, recentPostLimit, today);
       const passed: RawPost[] = [];
       let discarded = 0;
+      let unparseableDate = 0;
       for (const raw of rawPosts) {
-        if (prefilter({ text: raw.record.text }, destination, vocab.name)) {
-          passed.push(toRawPost(raw));
-        } else {
+        if (!prefilter({ text: raw.record.text }, destination, vocab.name)) {
           discarded += 1;
+          continue;
         }
+        const converted = toRawPost(raw);
+        if (!converted) {
+          // Malformed/unparseable createdAt from the API — drop just this post
+          // rather than the whole destination (see `normalizePostedAt`).
+          unparseableDate += 1;
+          continue;
+        }
+        passed.push(converted);
       }
       passed.sort((a, b) => Date.parse(b.postedAt) - Date.parse(a.postedAt));
 
+      const recentSum = weeklyCounts.slice(-4).reduce((a, b) => a + b, 0);
       log.step(
         'bluesky',
         `${destination.slug}: ${rawPosts.length} raw posts, ${discarded} discarded (${
           rawPosts.length ? Math.round((discarded / rawPosts.length) * 100) : 0
-        }%), ${passed.length} kept, latest week count=${weeklyCounts.at(-1)}`,
+        }%)${unparseableDate ? `, ${unparseableDate} dropped (bad postedAt)` : ''}, ${passed.length} kept, ` +
+          `weekly counts: latest=${weeklyCounts.at(-1)} last4Sum=${recentSum} max=${Math.max(...weeklyCounts)}`,
       );
 
       artifacts.push(

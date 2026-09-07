@@ -17,6 +17,10 @@ on:
         description: 'Override the Gemini call budget for this run (blank = pipeline default of 400)'
         required: false
         default: ''
+      probeOnly:
+        description: 'Diagnostic: run pipeline/src/bluesky/probe.ts instead of the real pipeline (no writes, no Gemini calls)'
+        type: boolean
+        default: false
 
 jobs:
   run:
@@ -42,6 +46,7 @@ jobs:
           restore-keys: pipeline-cache-
 
       - name: Run pipeline
+        if: ${{ inputs.probeOnly != true }}
         run: npm run pipeline
         env:
           COUNTRIES: ${{ inputs.countries }}
@@ -51,8 +56,15 @@ jobs:
           BSKY_IDENTIFIER: ${{ secrets.BSKY_IDENTIFIER }}
           BSKY_APP_PASSWORD: ${{ secrets.BSKY_APP_PASSWORD }}
 
+      - name: Probe Bluesky search API
+        if: ${{ inputs.probeOnly == true }}
+        run: npm run probe:bsky -w pipeline
+        env:
+          BSKY_IDENTIFIER: ${{ secrets.BSKY_IDENTIFIER }}
+          BSKY_APP_PASSWORD: ${{ secrets.BSKY_APP_PASSWORD }}
+
       - name: Commit snapshots
-        if: ${{ inputs.dryRun != true }}
+        if: ${{ inputs.dryRun != true && inputs.probeOnly != true }}
         run: |
           git config user.name  "destination-lens-bot"
           git config user.email "actions@github.com"
