@@ -17,19 +17,32 @@ export type PipelineConfig = {
 
 export const ALL_COUNTRIES = ['TH', 'JP', 'VN', 'ID', 'MX', 'MA', 'BR', 'PE', 'ZA', 'KE'] as const;
 
+/**
+ * `workflow_dispatch` inputs with no value are still passed through as an empty
+ * string, not omitted — GitHub Actions has no concept of "unset" env var here.
+ * `?? fallback` alone doesn't catch that (`"" ?? x` is `""`, not `x`), so every
+ * optional env var is normalised through this first.
+ */
+function undefinedIfBlank(value: string | undefined): string | undefined {
+  return value && value.trim() !== '' ? value : undefined;
+}
+
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): PipelineConfig {
   const countries = (env.COUNTRIES ?? '')
     .split(',')
     .map((c) => c.trim().toUpperCase())
     .filter(Boolean);
 
+  const maxLlmCallsRaw = undefinedIfBlank(env.MAX_LLM_CALLS);
+  const maxLlmCalls = maxLlmCallsRaw ? Number(maxLlmCallsRaw) : 400;
+
   return {
     countries: countries.length ? countries : [...ALL_COUNTRIES],
     dryRun: env.DRY_RUN === 'true' || env.DRY_RUN === '1',
-    maxLlmCalls: Number(env.MAX_LLM_CALLS ?? 400),
-    geminiApiKey: env.GEMINI_API_KEY,
-    geminiModel: env.GEMINI_MODEL ?? 'gemini-flash-lite-latest',
-    bskyIdentifier: env.BSKY_IDENTIFIER,
-    bskyAppPassword: env.BSKY_APP_PASSWORD,
+    maxLlmCalls: Number.isFinite(maxLlmCalls) && maxLlmCalls > 0 ? maxLlmCalls : 400,
+    geminiApiKey: undefinedIfBlank(env.GEMINI_API_KEY),
+    geminiModel: undefinedIfBlank(env.GEMINI_MODEL) ?? 'gemini-flash-lite-latest',
+    bskyIdentifier: undefinedIfBlank(env.BSKY_IDENTIFIER),
+    bskyAppPassword: undefinedIfBlank(env.BSKY_APP_PASSWORD),
   };
 }

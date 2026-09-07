@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { vocabDestinationSchema, type VocabDestination } from '@dl/shared';
-import { prefilter } from '../src/bluesky/index.js';
+import { countQueryFor, prefilter } from '../src/bluesky/index.js';
 
 function dest(
   overrides: Partial<VocabDestination> & { slug: string; name: string },
@@ -234,5 +234,22 @@ describe('travel context is required for every destination', () => {
         'Spain',
       ),
     ).toBe(true);
+  });
+});
+
+// Task 3 (Agent G, Wave 2): the weekly mention COUNT (hitsTotal) has no local
+// prefilter to run — it's a single number from the API, not a list of posts —
+// so the only lever is the query text itself. This just pins the query shape;
+// the actual filtering effect was verified live against the real API (see the
+// block comment in bluesky/index.ts and the PR description for the transcript:
+// `"Koh Lanta"` alone = 364 hitsTotal, mostly a French reality-TV show;
+// `"Koh Lanta" travel` = 12).
+describe('countQueryFor — travel-context AND for weekly counts', () => {
+  it('ANDs a travel-context term onto a single-word destination name', () => {
+    expect(countQueryFor('Bangkok')).toBe('Bangkok travel');
+  });
+
+  it('ANDs a travel-context term onto a quoted multi-word destination name', () => {
+    expect(countQueryFor('Koh Lanta')).toBe('"Koh Lanta" travel');
   });
 });

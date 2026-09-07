@@ -193,10 +193,20 @@ export class AppViewClient {
     const authHeaders = (): Record<string, string> =>
       this.accessJwt ? { authorization: `Bearer ${this.accessJwt}` } : {};
 
+    // Task 2 (Agent G, Wave 2): authenticated is now the DEFAULT path whenever
+    // credentials are configured, not just a 401/403 fallback. Agent E built the
+    // fallback when unauthenticated access mostly worked; live testing since
+    // (see module notes) shows unauthenticated searchPosts is throttled hard —
+    // outright 403s on public.api.bsky.app, and "forbidden by administrative
+    // rules" after ~20 gently-spaced requests on api.bsky.app — well below what
+    // a real run needs. There is no upside left to trying unauthenticated first
+    // when a session is available; `ensureAuthenticated` is a no-op if no
+    // credentials were configured, so this is safe either way.
+    await this.ensureAuthenticated();
+
     let res = await fetchWithBackoff(url, authHeaders());
-    // Sticky fallback: unauthenticated searchPosts was observed to 403 outright
-    // (see module-level notes) rather than only under heavy rate limiting, so
-    // treat 401/403 as "try auth" whenever credentials are configured.
+    // Sticky fallback retained for the edge case of a token expiring mid-run,
+    // or the proactive login above having silently failed.
     if ((res.status === 401 || res.status === 403) && !this.accessJwt) {
       await this.ensureAuthenticated();
       if (this.accessJwt) res = await fetchWithBackoff(url, authHeaders());
@@ -260,6 +270,59 @@ function queryFor(term: string): string {
   return term.includes(' ') ? `"${term}"` : term;
 }
 
+/**
+ * --- Task 3 (Agent G, Wave 2): are the weekly counts measuring travel? ------
+ *
+ * The lexicon says `q`'s "syntax, phrase, boolean, and faceting is unspecified,
+ * but Lucene query syntax is recommended" — aspirational, not a guarantee.
+ * Verified empirically against the live authenticated API (small, careful
+ * sample — see PR description for the full transcript):
+ *
+ *   q=Nara                    hitsTotal=10000 (capped)
+ *   q="Nara" travel           hitsTotal=382
+ *   q=Nara AND travel         hitsTotal=191
+ *   q=Nara OR travel          hitsTotal=17
+ *   q=travel                  hitsTotal=10000 (capped)
+ *   q="Koh Lanta"             hitsTotal=364
+ *   q="Koh Lanta" -tf1        hitsTotal=356
+ *   q="Koh Lanta" travel      hitsTotal=12
+ *
+ * Two conclusions:
+ *  1. Space-separated terms ARE implicitly ANDed by the backend — this is real
+ *     and usable. "Koh Lanta" alone is almost entirely French reality-TV
+ *     chatter; ANDing on "travel" collapses it to a genuinely small,
+ *     plausible number of actual travel posts.
+ *  2. Explicit boolean keywords are NOT honoured as operators. `OR` is matched
+ *     as just another required literal word (which is why adding it SHRINKS
+ *     the result set instead of growing it — matches a public bug report:
+ *     bluesky-social/atproto#3751). `-word` exclusion showed no reliable
+ *     effect either. So there is no way to OR several context synonyms
+ *     ("travel" OR "trip" OR "vacation") into a single request — only a
+ *     single required AND term per query, or one extra request per synonym
+ *     (which would multiply request volume against a fragile, rate-limited
+ *     API for very little extra recall).
+ *
+ * Given that, the weekly count query below ANDs a single travel-context term
+ * onto every destination term, instead of counting the bare name. This trades
+ * recall (a genuine travel post that never says "travel" is undercounted) for
+ * validity (the series stops tracking football fixtures, TV episodes, or news
+ * cycles that happen to share a destination's name). The trade is applied
+ * identically to every week, so week-over-week growth/z-score comparisons —
+ * which is all the trend maths actually needs — stay meaningful. It will not
+ * be perfect for every destination (idiomatic uses of "travel" exist outside
+ * tourism too, e.g. sports-fixture writeups — see the Barcelona sample in the
+ * PR description), but for this product's actual curated vocabulary (city,
+ * island and park names, not football clubs) it is a real fix to the counting
+ * mechanism, not a coefficient rescale of an already-contaminated series.
+ */
+const COUNT_CONTEXT_TERM = 'travel';
+
+/** Exported for a pure unit test — the actual filtering behaviour was verified
+ * live against the real API (see the block comment above), not testable here. */
+export function countQueryFor(term: string): string {
+  return `${queryFor(term)} ${COUNT_CONTEXT_TERM}`;
+}
+
 function addDaysIso(dateOnly: string, days: number): string {
   const ms = Date.parse(`${dateOnly}T00:00:00.000Z`) + days * 86_400_000;
   return new Date(ms).toISOString();
@@ -290,9 +353,12 @@ async function countWeek(
   const { sinceIso, untilIso, isClosed } = weekWindow(weekStart, now);
   let total = 0;
   for (const term of searchTermsFor(destination)) {
-    const cacheKey = `weeks/${destination.slug}__${weekStart}__${term.replace(/\W+/g, '_')}${isClosed ? '' : `__${untilIso.slice(0, 10)}`}`;
+    // Cache key bumped to `weeks-v2` (was `weeks`): the query text itself changed
+    // (context-term AND'd in, see `countQueryFor` above), so a pre-existing cache
+    // entry under the old key would silently serve a contaminated count forever.
+    const cacheKey = `weeks-v2/${destination.slug}__${weekStart}__${term.replace(/\W+/g, '_')}${isClosed ? '' : `__${untilIso.slice(0, 10)}`}`;
     const params: Record<string, string> = {
-      q: queryFor(term),
+      q: countQueryFor(term),
       since: sinceIso,
       until: untilIso,
       lang: SEARCH_LANG,

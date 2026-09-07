@@ -13,6 +13,10 @@ on:
         description: 'Run without writing snapshots or calling paid APIs'
         type: boolean
         default: false
+      maxLlmCalls:
+        description: 'Override the Gemini call budget for this run (blank = pipeline default of 400)'
+        required: false
+        default: ''
 
 jobs:
   run:
@@ -42,6 +46,7 @@ jobs:
         env:
           COUNTRIES: ${{ inputs.countries }}
           DRY_RUN: ${{ inputs.dryRun }}
+          MAX_LLM_CALLS: ${{ inputs.maxLlmCalls }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           BSKY_IDENTIFIER: ${{ secrets.BSKY_IDENTIFIER }}
           BSKY_APP_PASSWORD: ${{ secrets.BSKY_APP_PASSWORD }}
