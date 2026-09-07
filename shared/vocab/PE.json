@@ -1,0 +1,161 @@
+{
+  "iso2": "PE",
+  "name": "Peru",
+  "aliases": ["Republic of Peru", "Perú"],
+  "centroid": {
+    "lat": -9.19,
+    "lng": -75.0152
+  },
+  "bounds": {
+    "north": -0.0388,
+    "south": -18.3512,
+    "east": -68.6772,
+    "west": -81.3267
+  },
+  "destinations": [
+    {
+      "slug": "lima",
+      "name": "Lima",
+      "aliases": ["Lima Peru", "Ciudad de los Reyes"],
+      "lat": -12.06,
+      "lng": -77.0375,
+      "wikipediaTitle": "Lima",
+      "requireContext": true,
+      "negativeKeywords": [
+        "lima bean",
+        "lima beans",
+        "lima ohio",
+        "lima, ohio",
+        "lima syndrome",
+        "lima charlie",
+        "west lima"
+      ]
+    },
+    {
+      "slug": "cusco",
+      "name": "Cusco",
+      "aliases": ["Cuzco", "Qosqo"],
+      "lat": -13.5169,
+      "lng": -71.9786,
+      "wikipediaTitle": "Cusco",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "machu-picchu",
+      "name": "Machu Picchu",
+      "aliases": [],
+      "lat": -13.1633,
+      "lng": -72.5456,
+      "wikipediaTitle": "Machu Picchu",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "arequipa",
+      "name": "Arequipa",
+      "aliases": [],
+      "lat": -16.3989,
+      "lng": -71.5369,
+      "wikipediaTitle": "Arequipa",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "paracas",
+      "name": "Paracas",
+      "aliases": ["Paracas National Reserve"],
+      "lat": -13.7125,
+      "lng": -76.2079,
+      "wikipediaTitle": "Paracas District",
+      "requireContext": true,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "huacachina",
+      "name": "Huacachina",
+      "aliases": [],
+      "lat": -14.0875,
+      "lng": -75.7633,
+      "wikipediaTitle": "Huacachina",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "mancora",
+      "name": "Máncora",
+      "aliases": ["Mancora"],
+      "lat": -4.1056,
+      "lng": -81.0472,
+      "wikipediaTitle": "Máncora",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "lake-titicaca",
+      "name": "Lake Titicaca",
+      "aliases": ["Titicaca", "Lago Titicaca"],
+      "lat": -15.825,
+      "lng": -69.325,
+      "wikipediaTitle": "Lake Titicaca",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "colca-canyon",
+      "name": "Colca Canyon",
+      "aliases": [],
+      "lat": -15.5972,
+      "lng": -71.8792,
+      "wikipediaTitle": "Colca Canyon",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "huaraz",
+      "name": "Huaraz",
+      "aliases": [],
+      "lat": -9.5333,
+      "lng": -77.5333,
+      "wikipediaTitle": "Huaraz",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "iquitos",
+      "name": "Iquitos",
+      "aliases": [],
+      "lat": -3.75,
+      "lng": -73.25,
+      "wikipediaTitle": "Iquitos",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "nazca-lines",
+      "name": "Nazca Lines",
+      "aliases": ["Nasca Lines", "Nazca"],
+      "lat": -14.6975,
+      "lng": -75.135,
+      "wikipediaTitle": "Nazca lines",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "trujillo",
+      "name": "Trujillo",
+      "aliases": ["Trujillo Peru"],
+      "lat": -8.112,
+      "lng": -79.0288,
+      "wikipediaTitle": "Trujillo, Peru",
+      "requireContext": true,
+      "negativeKeywords": [
+        "rafael trujillo",
+        "dominican republic",
+        "trujillo, venezuela",
+        "trujillo, spain",
+        "dictator"
+      ]
+    }
+  ]
+}

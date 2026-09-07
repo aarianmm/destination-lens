@@ -1,0 +1,176 @@
+{
+  "iso2": "BR",
+  "name": "Brazil",
+  "aliases": ["Brasil", "Federative Republic of Brazil"],
+  "centroid": {
+    "lat": -14.235,
+    "lng": -51.9253
+  },
+  "bounds": {
+    "north": 5.2648,
+    "south": -33.7507,
+    "east": -28.8351,
+    "west": -73.9905
+  },
+  "destinations": [
+    {
+      "slug": "rio-de-janeiro",
+      "name": "Rio de Janeiro",
+      "aliases": ["Rio", "Cidade Maravilhosa"],
+      "lat": -22.9111,
+      "lng": -43.2056,
+      "wikipediaTitle": "Rio de Janeiro",
+      "requireContext": true,
+      "negativeKeywords": [
+        "money heist",
+        "la casa de papel",
+        "netflix heist",
+        "rio tinto",
+        "rio grande",
+        "rio ferdinand",
+        "team rio",
+        "del rio"
+      ]
+    },
+    {
+      "slug": "sao-paulo",
+      "name": "São Paulo",
+      "aliases": ["Sao Paulo"],
+      "lat": -23.55,
+      "lng": -46.6333,
+      "wikipediaTitle": "São Paulo",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "salvador",
+      "name": "Salvador",
+      "aliases": ["Salvador da Bahia", "São Salvador"],
+      "lat": -12.9747,
+      "lng": -38.4767,
+      "wikipediaTitle": "Salvador, Bahia",
+      "requireContext": true,
+      "negativeKeywords": ["el salvador", "san salvador", "salvador dali"]
+    },
+    {
+      "slug": "florianopolis",
+      "name": "Florianópolis",
+      "aliases": ["Floripa"],
+      "lat": -27.5926,
+      "lng": -48.5582,
+      "wikipediaTitle": "Florianópolis",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "buzios",
+      "name": "Búzios",
+      "aliases": ["Armação dos Búzios", "Buzios"],
+      "lat": -22.7469,
+      "lng": -41.8819,
+      "wikipediaTitle": "Armação dos Búzios",
+      "requireContext": true,
+      "negativeKeywords": ["jogo de buzios", "jogo de búzios", "tirar buzios"]
+    },
+    {
+      "slug": "paraty",
+      "name": "Paraty",
+      "aliases": [],
+      "lat": -23.2194,
+      "lng": -44.7147,
+      "wikipediaTitle": "Paraty",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "iguacu-falls",
+      "name": "Iguaçu Falls",
+      "aliases": ["Iguazu Falls", "Iguassu Falls", "Foz do Iguaçu", "Cataratas do Iguaçu"],
+      "lat": -25.6867,
+      "lng": -54.4447,
+      "wikipediaTitle": "Iguazu Falls",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "jericoacoara",
+      "name": "Jericoacoara",
+      "aliases": ["Jeri"],
+      "lat": -2.7936,
+      "lng": -40.5081,
+      "wikipediaTitle": "Jijoca de Jericoacoara",
+      "requireContext": true,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "fernando-de-noronha",
+      "name": "Fernando de Noronha",
+      "aliases": ["Noronha"],
+      "lat": -3.855,
+      "lng": -32.425,
+      "wikipediaTitle": "Fernando de Noronha",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "ouro-preto",
+      "name": "Ouro Preto",
+      "aliases": [],
+      "lat": -20.3853,
+      "lng": -43.5036,
+      "wikipediaTitle": "Ouro Preto",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "olinda",
+      "name": "Olinda",
+      "aliases": [],
+      "lat": -8.0,
+      "lng": -34.8833,
+      "wikipediaTitle": "Olinda",
+      "requireContext": true,
+      "negativeKeywords": ["olinda, ontario", "olinda, california"]
+    },
+    {
+      "slug": "manaus",
+      "name": "Manaus",
+      "aliases": [],
+      "lat": -3.1189,
+      "lng": -60.0217,
+      "wikipediaTitle": "Manaus",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "chapada-diamantina",
+      "name": "Chapada Diamantina",
+      "aliases": ["Chapada Diamantina National Park"],
+      "lat": -12.8803,
+      "lng": -41.3722,
+      "wikipediaTitle": "Chapada Diamantina National Park",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "lencois-maranhenses",
+      "name": "Lençóis Maranhenses",
+      "aliases": ["Lençóis Maranhenses National Park"],
+      "lat": -2.5333,
+      "lng": -43.1167,
+      "wikipediaTitle": "Lençóis Maranhenses National Park",
+      "requireContext": false,
+      "negativeKeywords": []
+    },
+    {
+      "slug": "trancoso",
+      "name": "Trancoso",
+      "aliases": [],
+      "lat": -16.5906,
+      "lng": -39.0958,
+      "wikipediaTitle": "Trancoso, Bahia",
+      "requireContext": true,
+      "negativeKeywords": ["trancoso, portugal", "guarda, portugal"]
+    }
+  ]
+}
