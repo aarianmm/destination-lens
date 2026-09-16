@@ -1,8 +1,8 @@
 name: Data pipeline
 
+# Manual only. The daily cron was removed: each run spends Gemini credit and
+# hits the Bluesky API, so runs are triggered deliberately rather than nightly.
 on:
-  schedule:
-    - cron: '0 3 * * *'
   workflow_dispatch:
     inputs:
       countries:

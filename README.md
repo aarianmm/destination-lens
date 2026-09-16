@@ -57,7 +57,7 @@ npm run build   # production build; also copies data/ into app/public
 ## How the pieces fit together
 
 ```
-GitHub Actions (cron + workflow_dispatch)         Cloudflare Workers
+GitHub Actions (manual workflow_dispatch)         Cloudflare Workers
 ┌───────────────────────────────────┐            ┌───────────────────────┐
 │ pipeline/  (Node + TS batch job)   │  commits   │ app/  (Vite React SPA)│
 │  flights   OpenFlights → routes    │  data/ to  │  fetches /data/*.json │
@@ -80,8 +80,10 @@ GitHub Actions (cron + workflow_dispatch)         Cloudflare Workers
 
 ## Running the pipeline for real
 
-The pipeline runs via GitHub Actions (`.github/workflows/pipeline.yml`), on a
-daily cron and on manual `workflow_dispatch`. It needs these repo secrets:
+The pipeline runs via GitHub Actions (`.github/workflows/pipeline.yml`), on
+manual `workflow_dispatch` only — there is no cron, because every run spends
+Gemini credit and hits the Bluesky API. Trigger one with
+`gh workflow run pipeline.yml`. It needs these repo secrets:
 
 - **`CLOUDFLARE_API_TOKEN`** / **`CLOUDFLARE_ACCOUNT_ID`** — for deploys
   (`deploy.yml`). Create the token from the Cloudflare dashboard using the
